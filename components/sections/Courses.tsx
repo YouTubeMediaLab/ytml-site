@@ -6,7 +6,7 @@ const courses = [
     num: "①",
     badge: "BASIC",
     name: "動画編集コース",
-    nameNote: "",
+    nameNote: "（1年）",
     price: "99,000",
     period: "1年間サポート",
     color: "border-blue-400",

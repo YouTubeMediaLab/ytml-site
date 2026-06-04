@@ -12,7 +12,7 @@ const tokushohoItems = [
   { label: "所在地", value: "東京都中央区銀座7-13-6 サガミビル2階" },
   {
     label: "電話番号",
-    value: "電話でのお問い合わせは承っておりません。\nメール（ytb.media.lab@gmail.com）にてご連絡ください。",
+    value: "080-6880-9400",
   },
   { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
   { label: "サービス名", value: "YouTube Media Lab（YouTubeメディアラボ）" },
