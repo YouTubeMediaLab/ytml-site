@@ -17,7 +17,7 @@ const plans = [
   },
   {
     name: "非属人YouTubeコース（1年）",
-    price: 450000,
+    price: 495000,
     period: "1年間サポート",
     highlight: true,
     description: "伴走型サポートで本格的にチャンネルを育てたい方",

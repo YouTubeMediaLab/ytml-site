@@ -42,7 +42,7 @@ export default function Hero() {
 
           {/* メインヘッドライン */}
           <h1 className="font-black leading-[1.08] mb-5">
-            <span className="block text-gray-900 text-4xl md:text-5xl lg:text-6xl">
+            <span className="block text-gray-900 text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
               やり方がわかれば、
             </span>
             <span

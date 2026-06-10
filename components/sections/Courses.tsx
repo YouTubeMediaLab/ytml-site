@@ -56,7 +56,7 @@ const courses = [
     badge: "PREMIUM",
     name: "非属人YouTubeコース",
     nameNote: "（1年）",
-    price: "450,000",
+    price: "495,000",
     period: "1年間サポート",
     color: "border-gray-700",
     badgeColor: "bg-gray-800",
