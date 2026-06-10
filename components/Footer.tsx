@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const footerLinks = {
   サービス: [
-    { href: "/#about", label: "スクールとは" },
+    { href: "/#about", label: "YMLとは" },
     { href: "/#courses", label: "コース紹介" },
     { href: "/#curriculum", label: "カリキュラム" },
     { href: "/#pricing", label: "料金" },
@@ -35,6 +35,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
               動画編集スキルとYouTube運営スキルを体系的に学べるオンラインスクールです。
+              <br />
               未経験からでも、一つひとつ丁寧にサポートします。
             </p>
             <p className="text-xs text-gray-500">

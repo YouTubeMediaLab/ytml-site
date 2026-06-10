@@ -43,13 +43,13 @@ export default function Hero() {
           {/* メインヘッドライン */}
           <h1 className="font-black leading-[1.08] mb-5">
             <span className="block text-gray-900 text-4xl md:text-5xl lg:text-6xl">
-              手順を学べば、
+              やり方がわかれば、
             </span>
             <span
               className="block text-primary text-4xl md:text-5xl lg:text-6xl whitespace-nowrap"
               style={{ textShadow: "0 2px 24px rgba(196,18,48,0.12)" }}
             >
-              誰でもできる。
+              迷わず進める。
             </span>
           </h1>
 

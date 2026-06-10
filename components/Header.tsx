@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/#about", label: "スクールとは" },
+  { href: "/#about", label: "YMLとは" },
   { href: "/#courses", label: "コース紹介" },
   { href: "/#pricing", label: "料金" },
   { href: "/#faq", label: "よくある質問" },

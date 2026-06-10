@@ -36,7 +36,7 @@ export default function ContactCTA() {
         </div>
 
         <p className="text-gray-500 text-xs mt-6">
-          ※ 無料相談はZoom / Google Meetにて実施します（約30〜60分）。
+          ※ 無料相談はZoomまたはLINE通話にて実施します（約30〜60分）。
         </p>
       </div>
     </section>
