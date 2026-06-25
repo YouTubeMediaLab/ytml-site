@@ -12,7 +12,7 @@ const companyInfo = [
   { label: "所在地", value: "東京都中央区銀座7-13-6 サガミビル2階" },
   {
     label: "電話番号",
-    value: "080-6880-9400",
+    value: "080-6880-9400\n※営業・勧誘のお電話はご遠慮ください。",
   },
   { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
   { label: "事業内容", value: "オンラインスクール運営、動画制作スキル教育事業" },
