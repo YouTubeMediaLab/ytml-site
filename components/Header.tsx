@@ -2,46 +2,17 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { CTAButtonCompact } from "@/components/CTAButton";
+import { OFFER } from "@/config/offer";
 
 const navLinks = [
   { href: "/#about", label: "YMLとは" },
+  { href: "/#operator", label: "運営者の実績" },
   { href: "/#courses", label: "コース紹介" },
   { href: "/#pricing", label: "料金" },
   { href: "/#faq", label: "よくある質問" },
-  { href: "/company", label: "会社概要" },
 ];
-
-function LogoIcon({ size = 36 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="100" height="100" rx="14" fill="#C41230" />
-      {/* Mortar board flat top */}
-      <polygon points="12,42 50,20 88,42 50,64" fill="white" />
-      {/* Cap dome */}
-      <path d="M36,44 Q36,66 50,66 Q64,66 64,44 Z" fill="white" />
-      {/* Tassel string */}
-      <line
-        x1="12"
-        y1="42"
-        x2="12"
-        y2="60"
-        stroke="white"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      {/* Tassel bob */}
-      <rect x="9" y="60" width="6" height="8" rx="1.5" fill="white" />
-      {/* Play button / body */}
-      <polygon points="30,64 30,88 72,76" fill="white" />
-    </svg>
-  );
-}
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,96 +20,132 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur-sm"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <LogoIcon size={38} />
-            <span className="font-bold text-base leading-tight text-gray-900">
-              YouTube
-              <br />
-              <span className="text-primary text-sm font-semibold leading-none">
-                Media Lab
-              </span>
-            </span>
-          </Link>
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* 限定価格の告知バー。スクロールすると畳んで邪魔にならないようにする */}
+      <div
+        className={`overflow-hidden bg-gradient-to-r from-primary-dark via-primary to-primary-dark transition-all duration-300 ${
+          scrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"
+        }`}
+      >
+        <p className="px-4 py-1.5 text-center text-[10px] font-bold tracking-wide text-white md:text-xs">
+          <span className="mr-1.5 rounded-full bg-[#ffd84d] px-2 py-0.5 text-[9px] font-black text-gray-900 md:text-[10px]">
+            {OFFER.startLabel}〜
+          </span>
+          <span className="hidden sm:inline">非属人YouTubeコースは、</span>
+          先着{OFFER.capacity}名限定の特別価格で受付中
+        </p>
+      </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "bg-white shadow-[0_2px_18px_rgba(0,0,0,0.08)]"
+            : "bg-white/95 backdrop-blur-sm"
+        }`}
+      >
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex h-16 items-center justify-between md:h-20">
+            {/* ロゴ */}
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image
+                src="/images/yml-icon.jpg"
+                alt=""
+                width={40}
+                height={40}
+                className="h-9 w-9 rounded-xl shadow-sm ring-1 ring-black/5 md:h-10 md:w-10"
+                priority
+              />
+              <span className="text-left text-[0.95rem] font-black leading-tight tracking-tight text-gray-900">
+                YouTube
+                <br />
+                <span className="text-[0.8rem] font-bold leading-none text-primary">
+                  Media Lab
+                </span>
+              </span>
+            </Link>
+
+            {/* PCナビ */}
+            <nav className="hidden items-center gap-5 lg:flex">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[0.82rem] font-medium text-gray-700 transition-colors hover:text-primary"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="hidden md:block">
+              <CTAButtonCompact
+                label="無料で個別相談"
+                className="px-5 py-2.5 text-sm"
+              />
+            </div>
+
+            {/* モバイルメニューボタン */}
+            <button
+              className="p-2 text-gray-700 md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="メニュー"
+              aria-expanded={isOpen}
+            >
+              <div
+                className={`mb-1.5 h-0.5 w-6 bg-current transition-all ${
+                  isOpen ? "translate-y-2 rotate-45" : ""
+                }`}
+              />
+              <div
+                className={`mb-1.5 h-0.5 w-6 bg-current transition-all ${
+                  isOpen ? "opacity-0" : ""
+                }`}
+              />
+              <div
+                className={`h-0.5 w-6 bg-current transition-all ${
+                  isOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* モバイルメニュー */}
+        <div
+          className={`overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 md:hidden ${
+            isOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-gray-700 hover:text-primary transition-colors font-medium"
+                className="border-b border-gray-100 py-3 font-medium text-gray-700"
+                onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="btn-primary text-sm py-2.5 px-5">
-              無料相談はこちら
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-gray-700"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="メニュー"
-          >
-            <div
-              className={`w-6 h-0.5 bg-current mb-1.5 transition-all ${
-                isOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-current mb-1.5 transition-all ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-current transition-all ${
-                isOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="px-4 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-gray-700 font-medium py-2 border-b border-gray-100"
+              href="/company"
+              className="border-b border-gray-100 py-3 font-medium text-gray-700"
               onClick={() => setIsOpen(false)}
             >
-              {link.label}
+              会社概要
             </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="btn-primary text-center mt-2"
-            onClick={() => setIsOpen(false)}
-          >
-            無料相談はこちら
-          </Link>
-        </nav>
+            <CTAButtonCompact
+              label="無料で個別相談に参加する"
+              className="mt-4 w-full py-3.5"
+            />
+          </nav>
+        </div>
       </div>
     </header>
   );

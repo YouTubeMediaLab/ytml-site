@@ -1,10 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CTAButton, CTANote } from "@/components/CTAButton";
+import { OFFER } from "@/config/offer";
+
+const labels = [
+  "顔出し不要",
+  "声出し不要",
+  "撮影機材不要",
+  "未経験歓迎",
+  "完全在宅",
+];
+
+const highlights = [
+  { value: "1か月半", label: "運営者が初挑戦で収益化" },
+  { value: "20ch", label: "現在の運営チャンネル数" },
+  { value: "100名以上", label: "これまでの指導実績" },
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[580px] md:min-h-[680px] flex items-center pt-16 md:pt-20">
-
+    <section className="relative flex min-h-[620px] items-center overflow-hidden pt-24 md:min-h-[760px] md:pt-28">
       {/* ── 背景画像 ── */}
       <div className="absolute inset-0">
         <Image
@@ -14,95 +29,114 @@ export default function Hero() {
           // 女性の顔が左に来るよう左寄りに配置
           className="object-cover object-[20%_center]"
           priority
+          sizes="100vw"
         />
-
         {/* PC：右側だけ白くフェード → テキストを右に置く */}
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-l from-white via-white/85 via-[45%] to-transparent" />
-
-        {/* SP：全体を薄くして文字を読みやすく */}
-        <div className="md:hidden absolute inset-0 bg-white/65" />
+        <div className="absolute inset-0 hidden bg-gradient-to-l from-white via-white/88 via-[46%] to-transparent md:block" />
+        {/* SP：文字が乗る左側を強めに白でかぶせ、右側に写真を残す */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/96 via-white/88 to-white/72 md:hidden" />
       </div>
 
-      {/* ── コンテンツ（右寄せ） ── */}
-      <div className="relative w-full max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 flex">
-        <div className="md:ml-auto md:max-w-[480px] w-full">
+      {/* うっすらとした赤の差し色 */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+      />
 
-          {/* バッジ */}
-          <div className="inline-flex items-center gap-2 bg-primary/8 border border-primary/25 rounded-full px-4 py-1.5 mb-7">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-xs font-bold text-primary tracking-[0.12em]">
-              動画編集・非属人YouTube運営スクール
+      {/* ── コンテンツ（右寄せ） ── */}
+      <div className="relative mx-auto flex w-full max-w-6xl px-5 py-16 md:px-10 md:py-24">
+        <div className="w-full md:ml-auto md:max-w-[520px]">
+          {/* 限定バッジ */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white/90 px-4 py-1.5 shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span className="text-[11px] font-black tracking-[0.08em] text-primary md:text-xs">
+              {OFFER.startLabel}〜 先着{OFFER.capacity}名限定価格で受付中
             </span>
           </div>
 
-          {/* キャッチ */}
-          <p className="text-gray-400 text-base md:text-lg font-medium mb-3 tracking-wide">
-            難しいことはしなくていい。
-          </p>
-
           {/* メインヘッドライン */}
-          <h1 className="font-black leading-[1.08] mb-5">
-            <span className="block text-gray-900 text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
-              やり方がわかれば、
+          <h1
+            className="jp-tight mb-5 font-black leading-[1.16] tracking-tight"
+            style={{ textShadow: "0 1px 10px rgba(255,255,255,0.85)" }}
+          >
+            <span className="block whitespace-nowrap text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
+              顔も、声も、名前も
             </span>
-            <span
-              className="block text-primary text-4xl md:text-5xl lg:text-6xl whitespace-nowrap"
-              style={{ textShadow: "0 2px 24px rgba(196,18,48,0.12)" }}
-            >
-              迷わず進める。
+            <span className="block whitespace-nowrap text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
+              出さずに。
+            </span>
+            <span className="mt-2 block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
+              YouTubeを、
+            </span>
+            <span className="relative inline-block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
+              もう一つの収入源へ。
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-1 left-0 -z-10 h-3 w-full -rotate-[0.6deg] rounded-full bg-[#ffd84d]/70"
+              />
             </span>
           </h1>
 
-          {/* サブ */}
-          <p className="text-lg md:text-xl font-bold text-gray-600 mb-5 tracking-wide">
-            動画スキルを、体系的に。
-          </p>
-
           {/* 説明文 */}
-          <div className="text-gray-500 text-sm md:text-base leading-loose mb-9 space-y-0.5">
-            <p>Adobe Premiere Proによる動画編集から、</p>
-            <p className="text-gray-700 font-semibold">
-              顔出し不要の非属人YouTubeチャンネル運営まで。
+          <div className="jp-tight mb-7 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
+            <p>チャンネル設計、企画、動画編集、</p>
+            <p>投稿、分析、改善、外注化まで。</p>
+            <p>知識だけで終わらせず、</p>
+            <p>
+              <strong className="font-bold text-gray-900">
+                自分で運営できる状態まで
+              </strong>
+              学べます。
             </p>
-            <p className="text-xs md:text-sm text-gray-400 pt-1">
-              体系的なカリキュラムと手厚いサポートで、着実にスキルを習得できます。
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-9">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto btn-primary text-sm md:text-base py-3.5 px-8 shadow-lg shadow-primary/20"
-            >
-              無料個別相談に申し込む
-            </Link>
-            <Link
-              href="/#courses"
-              className="w-full sm:w-auto inline-block border-2 border-gray-300 hover:border-primary text-gray-600 hover:text-primary font-bold py-3.5 px-7 rounded-lg transition-all duration-200 text-center text-sm"
-            >
-              コースを見る
-            </Link>
           </div>
 
           {/* タグ */}
-          <div className="flex flex-wrap gap-2">
-            {["顔出し不要", "撮影機材不要", "在宅でOK", "未経験から学べる"].map((tag) => (
+          <div className="mb-7 flex flex-wrap gap-2">
+            {labels.map((tag) => (
               <span
                 key={tag}
-                className="text-xs text-primary/80 bg-red-50 border border-primary/20 rounded-full px-3.5 py-1.5 font-medium"
+                className="rounded-full border border-primary/20 bg-white/90 px-3 py-1.5 text-[11px] font-bold text-gray-800 shadow-sm md:text-xs"
               >
-                ✓ {tag}
+                <span className="mr-1 text-primary">✓</span>
+                {tag}
               </span>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* スクロール */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 opacity-25">
-        <span className="text-[10px] text-gray-500 tracking-widest">SCROLL</span>
-        <div className="w-px h-6 bg-gradient-to-b from-gray-500 to-transparent" />
+          {/* CTA */}
+          <div className="max-w-md">
+            <CTAButton />
+            <CTANote className="mt-3" />
+          </div>
+
+          {/* 実績サマリー */}
+          <div className="mt-8 grid max-w-md grid-cols-3 gap-2">
+            {highlights.map((item) => (
+              <div
+                key={item.value}
+                className="gold-card rounded-xl border px-2 py-3 text-center"
+              >
+                <p className="gold-value whitespace-nowrap text-base font-black leading-none md:text-lg">
+                  {item.value}
+                </p>
+                <p className="mt-1.5 text-[10px] font-bold leading-4 text-gray-600">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-2.5 max-w-md text-[10px] leading-4 text-gray-500">
+            ※ 運営者本人の実績です。受講後の成果を保証するものではありません。
+          </p>
+
+          <Link
+            href="/#courses"
+            className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-gray-600 underline underline-offset-4 transition-colors hover:text-primary"
+          >
+            まずはコース内容を見る
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -23,6 +23,23 @@ export const metadata: Metadata = {
       "顔出し不要・撮影機材不要。Adobe Premiere Proによる動画編集とYouTubeチャンネル運営を体系的に学べるオンラインスクール。",
     type: "website",
     locale: "ja_JP",
+    url: "https://www.youtubemedialab.com",
+    siteName: "YouTube Media Lab",
+    images: [
+      {
+        url: "https://www.youtubemedialab.com/images/line-lp-og.png",
+        width: 1200,
+        height: 630,
+        alt: "顔出し不要のYouTube運営を基礎から - YouTube Media Lab",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YouTube Media Lab | 動画編集・非属人YouTube運営スクール",
+    description:
+      "顔出し不要・撮影機材不要。動画編集と非属人YouTube運営を体系的に学べるオンラインスクール。",
+    images: ["https://www.youtubemedialab.com/images/line-lp-og.png"],
   },
   robots: {
     index: true,

@@ -1,9 +1,11 @@
+import { CTAButton, CTANote } from "@/components/CTAButton";
+
 const steps = [
   {
     num: "01",
-    title: "無料個別相談のお申し込み",
-    desc: "お問い合わせフォームより必要事項を入力して送信するだけ。5分で完了します。",
-    duration: "約5分",
+    title: "公式LINEから無料個別相談を予約",
+    desc: "ボタンから公式LINEを追加し、届いたご案内でご希望の日時を選ぶだけ。3分で完了します。",
+    duration: "約3分",
   },
   {
     num: "02",
@@ -66,13 +68,14 @@ export default function Flow() {
           </div>
         </div>
 
-        <div className="mt-10 text-center">
-          <p className="text-gray-500 text-sm mb-6">
+        <div className="mt-10">
+          <p className="mb-6 text-center text-sm text-gray-500">
             まずは無料の個別相談から。お気軽にどうぞ。
           </p>
-          <a href="/contact" className="btn-primary inline-block">
-            無料個別相談に申し込む（5分）
-          </a>
+          <div className="mx-auto max-w-md">
+            <CTAButton />
+            <CTANote className="mt-3" />
+          </div>
         </div>
       </div>
     </section>

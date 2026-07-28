@@ -1,3 +1,51 @@
+function Icon({ d }: { d: string }) {
+  return (
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+        d={d}
+      />
+    </svg>
+  );
+}
+
+const anonymousPoints = [
+  {
+    icon: (
+      <Icon d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    ),
+    title: "顔出し・個人情報一切不要",
+    desc: "顔出しや本名の公開なしに運営できるYouTubeチャンネルのスタイルです。プライバシーを守ったまま活動できます。",
+  },
+  {
+    icon: (
+      <Icon d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+    ),
+    title: "撮影機材・スタジオ不要",
+    desc: "カメラや照明、撮影スペースは必要ありません。PCとAI音声（またはナレーション）だけで動画を制作できます。",
+  },
+  {
+    icon: (
+      <Icon d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    ),
+    title: "完全在宅でOK",
+    desc: "自宅・カフェなど場所を選ばず運営できます。通勤不要で、自分のライフスタイルに合わせた働き方が可能です。",
+  },
+  {
+    icon: <Icon d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />,
+    title: "自由な時間で運営できる",
+    desc: "撮影スケジュールに縛られないため、本業や育児と並行しながら無理なく続けられます。",
+  },
+];
+
 export default function About() {
   const features = [
     {
@@ -83,33 +131,14 @@ export default function About() {
               それでも、再生されるチャンネルは作れる。
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                {
-                  icon: "🎭",
-                  title: "顔出し・個人情報一切不要",
-                  desc: "顔出しや本名の公開なしに運営できるYouTubeチャンネルのスタイルです。プライバシーを守ったまま活動できます。",
-                },
-                {
-                  icon: "📷",
-                  title: "撮影機材・スタジオ不要",
-                  desc: "カメラや照明、撮影スペースは必要ありません。PCとナレーション（またはAI音声）だけで動画を制作できます。",
-                },
-                {
-                  icon: "🏠",
-                  title: "完全在宅でOK",
-                  desc: "自宅・カフェなど場所を選ばず運営できます。通勤不要で、自分のライフスタイルに合わせた働き方が可能です。",
-                },
-                {
-                  icon: "⏰",
-                  title: "自由な時間で運営できる",
-                  desc: "撮影スケジュールに縛られないため、本業や育児と並行しながら無理なく続けられます。",
-                },
-              ].map((item) => (
+              {anonymousPoints.map((item) => (
                 <div
                   key={item.title}
                   className="flex gap-4 bg-white rounded-xl p-5 border border-gray-100 shadow-sm"
                 >
-                  <div className="text-2xl flex-shrink-0">{item.icon}</div>
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-primary/8 text-primary ring-1 ring-primary/12">
+                    {item.icon}
+                  </div>
                   <div>
                     <h4 className="text-gray-900 font-bold text-sm mb-1">{item.title}</h4>
                     <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>

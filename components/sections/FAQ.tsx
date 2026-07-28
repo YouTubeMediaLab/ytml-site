@@ -1,8 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { CTAButton, CTANote } from "@/components/CTAButton";
+import { COURSES, OFFER, man, withTax } from "@/config/offer";
+
+const half = COURSES.youtubeHalf;
+const year = COURSES.youtubeYear;
 
 const faqs = [
+  {
+    q: `先着${OFFER.capacity}名限定価格とは何ですか？`,
+    a: `非属人YouTubeコースを本格展開する前の、${OFFER.startLabel}から先着${OFFER.capacity}名限定の価格です。${OFFER.capacity}名に達した時点で、半年コースは${man(withTax(half.currentPriceExTax))}→${man(withTax(half.futurePriceExTax))}、1年コースは${man(withTax(year.currentPriceExTax))}→${man(withTax(year.futurePriceExTax))}（いずれも税込）へ改定します。動画編集コースの価格は据え置きです。現在の受付状況は個別相談の際にお伝えします。`,
+  },
+  {
+    q: "AIを使ったことがなくても大丈夫ですか？",
+    a: "はい。ChatGPT・Claude・ElevenLabs・Vrewなど、どの工程でどのツールにどんな指示を出すかを、手順ごとにお伝えします。ツールはいずれも無料版から始められます（利用料はご自身の負担となります）。",
+  },
+  {
+    q: "作業時間を確保できるか不安です。",
+    a: "決まったノルマはありません。AIを活用すると動画1本あたり1〜2時間程度まで短縮できる場合があります（運営者本人の実測値であり、ジャンルや習熟度によって変わります）。個別相談で、現在の生活の中で確保できる時間を確認し、無理のない進め方を一緒に整理します。",
+  },
   {
     q: "未経験でも受講できますか？",
     a: "はい、受講できます。動画編集コースはAdobe Premiere Proを触ったことがない状態から始められる内容です。パソコンの基本操作ができれば問題ありません。",
@@ -100,13 +117,14 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm mb-4">
-            その他のご質問はお問い合わせフォームよりお気軽にどうぞ。
+        <div className="mt-10">
+          <p className="mb-5 text-center text-sm text-gray-500">
+            その他のご質問は、無料の個別相談でお気軽にどうぞ。
           </p>
-          <a href="/contact" className="btn-outline inline-block">
-            お問い合わせはこちら
-          </a>
+          <div className="mx-auto max-w-md">
+            <CTAButton />
+            <CTANote className="mt-3" />
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 import Hero from "@/components/sections/Hero";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
+import Operator from "@/components/sections/Operator";
+import AIWorkflow from "@/components/sections/AIWorkflow";
 import Reasons from "@/components/sections/Reasons";
 import Courses from "@/components/sections/Courses";
 import Curriculum from "@/components/sections/Curriculum";
@@ -16,6 +18,8 @@ export default function Home() {
       <Hero />
       <Testimonials />
       <About />
+      <Operator />
+      <AIWorkflow />
       <Reasons />
       <Courses />
       <Curriculum />

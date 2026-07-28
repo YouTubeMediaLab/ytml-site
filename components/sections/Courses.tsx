@@ -1,18 +1,37 @@
-import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
+import { CTAButton, CTANote } from "@/components/CTAButton";
+import {
+  COURSES,
+  OFFER,
+  discountPercent,
+  man,
+  withTax,
+  yen,
+  type CourseKey,
+} from "@/config/offer";
 
-const courses = [
+type CourseCard = {
+  key: CourseKey;
+  num: string;
+  badge: string;
+  nameMain: string;
+  nameNote: string;
+  color: string;
+  badgeColor: string;
+  styleDesc: string;
+  features: string[];
+  recommended: boolean;
+};
+
+const cards: CourseCard[] = [
   {
-    id: "edit",
+    key: "videoEditing",
     num: "①",
     badge: "BASIC",
-    name: "動画編集コース",
+    nameMain: "動画編集コース",
     nameNote: "（1年）",
-    price: "99,000",
-    period: "1年間サポート",
     color: "border-blue-400",
     badgeColor: "bg-blue-500",
-    desc: "Adobe Premiere Proの基礎から実践まで。動画編集スキルを一から体系的に習得するコースです。",
-    style: "自主学習型",
     styleDesc: "動画を見て学び、疑問はLINEで質問",
     features: [
       "Adobe Premiere Pro 基礎操作",
@@ -26,22 +45,18 @@ const courses = [
     recommended: false,
   },
   {
-    id: "youtube-half",
+    key: "youtubeHalf",
     num: "②",
     badge: "STANDARD",
-    name: "非属人YouTubeコース",
+    nameMain: "非属人YouTubeコース",
     nameNote: "（半年）",
-    price: "297,000",
-    period: "6ヶ月サポート",
     color: "border-primary",
     badgeColor: "bg-primary",
-    desc: "顔出し不要のYouTubeチャンネルを設計・運営するスキルを6ヶ月で集中的に学ぶコースです。",
-    style: "自主学習型",
     styleDesc: "動画を見て学び、疑問はLINEで質問",
     features: [
       "チャンネル設計・コンセプト設計",
-      "企画・台本の作り方",
-      "ナレーション収録の基礎",
+      "企画・台本の作り方（AI活用）",
+      "AIナレーション・音声生成",
       "サムネイル・タイトル最適化",
       "投稿管理・運用サイクル",
       "収益化の仕組みの理解",
@@ -51,17 +66,13 @@ const courses = [
     recommended: false,
   },
   {
-    id: "youtube-year",
+    key: "youtubeYear",
     num: "③",
     badge: "PREMIUM",
-    name: "非属人YouTubeコース",
+    nameMain: "非属人YouTubeコース",
     nameNote: "（1年）",
-    price: "495,000",
-    period: "1年間サポート",
-    color: "border-gray-700",
+    color: "border-primary",
     badgeColor: "bg-gray-800",
-    desc: "①②の内容に加え、担当者が一緒にチャンネル運営をがっつりサポートする伴走型コースです。",
-    style: "完全伴走型",
     styleDesc: "担当者と一緒に企画〜投稿まで進める",
     features: [
       "動画編集コース 全内容",
@@ -79,140 +90,203 @@ const courses = [
 
 export default function Courses() {
   return (
-    <section id="courses" className="section-padding bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="courses" className="scroll-mt-20 bg-white px-4 py-16 md:py-24">
+      <div className="mx-auto max-w-6xl">
         <p className="section-subtitle">COURSE</p>
         <h2 className="section-title">コース紹介</h2>
         <div className="title-divider" />
-        <p className="text-center text-gray-500 text-sm mb-10 -mt-4">
+        <p className="-mt-4 mb-10 text-center text-sm text-gray-500">
           ※ 全コース、収益化・案件獲得・就職の保証はございません。
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              className={`relative rounded-2xl border-2 ${course.color} bg-white shadow-sm overflow-hidden flex flex-col ${
-                course.recommended ? "shadow-xl ring-2 ring-gray-700/20" : ""
-              }`}
-            >
-              {course.recommended && (
-                <div className="bg-gray-900 text-white text-xs font-bold text-center py-2 tracking-wider">
-                  ★ 最もご支持いただいているコース
-                </div>
-              )}
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
+          {cards.map((card, i) => {
+            const course = COURSES[card.key];
+            const current = withTax(course.currentPriceExTax);
+            const future = withTax(course.futurePriceExTax);
+            const percent = discountPercent(course);
 
-              <div className="p-6 md:p-7 flex-1 flex flex-col">
-                <div className="mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl font-black text-gray-300">{course.num}</span>
-                    <span className={`inline-block ${course.badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
-                      {course.badge}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-black text-gray-900 leading-tight">
-                    {course.name}
-                    <span className="text-base font-bold text-gray-500">
-                      {course.nameNote}
-                    </span>
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-2">{course.desc}</p>
-                </div>
-
-                {/* Style badge */}
-                <div className="mb-4 bg-gray-50 rounded-xl p-3 border border-gray-100">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className={`text-xs font-black px-2 py-0.5 rounded ${course.recommended ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-700"}`}>
-                      {course.style}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">{course.styleDesc}</p>
-                </div>
-
-                <div className="border-t border-gray-100 pt-4 mb-5">
-                  <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-3xl font-black text-gray-900">
-                      ¥{course.price}
-                    </span>
-                    <span className="text-sm text-gray-500">（税込）</span>
-                  </div>
-                  <div className="inline-flex items-center gap-1 bg-gray-100 rounded-full px-3 py-1">
-                    <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-xs text-gray-600 font-medium">{course.period}</span>
-                  </div>
-                </div>
-
-                <ul className="space-y-2.5 flex-1">
-                  {course.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <svg
-                        className="w-4 h-4 text-primary flex-shrink-0 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-sm text-gray-700">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/contact"
-                  className={`mt-6 block text-center font-bold py-3 rounded-xl transition-all ${
-                    course.recommended
-                      ? "bg-gray-900 text-white hover:bg-gray-800 shadow-md"
-                      : "border-2 border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+            return (
+              <Reveal key={card.key} delay={i * 80} className="h-full">
+                <div
+                  className={`relative flex h-full flex-col overflow-hidden rounded-2xl border-2 bg-white ${card.color} ${
+                    card.recommended
+                      ? "shadow-[0_22px_54px_-26px_rgba(196,18,48,0.7)] ring-2 ring-primary/20"
+                      : "shadow-sm"
                   }`}
                 >
-                  詳しく相談する
-                </Link>
-              </div>
-            </div>
-          ))}
+                  {card.recommended && (
+                    <div className="bg-gradient-to-b from-[#e8192f] via-primary to-primary-dark py-2 text-center text-xs font-bold tracking-wider text-white">
+                      ★ 最もご支持いただいているコース
+                    </div>
+                  )}
+
+                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                    <div className="mb-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <span className="text-2xl font-black text-gray-300">
+                          {card.num}
+                        </span>
+                        <span
+                          className={`inline-block ${card.badgeColor} rounded-full px-3 py-1 text-xs font-bold text-white`}
+                        >
+                          {card.badge}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-black leading-tight text-gray-900">
+                        {card.nameMain}
+                        <span className="text-base font-bold text-gray-500">
+                          {card.nameNote}
+                        </span>
+                      </h3>
+                      <p className="mt-2 text-sm leading-7 text-gray-500">
+                        {course.positioning}
+                      </p>
+                    </div>
+
+                    {/* 学習スタイル */}
+                    <div className="mb-4 rounded-xl border border-gray-100 bg-gray-50 p-3">
+                      <span
+                        className={`text-xs font-black ${
+                          card.recommended
+                            ? "bg-gray-900 text-white"
+                            : "bg-gray-200 text-gray-700"
+                        } rounded px-2 py-0.5`}
+                      >
+                        {course.style}
+                      </span>
+                      <p className="mt-1.5 text-xs text-gray-500">
+                        {card.styleDesc}
+                      </p>
+                    </div>
+
+                    {/* 価格 */}
+                    <div className="mb-5 border-t border-gray-100 pt-4">
+                      {course.priceChanges && (
+                        <p className="mb-1 flex items-baseline gap-2">
+                          <span className="text-[11px] text-gray-400">
+                            {OFFER.capacity}名終了後
+                          </span>
+                          <span className="text-sm font-bold text-gray-400 line-through decoration-primary decoration-2">
+                            {yen(future)}
+                          </span>
+                        </p>
+                      )}
+                      <div className="mb-1.5 flex flex-wrap items-baseline gap-x-1.5">
+                        <span
+                          className={`text-3xl font-black ${
+                            course.priceChanges ? "text-primary" : "text-gray-900"
+                          }`}
+                        >
+                          {yen(current)}
+                        </span>
+                        <span className="text-sm text-gray-500">（税込）</span>
+                      </div>
+                      {course.priceChanges ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-white">
+                          先着{OFFER.capacity}名限定 {percent}％OFF
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-[11px] font-medium text-gray-600">
+                          価格改定なし・据え置き
+                        </span>
+                      )}
+                      <div className="mt-2 inline-flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1">
+                        <svg
+                          className="h-3.5 w-3.5 text-gray-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span className="text-xs font-medium text-gray-600">
+                          {course.supportPeriod}サポート
+                        </span>
+                      </div>
+                    </div>
+
+                    <ul className="flex-1 space-y-2.5">
+                      {card.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2">
+                          <svg
+                            className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2.5}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span className="text-sm text-gray-700">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
 
-        {/* ①②③ 違いの説明 */}
-        <div className="mt-8 rounded-2xl border border-gray-200 overflow-hidden">
-          <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
-            <p className="font-bold text-gray-900 text-sm md:text-base text-center">
+        {/* ①② と ③ の違い */}
+        <div className="mt-8 overflow-hidden rounded-2xl border border-gray-200">
+          <div className="border-b border-gray-200 bg-gray-50 px-6 py-4">
+            <p className="text-center text-sm font-bold text-gray-900 md:text-base">
               ① ② と ③ のサポートスタイルの違い
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+          <div className="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-2 md:divide-x md:divide-y-0">
             <div className="p-6">
-              <div className="flex items-center gap-2 mb-3">
+              <div className="mb-3 flex items-center gap-2">
                 <span className="text-lg font-black text-gray-400">①②</span>
-                <span className="inline-block bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">
+                <span className="inline-block rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700">
                   自主学習型
                 </span>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                カリキュラムの動画を<strong className="text-gray-800">自分のペースで視聴して学ぶ</strong>スタイルです。
-                わからないことはLINEで質問でき、ZOOMで確認しながら進めます。
+              <p className="text-sm leading-7 text-gray-600">
+                カリキュラムの動画を
+                <strong className="text-gray-800">自分のペースで視聴して学ぶ</strong>
+                スタイルです。わからないことはLINEで質問でき、ZOOMで確認しながら進めます。
               </p>
             </div>
-            <div className="p-6 bg-gray-900/2">
-              <div className="flex items-center gap-2 mb-3">
+            <div className="bg-gray-50/60 p-6">
+              <div className="mb-3 flex items-center gap-2">
                 <span className="text-lg font-black text-gray-400">③</span>
-                <span className="inline-block bg-gray-900 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <span className="inline-block rounded-full bg-gray-900 px-3 py-1 text-xs font-bold text-white">
                   完全伴走型
                 </span>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                ①②の内容に加え、担当者が<strong className="text-gray-800">一緒にチャンネルを作り上げていく</strong>伴走型サポートが付きます。
-                企画・台本・改善まで、二人三脚で進めます。
+              <p className="text-sm leading-7 text-gray-600">
+                ①②の内容に加え、担当者が
+                <strong className="text-gray-800">
+                  一緒にチャンネルを作り上げていく
+                </strong>
+                伴走型サポートが付きます。企画・台本・改善まで、二人三脚で進めます。
               </p>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
-          ※ 料金は税込表示です。分割払いについてはお問い合わせください。
+        <p className="mt-6 text-center text-xs text-gray-400">
+          ※ 料金は税込表示です。非属人YouTubeコースは先着{OFFER.capacity}
+          名の受付終了後、それぞれ{man(withTax(COURSES.youtubeHalf.futurePriceExTax))}／
+          {man(withTax(COURSES.youtubeYear.futurePriceExTax))}へ改定します。
         </p>
+
+        <div className="mx-auto mt-10 max-w-md">
+          <CTAButton />
+          <CTANote className="mt-3" />
+        </div>
       </div>
     </section>
   );

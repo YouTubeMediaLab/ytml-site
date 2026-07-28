@@ -7,6 +7,17 @@
 :root {
   --primary: #c41230;
   --primary-dark: #9b0e26;
+
+  /* CTA：LINE追加を連想させる黄緑。段差の色は本体より暗い緑にする */
+  --cta-green-top: #7ee23f;
+  --cta-green-mid: #3fc71a;
+  --cta-green-core: #1e9f0c;
+  --cta-green-edge: #12760a;
+
+  /* 実績まわりのシャンパンゴールド */
+  --gold-deep: #6d4300;
+  --gold: #c99a1c;
+  --gold-line: #e2b84d;
 }
 
 html {
@@ -19,6 +30,17 @@ body {
   color: #1a1a1a;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+/* 追従CTAを持つページで、最下部が隠れないよう余白を確保する */
+.has-sticky-cta {
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  .has-sticky-cta {
+    padding-bottom: 0;
+  }
 }
 
 /* Scrollbar hidden for testimonials */
@@ -85,6 +107,272 @@ body {
 }
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* ------------------------------------------------------------------ */
+/* 主要CTA：緑の光沢ボタン                                             */
+/*                                                                     */
+/* 光沢（上半分の白グラデ＋走る反射）、段差（下方向の濃い緑の影）、    */
+/* 一定間隔で走る発光の3つで「押せる」ことを伝える。                   */
+/* 押下時は段差が潰れて実際に沈む。                                    */
+/* ------------------------------------------------------------------ */
+
+.cta-green {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: linear-gradient(
+    180deg,
+    var(--cta-green-top) 0%,
+    var(--cta-green-mid) 42%,
+    var(--cta-green-core) 58%,
+    #2ab811 100%
+  );
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.12),
+    0 8px 0 var(--cta-green-edge),
+    0 16px 28px rgba(18, 118, 10, 0.35);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.2s ease;
+  animation: cta-glow 4.5s ease-in-out infinite;
+}
+
+/* 上半分の光沢 */
+.cta-green::before {
+  position: absolute;
+  inset: 0 0 50% 0;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none;
+}
+
+/* 走る反射 */
+.cta-green::after {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  z-index: 0;
+  width: 32%;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: cta-sheen 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cta-green > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .cta-green:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.12),
+      0 10px 0 var(--cta-green-edge),
+      0 20px 34px rgba(18, 118, 10, 0.42);
+  }
+}
+
+.cta-green:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 0 var(--cta-green-edge),
+    0 6px 12px rgba(18, 118, 10, 0.3);
+  animation: none;
+}
+
+.cta-green:focus-visible {
+  outline: 3px solid #ffe600;
+  outline-offset: 3px;
+}
+
+/* 段差が細い箇所（ヘッダー・追従バー）で使う浅い版 */
+.cta-green-sm {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 5px 0 var(--cta-green-edge),
+    0 10px 20px rgba(18, 118, 10, 0.32);
+}
+
+.cta-green-sm:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 var(--cta-green-edge),
+    0 4px 8px rgba(18, 118, 10, 0.28);
+}
+
+@keyframes cta-sheen {
+  0%,
+  62% {
+    transform: translateX(-160%) skewX(-18deg);
+  }
+  86%,
+  100% {
+    transform: translateX(420%) skewX(-18deg);
+  }
+}
+
+@keyframes cta-glow {
+  0%,
+  64%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(126, 226, 63, 0));
+  }
+  74% {
+    filter: drop-shadow(0 0 16px rgba(126, 226, 63, 0.9));
+  }
+  84% {
+    filter: drop-shadow(0 0 5px rgba(126, 226, 63, 0.3));
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 実績まわりのゴールド仕上げ                                          */
+/* ------------------------------------------------------------------ */
+
+.gold-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(225, 183, 68, 0.18) 0%,
+      rgba(255, 255, 255, 0) 44%
+    ),
+    linear-gradient(135deg, #fffdfa 0%, #fff9e9 52%, #ffffff 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.gold-panel::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #fff7c7,
+    #b87b08,
+    #fff7c7,
+    transparent
+  );
+}
+
+.gold-card {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(176, 117, 8, 0.28);
+  background: linear-gradient(145deg, #ffffff 0%, #fffdfa 62%, #fff8e5 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(143, 91, 0, 0.08),
+    0 9px 22px rgba(31, 31, 31, 0.08);
+}
+
+.gold-card::before {
+  position: absolute;
+  top: -45%;
+  left: -28%;
+  width: 62%;
+  height: 190%;
+  content: "";
+  transform: rotate(18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(228, 189, 81, 0.18),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.gold-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-value {
+  color: #8a5900;
+  background: linear-gradient(
+    180deg,
+    var(--gold-deep) 0%,
+    #d6a91f 48%,
+    #7d4d00 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ------------------------------------------------------------------ */
+/* 見出しの装飾                                                        */
+/* ------------------------------------------------------------------ */
+
+/* 黄色のマーカー。文字の下1/3にだけ敷く */
+.marker-y {
+  background-image: linear-gradient(transparent 62%, #ffd84d 62%);
+}
+
+/* 赤のうっすらマーカー */
+.marker-r {
+  background-image: linear-gradient(transparent 62%, #fde8eb 62%);
+}
+
+/* 日本語の折り返しを整える */
+.jp-tight {
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ */
+/* スクロール出現（JSが動かない場合も必ず表示される作り）             */
+/* ------------------------------------------------------------------ */
+
+[data-js="1"] .js-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-js="1"] .js-reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cta-green,
+  .cta-green::after {
+    animation: none;
+  }
+  [data-js="1"] .js-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* LINE LP consultation buttons */

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { COURSES, OFFER, withTax, yen } from "@/config/offer";
+
+const { videoEditing, youtubeHalf, youtubeYear } = COURSES;
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表記 | YouTube Media Lab",
@@ -18,13 +21,19 @@ const tokushohoItems = [
   { label: "サービス名", value: "YouTube Media Lab（YouTubeメディアラボ）" },
   {
     label: "販売価格",
-    value:
-      "動画編集コース：99,000円（税込）\n非属人YouTubeコース（半年）：297,000円（税込）\n非属人YouTubeコース（1年）：495,000円（税込）",
+    value: [
+      `${videoEditing.name}：${yen(withTax(videoEditing.currentPriceExTax))}（税込）`,
+      `${youtubeHalf.name}：${yen(withTax(youtubeHalf.currentPriceExTax))}（税込）`,
+      `${youtubeYear.name}：${yen(withTax(youtubeYear.currentPriceExTax))}（税込）`,
+      "",
+      `※ 非属人YouTubeコースの上記価格は、${OFFER.startLabel}から先着${OFFER.capacity}名限定の価格です。${OFFER.capacity}名の受付終了後は、半年コース${yen(withTax(youtubeHalf.futurePriceExTax))}（税込）、1年コース${yen(withTax(youtubeYear.futurePriceExTax))}（税込）へ改定します。動画編集コースの価格は据え置きです。`,
+      "※ 現在の受付状況は、お申し込み前の個別相談にてお伝えします。",
+    ].join("\n"),
   },
   {
     label: "販売価格以外の必要料金",
     value:
-      "Adobe Premiere Proの利用にはAdobe Creative Cloudのサブスクリプション費用が別途必要です。詳細はご入会前の個別説明にてご案内します。",
+      "Adobe Premiere Proの利用にはAdobe Creative Cloudのサブスクリプション費用が別途必要です。\nまた、制作で使用するAIツール（ChatGPT、Claude、Vrew、ElevenLabs など。いずれも無料版から利用可能）の利用料はお客様のご負担となります。\n詳細はご入会前の個別説明にてご案内します。",
   },
   {
     label: "お支払い方法",
