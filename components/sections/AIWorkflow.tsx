@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { AI_WORKFLOW } from "@/config/site";
 
@@ -120,8 +121,22 @@ export default function AIWorkflow() {
                   <h4 className="jp-tight mt-1 text-sm font-black leading-snug text-gray-900">
                     {step.phase}
                   </h4>
-                  <span className="mt-2.5 inline-flex w-fit rounded-full bg-primary/8 px-2.5 py-1 text-[11px] font-bold text-primary ring-1 ring-primary/15">
-                    {step.tool}
+                  <span className="mt-2.5 flex flex-wrap gap-1.5">
+                    {step.tools.map((tool) => (
+                      <span
+                        key={tool.name}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-white px-2 py-1 text-[11px] font-bold text-gray-800 ring-1 ring-gray-200"
+                      >
+                        <Image
+                          src={tool.logo}
+                          alt=""
+                          width={32}
+                          height={32}
+                          className="h-4 w-4 object-contain"
+                        />
+                        {tool.name}
+                      </span>
+                    ))}
                   </span>
                   <ul className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
                     {step.tasks.map((task) => (

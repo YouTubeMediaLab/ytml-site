@@ -47,14 +47,16 @@ export const CTA_HINT = "LINE追加は10秒";
 /**
  * ファーストビューで示す3つの強み。
  *
- * 「結果が出るまで無制限」という言い方は、成果を約束していると読まれる恐れがあるため、
- * 事実（期間で機械的に打ち切らない）だけを書いている。
+ * 1つ目は「稼げるまでサポートする」という約束だが、そのまま書くと
+ * 収益が出ることを保証していると読まれる。こちら側の義務（サポートを続ける）
+ * だけを書き、成果そのものは約束しない形にしている。
+ * 内容を変えるときは、特商法ページ・利用規約の記載と必ず揃えること。
  */
 export const HERO_POINTS = [
   {
-    label: "サポート",
-    value: "期間後も継続",
-    body: "1年・半年の期間で機械的に終了しません。納得いくまでご相談いただけます。",
+    label: "サポート期間",
+    value: "回収まで延長",
+    body: "1年・半年の期間内に受講料を回収できなかった場合は、追加費用なしでサポートを継続します。",
     icon: "infinity",
   },
   {
@@ -141,31 +143,34 @@ export const AI_WORKFLOW = {
     {
       step: "01",
       phase: "リサーチ・企画",
-      tool: "ChatGPT",
+      tools: [{ name: "ChatGPT", logo: "/images/tool-chatgpt.png" }],
       tasks: ["競合の分析", "企画タイトルの仮案出し"],
     },
     {
       step: "02",
       phase: "構成・設定",
-      tool: "ChatGPT",
+      tools: [{ name: "ChatGPT", logo: "/images/tool-chatgpt.png" }],
       tasks: ["動画構成の作成", "登場人物の設定"],
     },
     {
       step: "03",
       phase: "台本・テキスト",
-      tool: "Claude",
+      tools: [{ name: "Claude", logo: "/images/tool-claude.png" }],
       tasks: ["台本の執筆", "概要欄の作成", "サムネイル案"],
     },
     {
       step: "04",
       phase: "ナレーション",
-      tool: "ElevenLabs",
+      tools: [{ name: "ElevenLabs", logo: "/images/tool-elevenlabs.png" }],
       tasks: ["AI音声の生成"],
     },
     {
       step: "05",
       phase: "映像制作・編集",
-      tool: "Vrew / Premiere Pro",
+      tools: [
+        { name: "Vrew", logo: "/images/tool-vrew.png" },
+        { name: "Premiere Pro", logo: "/images/tool-premiere.png" },
+      ],
       tasks: ["映像の作成", "動画の編集"],
     },
   ],

@@ -1,3 +1,4 @@
+import Image from "next/image";
 const supports = [
   {
     icon: (
@@ -68,6 +69,76 @@ export default function Support() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* 教材とコミュニティの実物。文章だけだと「本当にあるのか」が伝わらない */}
+        <div className="mt-12">
+          <h3 className="mb-2 text-center text-base font-black text-gray-900 md:text-lg">
+            実際の教材とコミュニティ
+          </h3>
+          <p className="mb-7 text-center text-xs leading-6 text-gray-500 md:text-sm">
+            受講後に使っていただく学習環境です。動画教材はDiscord内で工程ごとに整理しています。
+          </p>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {[
+              {
+                src: "/images/discord-curriculum.jpg",
+                alt: "Discordのチャンネル一覧。プレミアプロ マスター講座、YouTubeマスター講座などが工程ごとに並んでいる",
+                caption: "工程ごとに整理されたカリキュラム（Discord）",
+                note: "基礎編・応用編、企画、サムネイル、投稿後の分析まで章立てされています。",
+              },
+              {
+                src: "/images/lesson-player.jpg",
+                alt: "動画教材「カットの方法」の再生画面。Adobe Premiere Proのタイムラインを画面共有しながら解説している",
+                caption: "動画教材の一例「カットの方法」",
+                note: "実際の操作画面を見ながら、手順どおりに進められます。",
+              },
+            ].map((item) => (
+              <figure
+                key={item.src}
+                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+              >
+                {/* 縮小すると文字が読めないため、原寸を別タブで開けるようにしている */}
+                <a
+                  href={item.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={1800}
+                    height={1169}
+                    className="w-full"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <span className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-black/45 px-2 py-1 text-[10px] font-bold text-white">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-3 w-3"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.4}
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 21l-4.35-4.35M11 8v6M8 11h6M19 11a8 8 0 11-16 0 8 8 0 0116 0z"
+                      />
+                    </svg>
+                    拡大
+                  </span>
+                </a>
+                <figcaption className="border-t border-gray-100 px-5 py-4">
+                  <p className="text-sm font-bold text-gray-900">{item.caption}</p>
+                  <p className="mt-1 text-xs leading-5 text-gray-500">{item.note}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
 
         {/* Note */}
