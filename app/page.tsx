@@ -1,9 +1,9 @@
 import Hero from "@/components/sections/Hero";
+import Operator from "@/components/sections/Operator";
+import StudentResults from "@/components/sections/StudentResults";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
-import Operator from "@/components/sections/Operator";
 import AIWorkflow from "@/components/sections/AIWorkflow";
-import Reasons from "@/components/sections/Reasons";
 import Courses from "@/components/sections/Courses";
 import Curriculum from "@/components/sections/Curriculum";
 import Support from "@/components/sections/Support";
@@ -16,11 +16,12 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/* 証拠 → 声 → 説明 の順。誰の成果かが混ざらないよう、運営者と受講生は分ける */}
+      <Operator />
+      <StudentResults />
       <Testimonials />
       <About />
-      <Operator />
       <AIWorkflow />
-      <Reasons />
       <Courses />
       <Curriculum />
       <Support />

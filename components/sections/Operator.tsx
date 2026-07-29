@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { CTAButton, CTANote } from "@/components/CTAButton";
+import { EvidenceCarousel } from "@/components/EvidenceCarousel";
+import { OPERATOR_EVIDENCE } from "@/config/evidence";
 import { DISCLAIMERS, OPERATOR, OPERATOR_RECORD } from "@/config/site";
 
 /**
@@ -91,17 +92,35 @@ export default function Operator() {
                 ))}
               </div>
 
-              <p className="mt-6 text-center text-[11px] leading-5 text-gray-500">
+              {/* 運営チャンネルの実物 */}
+              <div className="mt-9 border-t border-[#e2b84d]/40 pt-8">
+                <div className="mb-5 text-center">
+                  <p className="text-[11px] font-black tracking-[0.2em] text-[#a97809]">
+                    OPERATOR CHANNELS
+                  </p>
+                  <h4 className="jp-tight mt-2 text-base font-black text-gray-900 md:text-lg">
+                    運営者が運営するチャンネルの一部
+                  </h4>
+                  <p className="jp-tight mx-auto mt-2 max-w-xl text-[11px] leading-5 text-gray-500">
+                    20チャンネルのうち8チャンネルの画面です。非属人で運営しているため、
+                    チャンネル名は伏せています。
+                  </p>
+                </div>
+
+                <EvidenceCarousel
+                  items={OPERATOR_EVIDENCE}
+                  heightClass="h-[168px] md:h-[212px]"
+                  tone="gold"
+                />
+              </div>
+
+              <p className="mt-7 text-center text-[11px] leading-5 text-gray-500">
                 ※ {DISCLAIMERS.operator}
               </p>
             </div>
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-10 max-w-md">
-          <CTAButton />
-          <CTANote className="mt-3" />
-        </div>
       </div>
     </section>
   );

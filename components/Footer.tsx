@@ -4,13 +4,13 @@ import { CTAButtonCompact } from "@/components/CTAButton";
 
 const footerLinks = {
   サービス: [
-    { href: "/#about", label: "YMLとは" },
     { href: "/#operator", label: "運営者の実績" },
+    { href: "/#results", label: "受講生の実績" },
+    { href: "/#about", label: "YMLとは" },
     { href: "/#ai", label: "AI活用" },
     { href: "/#courses", label: "コース紹介" },
     { href: "/#curriculum", label: "カリキュラム" },
     { href: "/#pricing", label: "料金" },
-    { href: "/#support", label: "サポート体制" },
     { href: "/#faq", label: "よくある質問" },
   ],
   会社情報: [

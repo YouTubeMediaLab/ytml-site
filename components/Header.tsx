@@ -7,8 +7,9 @@ import { CTAButtonCompact } from "@/components/CTAButton";
 import { OFFER } from "@/config/offer";
 
 const navLinks = [
-  { href: "/#about", label: "YMLとは" },
   { href: "/#operator", label: "運営者の実績" },
+  { href: "/#results", label: "受講生の実績" },
+  { href: "/#about", label: "YMLとは" },
   { href: "/#courses", label: "コース紹介" },
   { href: "/#pricing", label: "料金" },
   { href: "/#faq", label: "よくある質問" },
