@@ -2,20 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { CTAButton, CTANote } from "@/components/CTAButton";
 import { OFFER } from "@/config/offer";
+import { HERO_POINTS } from "@/config/site";
 
-const labels = [
-  "顔出し不要",
-  "声出し不要",
-  "撮影機材不要",
-  "未経験歓迎",
-  "完全在宅",
-];
+// 「顔も、声も」は見出しで、「未経験歓迎」は3つの強みで言っているため、ここでは繰り返さない
+const labels = ["顔出し不要", "撮影機材不要", "完全在宅"];
 
-const highlights = [
-  { value: "1か月半", label: "運営者が初挑戦で収益化" },
-  { value: "20ch", label: "現在の運営チャンネル数" },
-  { value: "100名以上", label: "これまでの指導実績" },
-];
+const ICONS: Record<string, string> = {
+  infinity:
+    "M18.178 8c-2.34 0-3.578 2.06-4.178 4-.6 1.94-1.838 4-4.178 4a4 4 0 010-8c2.34 0 3.578 2.06 4.178 4 .6 1.94 1.838 4 4.178 4a4 4 0 000-8z",
+  person:
+    "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+  star: "M11.48 3.5a.56.56 0 011.04 0l2.13 4.31 4.76.7c.46.06.64.63.31.95l-3.44 3.35.81 4.74a.56.56 0 01-.81.59L12 15.9l-4.26 2.24a.56.56 0 01-.81-.59l.81-4.74-3.44-3.35a.56.56 0 01.31-.95l4.76-.7L11.48 3.5z",
+};
 
 export default function Hero() {
   return (
@@ -46,10 +44,10 @@ export default function Hero() {
       />
 
       {/* ── コンテンツ（右寄せ） ── */}
-      <div className="relative mx-auto flex w-full max-w-6xl px-5 py-16 md:px-10 md:py-24">
-        <div className="w-full md:ml-auto md:max-w-[520px]">
+      <div className="relative mx-auto flex w-full max-w-6xl px-5 py-14 md:px-10 md:py-16">
+        <div className="w-full md:ml-auto md:max-w-[540px]">
           {/* 限定バッジ */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white/90 px-4 py-1.5 shadow-sm">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white/90 px-4 py-1.5 shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             <span className="text-[11px] font-black tracking-[0.08em] text-primary md:text-xs">
               {OFFER.startLabel}〜 先着{OFFER.capacity}名限定価格で受付中
@@ -58,7 +56,7 @@ export default function Hero() {
 
           {/* メインヘッドライン */}
           <h1
-            className="jp-tight mb-5 font-black leading-[1.16] tracking-tight"
+            className="jp-tight mb-4 font-black leading-[1.16] tracking-tight"
             style={{ textShadow: "0 1px 10px rgba(255,255,255,0.85)" }}
           >
             <span className="block whitespace-nowrap text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
@@ -80,7 +78,7 @@ export default function Hero() {
           </h1>
 
           {/* 説明文 */}
-          <div className="jp-tight mb-7 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
+          <div className="jp-tight mb-5 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
             <p>チャンネル設計、企画、動画編集、</p>
             <p>投稿、分析、改善、外注化まで。</p>
             <p>知識だけで終わらせず、</p>
@@ -93,7 +91,7 @@ export default function Hero() {
           </div>
 
           {/* タグ */}
-          <div className="mb-7 flex flex-wrap gap-2">
+          <div className="mb-5 flex flex-wrap gap-2">
             {labels.map((tag) => (
               <span
                 key={tag}
@@ -105,31 +103,61 @@ export default function Hero() {
             ))}
           </div>
 
+          {/* 3つの強み。数字の実績は直後の運営者セクションで見せるため、ここでは重ねない
+              ラベル列の幅を固定して、3行の見出しが縦に揃うようにしている */}
+          <ul className="mb-6 max-w-md space-y-2.5 md:max-w-[540px]">
+            {HERO_POINTS.map((point) => (
+              <li
+                key={point.value}
+                className="flex items-stretch gap-3 rounded-xl border-2 border-gray-100 bg-white px-3 py-3 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.18)] ring-1 ring-black/5 md:gap-3.5 md:px-4"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center self-center rounded-full bg-gradient-to-b from-[#e8192f] to-primary-dark text-white shadow-[0_4px_10px_-3px_rgba(196,18,48,0.65)]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-[22px] w-[22px]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d={ICONS[point.icon]}
+                    />
+                  </svg>
+                </span>
+
+                {/* SP：見出しの下に説明を敷いて幅を確保する
+                    PC：ラベル列の幅を固定し、縦線で説明と分ける */}
+                <span className="min-w-0 flex-1 md:flex md:items-stretch md:gap-3.5">
+                  <span className="flex flex-col justify-center md:w-[108px] md:shrink-0">
+                    <span className="text-[9px] font-bold leading-none tracking-[0.08em] text-gray-400 md:text-[10px]">
+                      {point.label}
+                    </span>
+                    <span className="jp-tight mt-1 whitespace-nowrap text-[1.02rem] font-black leading-tight tracking-tight text-gray-900 md:text-[1.1rem]">
+                      {point.value}
+                    </span>
+                  </span>
+
+                  <span
+                    aria-hidden="true"
+                    className="hidden w-px shrink-0 bg-gray-200 md:block"
+                  />
+
+                  <span className="jp-tight mt-1.5 block text-[11px] leading-[1.6] text-gray-600 md:mt-0 md:flex md:items-center md:text-xs">
+                    {point.body}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+
           {/* CTA */}
           <div className="max-w-md">
             <CTAButton />
             <CTANote className="mt-3" />
           </div>
-
-          {/* 実績サマリー */}
-          <div className="mt-8 grid max-w-md grid-cols-3 gap-2">
-            {highlights.map((item) => (
-              <div
-                key={item.value}
-                className="gold-card rounded-xl border px-2 py-3 text-center"
-              >
-                <p className="gold-value whitespace-nowrap text-base font-black leading-none md:text-lg">
-                  {item.value}
-                </p>
-                <p className="mt-1.5 text-[10px] font-bold leading-4 text-gray-600">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-2.5 max-w-md text-[10px] leading-4 text-gray-500">
-            ※ 運営者本人の実績です。受講後の成果を保証するものではありません。
-          </p>
 
           <Link
             href="/#courses"
