@@ -113,7 +113,11 @@ export function EvidenceCarousel({
               }`}
               aria-label={`${item.caption}（タップで拡大）`}
             >
-              <span className={`relative block ${heightClass}`}>
+              {/* キャプションのほうが画像より横に長いカードがあるため、
+                  画像は必ず中央に置く */}
+              <span
+                className={`relative flex items-center justify-center overflow-hidden ${heightClass}`}
+              >
                 <Image
                   src={item.src}
                   alt={item.alt}
