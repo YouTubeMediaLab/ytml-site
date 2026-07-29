@@ -103,7 +103,15 @@ function Highlighted({ text }: { text: string }) {
     <>
       {text.split(pattern).map((part, i) =>
         words.includes(part) ? (
-          <span key={i} className="text-[#ffe600]">
+          // 黄色は緑地に沈みやすいので、濃い影で輪郭を作って読ませる
+          <span
+            key={i}
+            className="text-[#ffe600]"
+            style={{
+              textShadow:
+                "0 1px 0 rgba(0,0,0,0.45), 0 0 3px rgba(0,0,0,0.45), 0 2px 5px rgba(0,0,0,0.35)",
+            }}
+          >
             {part}
           </span>
         ) : (

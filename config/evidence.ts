@@ -19,7 +19,13 @@ export type EvidenceItem = {
   alt: string;
 };
 
-/** 運営者本人が運営するチャンネル。受講生の成果ではない */
+/**
+ * 運営者本人が運営するチャンネル。受講生の成果ではない。
+ *
+ * 並びは「登録者数だけの画面 → 金額が載っている画面」の順。
+ * 同じ種類の画面が続くほうが見比べやすく、金額を後ろに置くことで
+ * 規模の話から収益の話へ自然に進む。
+ */
 export const OPERATOR_EVIDENCE: EvidenceItem[] = [
   {
     src: "/evidence/op-subs-05.jpg",
@@ -29,13 +35,6 @@ export const OPERATOR_EVIDENCE: EvidenceItem[] = [
     alt: "運営チャンネルのYouTube Studio画面。チャンネル登録者数28,654人",
   },
   {
-    src: "/evidence/op-analytics-02.jpg",
-    width: 1170,
-    height: 949,
-    caption: "登録者 8,239人／直近28日で 228.6万回視聴・推定収益 81.3万円",
-    alt: "運営チャンネルのアナリティクス画面。登録者8,239人、過去28日間の視聴回数228.6万回、推定収益81.3万円",
-  },
-  {
     src: "/evidence/op-subs-04.jpg",
     width: 1200,
     height: 857,
@@ -43,25 +42,11 @@ export const OPERATOR_EVIDENCE: EvidenceItem[] = [
     alt: "運営チャンネルのYouTube Studio画面。チャンネル登録者数12,368人",
   },
   {
-    src: "/evidence/op-analytics-01.jpg",
-    width: 1200,
-    height: 1172,
-    caption: "登録者 3,500人／直近28日で 78.0万回視聴・推定収益 15.6万円",
-    alt: "運営チャンネルのアナリティクス画面。登録者3,500人、過去28日間の視聴回数78.0万回、推定収益15.6万円",
-  },
-  {
     src: "/evidence/op-subs-03.jpg",
     width: 1200,
     height: 857,
     caption: "チャンネル登録者 8,342人",
     alt: "運営チャンネルのYouTube Studio画面。チャンネル登録者数8,342人",
-  },
-  {
-    src: "/evidence/op-channel-01.jpg",
-    width: 770,
-    height: 1200,
-    caption: "登録者 6,190人／1本あたり 20〜39万回視聴",
-    alt: "運営チャンネルの動画一覧。1本あたり20万〜39万回視聴",
   },
   {
     src: "/evidence/op-subs-02.jpg",
@@ -76,6 +61,28 @@ export const OPERATOR_EVIDENCE: EvidenceItem[] = [
     height: 854,
     caption: "チャンネル登録者 4,502人",
     alt: "運営チャンネルのYouTube Studio画面。チャンネル登録者数4,502人",
+  },
+  {
+    src: "/evidence/op-channel-01.jpg",
+    width: 770,
+    height: 1200,
+    caption: "登録者 6,190人／1本あたり 20〜39万回視聴",
+    alt: "運営チャンネルの動画一覧。1本あたり20万〜39万回視聴",
+  },
+  // ここから金額が載っている画面
+  {
+    src: "/evidence/op-analytics-02.jpg",
+    width: 1170,
+    height: 949,
+    caption: "登録者 8,239人／直近28日で 228.6万回視聴・推定収益 81.3万円",
+    alt: "運営チャンネルのアナリティクス画面。登録者8,239人、過去28日間の視聴回数228.6万回、推定収益81.3万円",
+  },
+  {
+    src: "/evidence/op-analytics-01.jpg",
+    width: 1200,
+    height: 1172,
+    caption: "登録者 3,500人／直近28日で 78.0万回視聴・推定収益 15.6万円",
+    alt: "運営チャンネルのアナリティクス画面。登録者3,500人、過去28日間の視聴回数78.0万回、推定収益15.6万円",
   },
 ];
 

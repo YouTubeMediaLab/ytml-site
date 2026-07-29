@@ -26,15 +26,17 @@ export default function Hero() {
           src="/images/hero-bg.jpg"
           alt="YouTube Media Lab - 在宅で動画スキルを学ぶ"
           fill
-          // 女性の顔が左に来るよう左寄りに配置
-          className="object-cover object-[20%_center]"
+          // SP：縦長に切り取られるため、顔が画面に入る位置へ寄せる
+          // PC：女性の顔が左に来るよう左寄りに配置
+          className="object-cover object-[34%_18%] md:object-[20%_center]"
           priority
           sizes="100vw"
         />
         {/* PC：右側だけ白くフェード → テキストを右に置く */}
-        <div className="absolute inset-0 hidden bg-gradient-to-l from-white via-white/88 via-[46%] to-transparent md:block" />
-        {/* SP：文字が乗る左側を強めに白でかぶせ、右側に写真を残す */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/96 via-white/88 to-white/72 md:hidden" />
+        <div className="absolute inset-0 hidden bg-gradient-to-l from-white to-transparent md:block" />
+        {/* SP：全面に白をかぶせる。表情がわかる程度に写真を残しつつ、
+            本文が乗る中段だけ少し濃くして可読性を確保する */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.82] via-white/[0.89] to-white/[0.84] md:hidden" />
       </div>
 
       {/* うっすらとした赤の差し色 */}

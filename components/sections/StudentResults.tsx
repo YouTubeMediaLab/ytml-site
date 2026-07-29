@@ -36,10 +36,9 @@ export default function StudentResults() {
           />
         </Reveal>
 
-        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-          <p className="text-xs leading-7 text-amber-900 md:text-sm">
-            ※ {DISCLAIMERS.income}
-            <br />※ {DISCLAIMERS.testimonial}
+        <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4">
+          <p className="text-xs leading-7 text-amber-900">
+            ※ {DISCLAIMERS.combined}
           </p>
         </div>
 

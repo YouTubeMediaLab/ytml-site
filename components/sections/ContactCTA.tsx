@@ -36,11 +36,15 @@ export default function ContactCTA() {
           <p className="mb-3 inline-block rounded-full bg-[#ffd84d] px-3 py-1.5 text-[11px] font-black tracking-[0.16em] text-gray-900">
             FREE CONSULTATION
           </p>
-          <h2 className="jp-tight text-2xl font-black leading-tight md:text-4xl">
+          <h2 className="text-3xl font-black leading-tight md:text-4xl">
+            個別相談について
+          </h2>
+          <div className="mt-4 h-1 w-12 rounded-full bg-[#ffd84d]" />
+          <p className="jp-tight mt-6 text-lg font-bold leading-snug md:text-2xl">
             スクールの説明を聞く場ではなく、
             <br />
             自分の進め方を整理する場です。
-          </h2>
+          </p>
           <p className="mt-5 text-sm leading-8 text-white/85 md:text-base">
             個別相談は、購入を決める場ではありません。今の状況と目標を伺い、無理のない進め方を一緒に整理します。適していないと判断した場合は、その旨をお伝えします。
           </p>
