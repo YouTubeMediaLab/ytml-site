@@ -6,10 +6,10 @@ const footerLinks = {
   サービス: [
     { href: "/#operator", label: "運営者の実績" },
     { href: "/#results", label: "受講生の実績" },
-    { href: "/#about", label: "YMLとは" },
+    { href: "/#paths", label: "稼ぎ方の4段階" },
     { href: "/#ai", label: "AI活用" },
+    { href: "/#roadmap", label: "3か月ロードマップ" },
     { href: "/#courses", label: "コース紹介" },
-    { href: "/#curriculum", label: "カリキュラム" },
     { href: "/#pricing", label: "料金" },
     { href: "/#faq", label: "よくある質問" },
   ],

@@ -1,4 +1,4 @@
-import { CTAButton, CTANote } from "@/components/CTAButton";
+
 
 const steps = [
   {
@@ -41,42 +41,30 @@ export default function Flow() {
         <h2 className="section-title">受講までの流れ</h2>
         <div className="title-divider" />
 
-        <div className="relative">
-          {/* Vertical connector */}
-          <div className="absolute left-6 md:left-8 top-8 bottom-8 w-0.5 bg-gray-200" />
-
-          <div className="space-y-6">
-            {steps.map((step) => (
-              <div key={step.num} className="relative flex gap-6 md:gap-8">
-                {/* Step number */}
-                <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-primary text-white rounded-full flex items-center justify-center font-black text-lg relative z-10 shadow-md">
+        {/* 縦積みにすると縦に伸びるため、横並びの簡潔な5段にしている */}
+        <ol className="grid gap-3 md:grid-cols-5">
+          {steps.map((step) => (
+            <li
+              key={step.num}
+              className="flex h-full flex-col rounded-2xl border border-gray-100 bg-gray-50 p-4"
+            >
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-black text-white">
                   {step.num}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 bg-gray-50 rounded-2xl p-5 md:p-6 border border-gray-100">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                    <h3 className="font-bold text-gray-900 text-base">{step.title}</h3>
-                    <span className="text-xs bg-white border border-gray-200 text-gray-500 px-2.5 py-1 rounded-full flex-shrink-0">
-                      {step.duration}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
-                </div>
+                </span>
+                <span className="text-[10px] font-bold text-gray-400">
+                  {step.duration}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <p className="mb-6 text-center text-sm text-gray-500">
-            まずは無料の個別相談から。お気軽にどうぞ。
-          </p>
-          <div className="mx-auto max-w-md">
-            <CTAButton />
-            <CTANote className="mt-3" />
-          </div>
-        </div>
+              <h3 className="jp-tight mt-2.5 text-[0.85rem] font-black leading-snug text-gray-900">
+                {step.title}
+              </h3>
+              <p className="jp-tight mt-1.5 text-[11px] leading-[1.7] text-gray-600">
+                {step.desc}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

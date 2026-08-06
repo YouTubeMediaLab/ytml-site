@@ -6,7 +6,7 @@ import SiteChrome from "@/components/SiteChrome";
 export const metadata: Metadata = {
   title: "YouTube Media Lab | 動画編集・非属人YouTube運営スクール",
   description:
-    "YouTube Media Labは、Adobe Premiere Proによる動画編集と、顔出し不要の非属人YouTubeチャンネル運営を体系的に学べるオンラインスクールです。撮影機材不要・在宅で学べます。",
+    "YouTube Media Labは、動画編集・顔出し不要の非属人YouTube運営・外注化・マーケティング・セールスまでを体系的に学べるオンラインスクールです。身につけた型は他のSNSにも匿名のまま横展開できます。撮影機材不要・在宅で学べます。",
   keywords: [
     "動画編集スクール",
     "非属人YouTube",

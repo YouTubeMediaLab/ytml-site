@@ -79,14 +79,12 @@ export default function Hero() {
 
           {/* 説明文 */}
           <div className="jp-tight mb-5 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
-            <p>チャンネル設計、企画、動画編集、</p>
-            <p>投稿、分析、改善、外注化まで。</p>
-            <p>知識だけで終わらせず、</p>
+            <p>動画編集、チャンネル運営、外注化、</p>
+            <p>そしてマーケティングとセールスまで。</p>
+            <p>身につけた型は、他のSNSにも</p>
             <p>
-              <strong className="font-bold text-gray-900">
-                自分で運営できる状態まで
-              </strong>
-              学べます。
+              <strong className="font-bold text-gray-900">匿名のまま</strong>
+              横展開できます。
             </p>
           </div>
 

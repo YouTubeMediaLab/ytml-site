@@ -17,28 +17,9 @@ import {
 const notes = [
   "表示価格はすべて税込です。",
   "お支払い方法は銀行振込・クレジットカード・分割払いからお選びいただけます（詳細はお問い合わせください）。",
-  "受講料の返金については、お申し込み後8日以内かつ教材視聴前のキャンセルに限り対応いたします。",
+  "契約書面を受領した日から8日以内であれば、書面または電磁的記録の送信により契約を解除でき、受領済みの金銭は全額返金します（クーリング・オフ）。この期間の経過後は、返金・中途解約はできません。",
   "Adobe Premiere Proおよび制作で使用するAIツールの利用料は受講料に含まれません（いずれも無料版から始められるものを含みます）。",
 ];
-
-const value = {
-  skills: [
-    "動画編集スキル",
-    "チャンネル設計力",
-    "企画力",
-    "台本構成力",
-    "サムネイル設計力",
-    "分析力",
-    "改善力",
-    "外注管理力",
-  ],
-  environment: [
-    "LINEで質問できる環境",
-    "ZOOMで相談できる環境",
-    "制作物へのフィードバック",
-    "実際のチャンネル運営への伴走",
-  ],
-};
 
 export default function Pricing() {
   return (
@@ -50,49 +31,10 @@ export default function Pricing() {
         </h2>
         <div className="title-divider" />
 
-        {/* 価格の前に、何を得られるのかを示す */}
-        <Reveal>
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-7">
-            <h3 className="text-center text-[0.95rem] font-bold text-gray-900 md:text-base">
-              受講料で得られるのは、動画教材だけではありません。
-            </h3>
-            <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              <div>
-                <p className="text-[11px] font-black tracking-wider text-primary">
-                  身につく力
-                </p>
-                <ul className="mt-2.5 flex flex-wrap gap-1.5">
-                  {value.skills.map((s) => (
-                    <li
-                      key={s}
-                      className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-gray-700"
-                    >
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-[11px] font-black tracking-wider text-primary">
-                  使える環境
-                </p>
-                <ul className="mt-2.5 flex flex-wrap gap-1.5">
-                  {value.environment.map((s) => (
-                    <li
-                      key={s}
-                      className="rounded-full border border-primary/15 bg-red-50 px-2.5 py-1 text-[11px] font-semibold text-primary"
-                    >
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        {/* 学べる内容は「稼ぎ方の4段階」とコース紹介で見せているため、ここでは繰り返さない */}
 
         {/* 価格カード */}
-        <div className="mt-10 space-y-8">
+        <div className="space-y-8">
           {COURSE_ORDER.map((key) => (
             <PriceCard
               key={key}
@@ -102,43 +44,16 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* 先着100名限定の説明 */}
+        {/* 改定の予告。各カードの吹き出しで金額は出ているので、ここでは繰り返さない */}
         <Reveal>
-          <div className="mt-10 overflow-hidden rounded-2xl border-2 border-primary bg-red-50 p-6 md:p-7">
-            <p className="inline-flex items-center rounded-full bg-primary px-3.5 py-1 text-[11px] font-bold text-white">
-              先着{OFFER.capacity}名限定価格
+          <div className="mt-8 rounded-2xl border-2 border-primary bg-red-50 px-5 py-4 md:px-7 md:py-5">
+            <p className="jp-tight text-sm leading-8 text-gray-700">
+              <span className="mr-2 inline-flex items-center rounded-full bg-primary px-3 py-0.5 text-[11px] font-bold text-white">
+                先着{OFFER.capacity}名限定価格
+              </span>
+              {OFFER.capacity}
+              名に達した時点で上記のとおり価格を改定します。適用状況は個別相談の際にお伝えします。
             </p>
-            <div className="mt-4 space-y-3 text-sm leading-8 text-gray-700">
-              <p>
-                現在の価格は、非属人YouTubeコースを本格展開する前の、
-                {OFFER.startLabel}から先着{OFFER.capacity}名限定の価格です。
-                {OFFER.capacity}名に達した時点で、以下のとおり価格を改定します。
-              </p>
-              <ul className="space-y-2">
-                {COURSE_ORDER.map((key) => getCourse(key))
-                  .filter((c) => c.priceChanges)
-                  .map((c) => (
-                    <li
-                      key={c.key}
-                      className="flex flex-wrap items-baseline gap-x-2.5 rounded-lg bg-white px-4 py-3"
-                    >
-                      <span className="text-xs text-gray-500">{c.shortName}</span>
-                      <span className="font-bold text-gray-900">
-                        {man(withTax(c.currentPriceExTax))}
-                        <span className="mx-1.5 text-primary">→</span>
-                        {man(withTax(c.futurePriceExTax))}
-                      </span>
-                      <span className="text-[11px] text-gray-400">（税込）</span>
-                    </li>
-                  ))}
-              </ul>
-              <p className="text-[0.95rem] font-bold text-primary-dark">
-                今後、現在の価格では提供しません。
-              </p>
-              <p className="text-xs leading-6 text-gray-500">
-                ※ 適用状況（現在何名まで受付済みか）は、個別相談の際にお伝えします。
-              </p>
-            </div>
           </div>
         </Reveal>
 

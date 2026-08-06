@@ -3,6 +3,7 @@ import { CTAButton, CTANote } from "@/components/CTAButton";
 import {
   COURSES,
   OFFER,
+  PRIVATE_CONSULTING,
   discountPercent,
   man,
   withTax,
@@ -20,6 +21,8 @@ type CourseCard = {
   badgeColor: string;
   styleDesc: string;
   features: string[];
+  /** 今回内容を追加した項目。カード上で新しさが分かるようにする */
+  addedFeatures?: string[];
   recommended: boolean;
 };
 
@@ -78,12 +81,14 @@ const cards: CourseCard[] = [
       "動画編集コース 全内容",
       "非属人YouTubeコース 全内容",
       "チャンネル運営の伴走サポート",
-      "企画〜投稿まで一緒に進める",
       "外注化・チーム構築のノウハウ",
-      "改善分析・PDCAサポート",
+      "マーケティング・セールス",
+      "自分の商品の作り方・売り方",
       "LINEサポート（無制限）",
       "ZOOM個別MT（優先対応）",
     ],
+    // 今回追加した範囲。カード内で目印をつけるために持つ
+    addedFeatures: ["マーケティング・セールス", "自分の商品の作り方・売り方"],
     recommended: true,
   },
 ];
@@ -212,24 +217,34 @@ export default function Courses() {
                     </div>
 
                     <ul className="flex-1 space-y-2.5">
-                      {card.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <svg
-                            className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2.5}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span className="text-sm text-gray-700">{f}</span>
-                        </li>
-                      ))}
+                      {card.features.map((f) => {
+                        const isAdded = card.addedFeatures?.includes(f);
+                        return (
+                          <li key={f} className="flex items-start gap-2">
+                            <svg
+                              className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            <span className="text-sm text-gray-700">
+                              {f}
+                              {isAdded && (
+                                <span className="ml-1.5 rounded bg-[#ffd84d] px-1.5 py-0.5 text-[10px] font-black text-gray-900">
+                                  NEW
+                                </span>
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
@@ -282,6 +297,47 @@ export default function Courses() {
           名の受付終了後、それぞれ{man(withTax(COURSES.youtubeHalf.futurePriceExTax))}／
           {man(withTax(COURSES.youtubeYear.futurePriceExTax))}へ改定します。
         </p>
+
+        {/* 完全特別コンサル。上の3コースと並べると選択肢が増えて迷いやすくなるため、
+            別枠の帯として控えめに置く */}
+        <Reveal>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900">
+            <div className="grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:p-9">
+              <div>
+                <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">
+                  月{PRIVATE_CONSULTING.capacityPerMonth}名まで
+                </span>
+                <h3 className="jp-tight mt-3 text-xl font-black text-white md:text-2xl">
+                  {PRIVATE_CONSULTING.name}
+                </h3>
+                <p className="jp-tight mt-2.5 text-sm leading-7 text-gray-300">
+                  {PRIVATE_CONSULTING.positioning}
+                </p>
+                <ul className="mt-4 grid gap-2 md:grid-cols-3">
+                  {PRIVATE_CONSULTING.points.map((point) => (
+                    <li
+                      key={point}
+                      className="jp-tight flex items-start gap-2 text-xs leading-6 text-gray-300"
+                    >
+                      <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[#ffd84d]" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="shrink-0 rounded-xl border border-gray-700 bg-gray-800/60 px-6 py-5 text-center">
+                <p className="text-[11px] font-bold text-gray-400">料金</p>
+                <p className="jp-tight mt-1.5 text-base font-black text-white">
+                  {PRIVATE_CONSULTING.priceLabel}
+                </p>
+              </div>
+            </div>
+            <p className="jp-tight border-t border-gray-800 px-6 py-3.5 text-center text-[11px] leading-5 text-gray-500 md:px-9">
+              ※ {PRIVATE_CONSULTING.note}
+            </p>
+          </div>
+        </Reveal>
 
         <div className="mx-auto mt-10 max-w-md">
           <CTAButton />
