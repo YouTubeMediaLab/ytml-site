@@ -66,7 +66,7 @@ export default function Hero() {
               出さずに。
             </span>
             <span className="mt-2 block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
-              YouTubeを、
+              SNSを、
             </span>
             <span className="relative inline-block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
               もう一つの収入源へ。
@@ -79,9 +79,9 @@ export default function Hero() {
 
           {/* 説明文 */}
           <div className="jp-tight mb-5 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
-            <p>動画編集、チャンネル運営、外注化、</p>
-            <p>そしてマーケティングとセールスまで。</p>
-            <p>身につけた型は、他のSNSにも</p>
+            <p>YouTubeを入口に、動画編集・外注化・</p>
+            <p>マーケティング・セールスまで。</p>
+            <p>身につけた型は、どのSNSにも</p>
             <p>
               <strong className="font-bold text-gray-900">匿名のまま</strong>
               横展開できます。

@@ -2,7 +2,12 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { EvidenceCarousel } from "@/components/EvidenceCarousel";
 import { OPERATOR_EVIDENCE } from "@/config/evidence";
-import { DISCLAIMERS, OPERATOR, OPERATOR_RECORD } from "@/config/site";
+import {
+  DISCLAIMERS,
+  OPERATOR,
+  OPERATOR_RECORD_GROUPS,
+  OPERATOR_TOTAL,
+} from "@/config/site";
 
 /**
  * 運営者の実績。
@@ -74,23 +79,53 @@ export default function Operator() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                {OPERATOR_RECORD.map((item, i) => (
-                  <Reveal key={item.label} delay={i * 60}>
-                    <div className="gold-card flex h-full flex-col items-center justify-start rounded-2xl border px-3 py-5 text-center">
-                      <p className="gold-value whitespace-nowrap text-2xl font-black tracking-tight md:text-[1.7rem]">
-                        {item.value}
-                      </p>
-                      <p className="mt-2 text-[11px] font-bold leading-5 text-gray-800 md:text-xs">
-                        {item.label}
-                      </p>
-                      <p className="mt-1.5 text-[10px] leading-4 text-gray-500">
-                        {item.detail}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
+              {/* まず総額。内訳はこのすぐ下に事業ごとに分けて置く */}
+              <Reveal>
+                <div className="gold-card mb-8 rounded-2xl border px-5 py-6 text-center">
+                  <p className="text-[11px] font-bold text-gray-600 md:text-xs">
+                    {OPERATOR_TOTAL.label}
+                  </p>
+                  <p className="gold-value mt-1.5 whitespace-nowrap text-[2.6rem] font-black leading-none tracking-tight md:text-[3.4rem]">
+                    {OPERATOR_TOTAL.value}
+                  </p>
+                  <p className="mt-2.5 text-[11px] leading-5 text-gray-500">
+                    {OPERATOR_TOTAL.note}
+                  </p>
+                </div>
+              </Reveal>
+
+              {OPERATOR_RECORD_GROUPS.map((group) => (
+                <div key={group.title} className="mb-7 last:mb-0">
+                  <p className="mb-3 flex items-center gap-2.5 text-xs font-black text-[#8a5900] md:text-sm">
+                    <span className="h-px flex-1 bg-[#e2b84d]/50" />
+                    {group.title}
+                    <span className="h-px flex-1 bg-[#e2b84d]/50" />
+                  </p>
+                  <div
+                    className={`grid gap-3 ${
+                      group.items.length === 2
+                        ? "grid-cols-1 sm:grid-cols-2"
+                        : "grid-cols-2 md:grid-cols-3"
+                    }`}
+                  >
+                    {group.items.map((item, i) => (
+                      <Reveal key={item.label} delay={i * 60}>
+                        <div className="gold-card flex h-full flex-col items-center justify-start rounded-2xl border px-3 py-5 text-center">
+                          <p className="gold-value whitespace-nowrap text-2xl font-black tracking-tight md:text-[1.7rem]">
+                            {item.value}
+                          </p>
+                          <p className="mt-2 text-[11px] font-bold leading-5 text-gray-800 md:text-xs">
+                            {item.label}
+                          </p>
+                          <p className="mt-1.5 text-[10px] leading-4 text-gray-500">
+                            {item.detail}
+                          </p>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+              ))}
 
               {/* 運営チャンネルの実物 */}
               <div className="mt-9 border-t border-[#e2b84d]/40 pt-8">

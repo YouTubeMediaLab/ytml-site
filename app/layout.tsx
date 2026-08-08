@@ -4,23 +4,25 @@ import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
-  title: "YouTube Media Lab | 動画編集・非属人YouTube運営スクール",
+  title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
   description:
     "YouTube Media Labは、動画編集・顔出し不要の非属人YouTube運営・外注化・マーケティング・セールスまでを体系的に学べるオンラインスクールです。身につけた型は他のSNSにも匿名のまま横展開できます。撮影機材不要・在宅で学べます。",
   keywords: [
+    "SNSマーケティング",
+    "SNS運用",
     "動画編集スクール",
     "非属人YouTube",
     "顔出し不要YouTube",
+    "セールスライティング",
     "Adobe Premiere Pro",
     "オンラインスクール",
     "副業",
-    "動画クリエイター",
     "YouTube Media Lab",
   ],
   openGraph: {
-    title: "YouTube Media Lab | 動画編集・非属人YouTube運営スクール",
+    title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
     description:
-      "顔出し不要・撮影機材不要。Adobe Premiere Proによる動画編集とYouTubeチャンネル運営を体系的に学べるオンラインスクール。",
+      "顔出し不要・撮影機材不要。YouTubeを入口に、動画編集・外注化・マーケティング・セールスまで学べるオンラインスクール。",
     type: "website",
     locale: "ja_JP",
     url: "https://www.youtubemedialab.com",
@@ -36,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "YouTube Media Lab | 動画編集・非属人YouTube運営スクール",
+    title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
     description:
-      "顔出し不要・撮影機材不要。動画編集と非属人YouTube運営を体系的に学べるオンラインスクール。",
+      "顔出し不要・撮影機材不要。YouTubeを入口に、SNSマーケティングとセールスまで学べるオンラインスクール。",
     images: ["https://www.youtubemedialab.com/images/line-lp-og.png"],
   },
   robots: {

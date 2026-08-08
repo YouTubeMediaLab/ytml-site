@@ -32,10 +32,10 @@ export const DISCLAIMERS = {
 
 export const CTA_COPY = {
   badge: "先着100名限定",
-  lines: ["未経験から1か月半で収益化した", "最新型のYouTube運営を学ぶ"],
+  lines: ["累計17億円を売り上げた運営者から", "SNSマーケティングを学ぶ"],
   action: "個別相談に参加する",
   /** ボタン内で黄色にする語 */
-  highlights: ["1か月半で収益化", "最新型", "YouTube運営"],
+  highlights: ["17億円", "SNSマーケティング"],
 } as const;
 
 /** ヘッダー・追従バーなど、幅が狭い場所で使う短縮ラベル */
@@ -85,43 +85,77 @@ export const OPERATOR = {
   title: "株式会社ult Adam 代表取締役 / YouTube Media Lab 運営",
   photo: "/images/yuuhi-profile.jpg",
   lead: "誰から学ぶか、確かめてください。",
-  body: "動画編集と非属人YouTube運営を、未経験の方にもわかりやすい順序で学べる環境づくりに取り組んでいます。個別相談では、今の状況や目的を伺ったうえで、無理のない学び方を一緒に整理します。",
+  body: "営業代行からYouTube運営まで、集客はすべてSNSで行ってきました。動画編集・非属人YouTube運営・マーケティング・セールスを、未経験の方にもわかりやすい順序で学べる環境づくりに取り組んでいます。個別相談では、今の状況や目的を伺ったうえで、無理のない学び方を一緒に整理します。",
   quote: [
     "わからないまま一人で悩ませない。",
     "次にやることが見えるサポートを大切にしています。",
   ],
 } as const;
 
-export const OPERATOR_RECORD = [
+/** 実績の総額。内訳は下のグループに分けて示す */
+export const OPERATOR_TOTAL = {
+  value: "17億円",
+  label: "これまでに手がけた事業の累計売上",
+  note: "いずれもSNSからの集客によるものです。",
+} as const;
+
+/**
+ * 事業ごとに分けて示す。
+ *
+ * 営業代行とYouTubeでは事業の中身が違うため、数字をひとまとめにせず、
+ * 「何の事業の、どの期間の売上か」が読み取れる形にしている。
+ * まとめて出すと、どの数字がどこから来たのか検証できなくなる。
+ */
+export const OPERATOR_RECORD_GROUPS = [
   {
-    value: "1か月半",
-    label: "初挑戦の非属人YouTubeで収益化",
-    detail: "未経験から、2日に1本の更新ペースで達成。",
+    title: "セールス・事業の実績",
+    items: [
+      {
+        value: "16.3億円",
+        label: "営業代行事業の売上",
+        detail: "3年間の累計。集客はSNSから。",
+      },
+      {
+        value: "1,200万円",
+        label: "YouTube関連事業の売上",
+        detail: "3か月間の売上。",
+      },
+    ],
   },
   {
-    value: "32万円",
-    label: "収益化後、最初の振込額",
-    detail: "Googleから最初に振り込まれた金額。",
-  },
-  {
-    value: "月120万円",
-    label: "運営チャンネルの最高月収",
-    detail: "収益化から半年運営した時点の、該当チャンネル最高額。",
-  },
-  {
-    value: "550万円",
-    label: "該当チャンネルの売却額",
-    detail: "育てたチャンネルを売却した金額。",
-  },
-  {
-    value: "20ch",
-    label: "現在の運営チャンネル数",
-    detail: "AI活用と外注化により、同時に運営中。",
-  },
-  {
-    value: "100名以上",
-    label: "これまでの指導実績",
-    detail: "YouTube Media Labでの受講生の指導人数。",
+    title: "非属人YouTubeの実績",
+    items: [
+      {
+        value: "1か月半",
+        label: "初挑戦の非属人YouTubeで収益化",
+        detail: "未経験から、2日に1本の更新ペースで達成。",
+      },
+      {
+        value: "32万円",
+        label: "収益化後、最初の振込額",
+        detail: "Googleから最初に振り込まれた金額。",
+      },
+      {
+        value: "月120万円",
+        label: "運営チャンネルの最高月収",
+        detail: "収益化から半年運営した時点の、該当チャンネル最高額。",
+      },
+      {
+        value: "550万円",
+        label: "該当チャンネルの売却額",
+        detail: "育てたチャンネルを売却した金額。",
+      },
+      {
+        value: "20ch",
+        label: "現在の運営チャンネル数",
+        detail: "AI活用と外注化により、同時に運営中。",
+      },
+      {
+        value: "100名以上",
+        label: "これまでの指導実績",
+        detail: "YouTube Media Labでの受講生の指導人数。",
+      },
+    ],
   },
 ] as const;
 

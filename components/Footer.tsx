@@ -40,7 +40,9 @@ export default function Footer() {
               <span className="font-bold text-white text-lg">YouTube Media Lab</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              動画編集スキルとYouTube運営スキルを体系的に学べるオンラインスクールです。
+              YouTubeを入口に、動画編集・外注化・マーケティング・セールスまで
+              <br />
+              体系的に学べるオンラインスクールです。
               <br />
               未経験からでも、一つひとつ丁寧にサポートします。
             </p>
