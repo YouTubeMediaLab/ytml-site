@@ -42,7 +42,7 @@ const concerns = [
   "SNSを始めたいけれど、どの媒体から手をつければよいかわからない",
   "投稿を続けても、フォロワーや売上につながるイメージが持てない",
   "集客の方法は見かけるけれど、その先の売り方まで教わる場所がない",
-  "売りたい商品やサービスがまだ決まっていない",
+  "自分なら作れる商品やサービスを考えたい",
   "自分の商品はあるものの、魅力や違いをうまく言葉にできない",
   "顔出しや実名公開をせず、完全在宅で収入の柱をつくりたい",
 ];
@@ -107,7 +107,7 @@ const records = [
   },
   {
     value: "月120万円",
-    label: "運営チャンネルの最高月収",
+    label: "運営chの最高月収",
     detail: "初挑戦の非属人YouTubeを1か月半で収益化。",
   },
   {
@@ -123,7 +123,9 @@ const courseCards = [
     badge: "BASIC",
     title: "動画編集コース",
     period: "1年間",
-    text: "Premiere Proの基本操作から実践的な動画編集まで、自分のペースで学びます。",
+    text: "Premiere Proの基本操作から、仕事やSNS発信に活かせる実践的な動画編集まで、自分のペースで学びます。",
+    outcome:
+      "動画編集案件を受けて、在宅で自分の時間に合わせて働く選択肢を持てます。また、日常やSNSで発信する動画の品質を高め、より伝わりやすく拡散されやすい表現を目指せます。",
     items: ["カット・テロップ・画像挿入", "BGM・効果音・書き出し", "LINE質問・Zoom個別MT"],
   },
   {
@@ -132,6 +134,8 @@ const courseCards = [
     title: "非属人YouTubeコース",
     period: "半年",
     text: "顔・声・名前を出さずに、YouTubeチャンネルを設計・運営する方法を学びます。",
+    outcome:
+      "自分自身を前面に出さず、動画の再生収益を目指せます。個性や知名度に頼る必要がなく、複数テーマのチャンネルブランドを運営できることも非属人YouTubeの強みです。",
     items: ["チャンネル・コンセプト設計", "AIを使った企画・台本", "投稿・分析・収益化の仕組み"],
   },
   {
@@ -140,6 +144,8 @@ const courseCards = [
     title: "非属人YouTubeコース",
     period: "1年間・完全伴走型",
     text: "動画制作・YouTube運営に加え、各種SNS、マーケティング、商品設計、セールスまで一貫して学びます。",
+    outcome:
+      "すべてのコース内容に加え、講師が実践に直接伴走します。疑問をすぐに確認しながら、講師が現場で使っている判断基準やスキルを近い距離で吸収できます。",
     items: [
       "Instagram・Threads・YouTubeなどの運用",
       "商品設計・集客・販売導線",
@@ -219,7 +225,7 @@ function BrandMark() {
   );
 }
 
-function ScreeningLink({ label = "無料の審査アンケートに回答する" }: { label?: string }) {
+function ScreeningLink({ label = "無料で個別相談に申し込む" }: { label?: string }) {
   return (
     <a
       href={SCREENING_FORM_URL}
@@ -273,7 +279,7 @@ export default function LineLandingPage() {
               SNS集客から商品設計・セールスまで
             </p>
             <h1 className="font-black leading-[1.14] tracking-tight [text-wrap:balance]">
-              <span className="block text-[2.1rem] text-gray-900 sm:text-5xl md:text-[3.35rem]">集めるだけでは、</span>
+              <span className="block text-[2.1rem] text-gray-900 sm:text-5xl md:text-[3.35rem]">人を集めるだけでは、</span>
               <span className="block text-[2.1rem] text-gray-900 sm:text-5xl md:text-[3.35rem]">売上にならない。</span>
               <span className="relative mt-3 inline-block text-[2.1rem] text-primary sm:text-5xl md:text-[3.35rem]">
                 <span className="block sm:inline">SNSを、</span>
@@ -283,9 +289,10 @@ export default function LineLandingPage() {
             </h1>
 
             <p className="mt-6 max-w-xl text-sm font-medium leading-7 text-gray-700 md:text-base md:leading-8">
-              Instagram・Threads・YouTubeなどのSNSを活用し、商品設計、発信、集客、教育、販売まで。
-              <strong className="font-black text-gray-900">「最後に売れる」ために必要な力</strong>
-              を、一つの流れで学べます。
+              <span className="block">Instagram・Threads・YouTubeなどのSNSを活用し、</span>
+              <span className="block">発信、集客、教育、販売まで。</span>
+              <strong className="mt-1 block whitespace-nowrap font-black text-gray-900">「最後に利益を生み出す」ために、</strong>
+              <span className="block">商品設計から販売までを一つの流れで学べます。</span>
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
@@ -299,13 +306,17 @@ export default function LineLandingPage() {
               ))}
             </div>
 
-            <div className="mt-8 rounded-2xl border border-[#e2b84d] bg-white/95 p-4 shadow-lg sm:max-w-[33rem]">
-              <p className="text-[10px] font-black tracking-[0.18em] text-[#8a5900]">TRACK RECORD</p>
-              <p className="mt-1 text-sm font-bold leading-6 text-gray-700 md:text-base">
-                SNSから生まれた累計売上
-                <strong className="ml-2 text-2xl font-black text-primary md:text-3xl">約17億円</strong>
+            <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-primary via-[#a90d29] to-[#700718] p-5 text-white shadow-[0_18px_38px_-16px_rgba(122,7,26,0.75)] sm:max-w-[33rem] md:p-6">
+              <div className="absolute -right-8 -top-12 h-32 w-32 rounded-full bg-[#ffd84d]/25 blur-2xl" aria-hidden="true" />
+              <p className="relative text-[10px] font-black tracking-[0.2em] text-[#ffd84d]">TRACK RECORD</p>
+              <p className="relative mt-2 font-black leading-tight">
+                <span className="block text-sm text-white/90 md:text-base">代表がSNSから生み出した</span>
+                <span className="mt-1 block text-lg md:text-xl">
+                  累計売り上げ
+                  <strong className="ml-2 text-[2.25rem] font-black leading-none text-[#ffd84d] md:text-[2.8rem]">約17億円</strong>
+                </span>
               </p>
-              <p className="mt-1 text-[10px] leading-4 text-gray-500">※ 運営者本人の実績であり、受講後の成果を保証するものではありません。</p>
+              <p className="relative mt-3 text-[10px] leading-4 text-white/65">※ 運営者本人の実績であり、受講後の成果を保証するものではありません。</p>
             </div>
 
             <div className="mt-8">
@@ -321,7 +332,7 @@ export default function LineLandingPage() {
 
       <div className="border-y border-red-100 bg-red-50">
         <p className="mx-auto max-w-4xl px-4 py-4 text-center text-xs font-medium leading-6 text-red-900 md:text-sm">
-          YouTube Media Labは有料のオンラインスクールです。アンケート回答後に審査を行い、通過された方へ個別相談をご案内します。
+          YouTube Media Labは有料のオンラインスクールです。申し込みフォーム回答後に審査を行い、通過された方へ個別相談をご案内します。
         </p>
       </div>
 
@@ -371,7 +382,7 @@ export default function LineLandingPage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <ScreeningLink label="自分に必要な力を整理する" />
+            <ScreeningLink />
           </div>
         </div>
       </section>
@@ -432,15 +443,18 @@ export default function LineLandingPage() {
               <p className="text-xs font-black tracking-[0.2em] text-[#a97809]">TRACK RECORD</p>
               <h3 className="mt-2 text-xl font-black text-gray-900 md:text-2xl">数字で見る、運営者の実績</h3>
             </div>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+            <div className="-mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0 md:pb-0">
               {records.map((record) => (
-                <div key={record.value} className="result-gold-card flex min-h-40 flex-col items-center justify-center rounded-2xl border px-3 py-5 text-center last:col-span-2 md:last:col-span-1">
+                <div key={record.value} className="result-gold-card flex min-h-40 w-[76vw] max-w-[270px] flex-none snap-center flex-col items-center justify-center rounded-2xl border px-4 py-5 text-center md:w-auto md:max-w-none">
                   <p className="result-gold-value whitespace-nowrap text-2xl font-black tracking-tight md:text-[1.65rem]">{record.value}</p>
                   <p className="mt-2 text-[11px] font-bold leading-5 text-gray-800">{record.label}</p>
                   <p className="mt-1 text-[10px] leading-4 text-gray-500">{record.detail}</p>
                 </div>
               ))}
             </div>
+            <p className="mt-2 text-center text-[10px] font-bold tracking-[0.08em] text-[#8a5900] md:hidden">
+              ← 横にスワイプして実績を見る →
+            </p>
             <p className="mt-5 text-center text-[11px] leading-5 text-gray-500">※ 上記はいずれも運営者本人の実績です。受講したすべての方に同様の成果を保証するものではありません。</p>
           </div>
         </div>
@@ -467,7 +481,7 @@ export default function LineLandingPage() {
 
       <section className="bg-gray-50 px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="COURSE">目的に合わせた3つの基本プラン</SectionHeading>
+          <SectionHeading eyebrow="COURSE">目的に合わせた4つのプラン</SectionHeading>
           <div className="grid gap-5 md:grid-cols-3">
             {courseCards.map((course) => (
               <article key={course.number} className={`relative flex h-full flex-col overflow-hidden rounded-3xl border-2 bg-white shadow-sm ${course.recommended ? "border-primary shadow-xl shadow-primary/10" : "border-gray-200"}`}>
@@ -480,6 +494,10 @@ export default function LineLandingPage() {
                   <h3 className="text-xl font-black text-gray-900">{course.title}</h3>
                   <p className="mt-1 text-xs font-bold text-primary">サポート期間：{course.period}</p>
                   <p className="mt-4 text-sm leading-7 text-gray-600">{course.text}</p>
+                  <div className="mt-5 rounded-2xl border border-red-100 bg-red-50/70 p-4">
+                    <p className="text-[10px] font-black tracking-[0.12em] text-primary">このコースの活かし方</p>
+                    <p className="mt-2 text-xs font-medium leading-6 text-gray-700">{course.outcome}</p>
+                  </div>
                   <ul className="mt-5 flex-1 space-y-3 border-t border-gray-100 pt-5">
                     {course.items.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm font-medium leading-6 text-gray-700"><span className="mt-0.5 text-primary">✓</span>{item}</li>
@@ -493,10 +511,17 @@ export default function LineLandingPage() {
           <div className="mt-10 overflow-hidden rounded-3xl border border-gray-800 bg-gray-950 text-white shadow-2xl">
             <div className="p-7 md:p-10">
               <div>
-                <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">月3名限定</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl font-black text-white/20">04</span>
+                  <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">月3名限定</span>
+                </div>
                 <p className="mt-4 text-xs font-black tracking-[0.18em] text-[#ffd84d]">PRIVATE CONSULTING</p>
                 <h3 className="mt-2 text-2xl font-black md:text-3xl">完全特別コンサル</h3>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-300 md:text-base">事業として大きく伸ばしたい方へ。ゆうひが商品・SNS・販売導線をまとめて設計し、実行まで直接並走します。</p>
+                <div className="mt-5 max-w-3xl rounded-2xl border border-[#ffd84d]/30 bg-[#ffd84d]/10 p-4">
+                  <p className="text-[10px] font-black tracking-[0.12em] text-[#ffd84d]">このコンサルの活かし方</p>
+                  <p className="mt-2 text-sm font-medium leading-7 text-white/90">講師が培ってきたSNSマーケティングとセールスの考え方を、ご自身の事業に合わせて実践します。商品設計から集客・提案・販売まで、ひとりでも一連の流れを組み立てられる力を身につけます。</p>
+                </div>
                 <ul className="mt-5 grid gap-2 text-sm text-gray-200 md:grid-cols-3">
                   {["商品・訴求の設計", "SNSと販売導線の構築", "運営者が直接並走"].map((item) => <li key={item} className="flex items-center gap-2"><span className="text-[#ffd84d]">●</span>{item}</li>)}
                 </ul>
@@ -505,7 +530,7 @@ export default function LineLandingPage() {
             <p className="border-t border-gray-800 px-6 py-4 text-center text-[11px] leading-5 text-gray-500">※ 受け入れは月3名までです。審査結果によってはご希望に添えない場合があります。</p>
           </div>
 
-          <div className="mt-10 text-center"><ScreeningLink label="自分に合うプランを確認する" /></div>
+          <div className="mt-10 text-center"><ScreeningLink /></div>
         </div>
       </section>
 
@@ -546,10 +571,10 @@ export default function LineLandingPage() {
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="relative text-white md:sticky md:top-8">
             <p className="mb-3 inline-block rounded-full bg-[#ffd84d] px-3 py-1.5 text-xs font-black tracking-[0.18em] text-gray-900">SCREENING</p>
-            <h2 className="text-3xl font-black leading-tight md:text-4xl">まずは、今の状況を<br />お聞かせください。</h2>
-            <p className="mt-5 text-sm leading-7 text-white/85 md:text-base">商品が決まっていなくても問題ありません。アンケート内容を確認し、現在のサービスでお力になれる方へ個別相談をご案内します。</p>
+            <h2 className="text-3xl font-black leading-tight md:text-4xl">最初は、皆さん<br />同じです。</h2>
+            <p className="mt-5 text-sm leading-7 text-white/85 md:text-base">商品が決まっていなくても、稼げる自信がなくても、まったく問題ありません。今の状況や目標を伺い、現在のサービスでお力になれる方へ個別相談をご案内します。</p>
             <div className="mt-7 space-y-3 text-sm font-bold text-white">
-              <p><span className="mr-2 text-[#ffd84d]">✓</span>アンケート回答は約3〜5分</p>
+              <p><span className="mr-2 text-[#ffd84d]">✓</span>申し込みフォームは約3〜5分</p>
               <p><span className="mr-2 text-[#ffd84d]">✓</span>商品がない方も回答可能</p>
               <p><span className="mr-2 text-[#ffd84d]">✓</span>個別相談は審査通過者のみ</p>
             </div>
@@ -560,7 +585,7 @@ export default function LineLandingPage() {
             <h3 className="text-2xl font-black leading-snug text-gray-900 md:text-3xl">回答後、LINEで<br />「回答完了」と送信してください。</h3>
             <ol className="my-7 space-y-4">
               {[
-                "審査アンケートに回答する",
+                "申し込みフォームに回答",
                 "公式LINEへ戻り「回答完了」と送信",
                 "内容を確認後、通過者へ個別相談をご案内",
               ].map((step, index) => (
@@ -571,7 +596,7 @@ export default function LineLandingPage() {
               ))}
             </ol>
             <a href={SCREENING_FORM_URL} className="consultation-cta flex min-h-20 w-full items-center justify-center rounded-2xl bg-primary px-5 py-5 text-center text-lg font-black leading-6 text-white ring-4 ring-[#ffd84d]/75 transition hover:-translate-y-0.5 hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-[#ffd84d] sm:text-xl">
-              無料の審査アンケートへ進む<span className="ml-2" aria-hidden="true">→</span>
+              無料で個別相談に申し込む<span className="ml-2" aria-hidden="true">→</span>
             </a>
             <p className="mt-5 text-center text-xs leading-5 text-gray-500">ボタンを押すとGoogleフォームへ移動します。回答のみで契約や料金は発生しません。</p>
           </div>
@@ -585,7 +610,7 @@ export default function LineLandingPage() {
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
         <a href={SCREENING_FORM_URL} className="consultation-cta flex min-h-14 w-full items-center justify-center rounded-xl bg-primary px-4 text-center text-sm font-black leading-5 text-white ring-2 ring-[#ffd84d]">
-          無料の審査アンケートに回答する<span className="ml-2" aria-hidden="true">→</span>
+          無料で個別相談に申し込む<span className="ml-2" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
