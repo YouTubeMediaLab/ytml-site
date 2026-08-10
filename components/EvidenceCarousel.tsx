@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type PointerEvent,
+} from "react";
 import Image from "next/image";
 import type { EvidenceItem } from "@/config/evidence";
 
@@ -25,6 +31,14 @@ export function EvidenceCarousel({
   tone?: "light" | "gold";
 }) {
   const trackRef = useRef<HTMLUListElement>(null);
+  const dragRef = useRef({
+    active: false,
+    moved: false,
+    pointerId: -1,
+    startX: 0,
+    startScrollLeft: 0,
+  });
+  const suppressClickRef = useRef(false);
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState<EvidenceItem | null>(null);
 
@@ -82,11 +96,66 @@ export function EvidenceCarousel({
 
   const isGold = tone === "gold";
 
+  // PCでも画像をつかんで横へ送れるようにする。
+  // タッチ端末はブラウザ本来の慣性スクロールを使うため、マウスだけを対象にする。
+  const startDrag = (e: PointerEvent<HTMLUListElement>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    const track = trackRef.current;
+    if (!track) return;
+    dragRef.current = {
+      active: true,
+      moved: false,
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startScrollLeft: track.scrollLeft,
+    };
+    track.setPointerCapture(e.pointerId);
+  };
+
+  const moveDrag = (e: PointerEvent<HTMLUListElement>) => {
+    const track = trackRef.current;
+    const drag = dragRef.current;
+    if (!track || !drag.active || drag.pointerId !== e.pointerId) return;
+    const distance = e.clientX - drag.startX;
+    if (Math.abs(distance) > 5) drag.moved = true;
+    if (!drag.moved) return;
+    e.preventDefault();
+    track.scrollLeft = drag.startScrollLeft - distance;
+  };
+
+  const endDrag = (e: PointerEvent<HTMLUListElement>) => {
+    const track = trackRef.current;
+    const drag = dragRef.current;
+    if (!track || !drag.active || drag.pointerId !== e.pointerId) return;
+    suppressClickRef.current = drag.moved;
+    if (drag.moved) {
+      window.setTimeout(() => {
+        suppressClickRef.current = false;
+      }, 0);
+    }
+    drag.active = false;
+    if (track.hasPointerCapture(e.pointerId)) {
+      track.releasePointerCapture(e.pointerId);
+    }
+    syncActive();
+  };
+
   return (
     <div className="relative">
       <ul
         ref={trackRef}
         onScroll={syncActive}
+        onPointerDown={startDrag}
+        onPointerMove={moveDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onClickCapture={(e) => {
+          if (!suppressClickRef.current) return;
+          e.preventDefault();
+          e.stopPropagation();
+          suppressClickRef.current = false;
+        }}
+        onDragStart={(e) => e.preventDefault()}
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") {
@@ -98,7 +167,7 @@ export function EvidenceCarousel({
             step(-1);
           }
         }}
-        className="scrollbar-hide flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-1 pb-2 focus:outline-none md:gap-4"
+        className="scrollbar-hide flex cursor-grab snap-x snap-mandatory select-none gap-3 overflow-x-auto scroll-smooth px-1 pb-2 focus:outline-none active:cursor-grabbing md:gap-4"
         aria-label="実績のスクリーンショット"
       >
         {items.map((item, i) => (
@@ -123,6 +192,7 @@ export function EvidenceCarousel({
                   alt={item.alt}
                   width={item.width}
                   height={item.height}
+                  draggable={false}
                   className="h-full w-auto max-w-none object-contain"
                   sizes="(max-width: 768px) 80vw, 40vw"
                 />
@@ -165,27 +235,14 @@ export function EvidenceCarousel({
       </ul>
 
       {/* 送り */}
-      <div className="mt-4 flex items-center justify-center gap-4">
+      <div className="mt-4 flex items-center justify-center gap-3">
         <ArrowButton
           direction="prev"
           disabled={active === 0}
           onClick={() => step(-1)}
         />
-        <div className="flex items-center gap-1.5">
-          {items.map((item, i) => (
-            <button
-              key={item.src}
-              type="button"
-              onClick={() => scrollToIndex(i)}
-              aria-label={`${i + 1}枚目を表示`}
-              aria-current={i === active}
-              className={`h-2 rounded-full transition-all ${
-                i === active
-                  ? `w-5 ${isGold ? "bg-[#b07508]" : "bg-primary"}`
-                  : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
+        <div className="min-w-14 text-center text-sm font-black tabular-nums text-gray-700" aria-live="polite">
+          {active + 1} <span className="font-medium text-gray-400">/ {items.length}</span>
         </div>
         <ArrowButton
           direction="next"
@@ -193,6 +250,9 @@ export function EvidenceCarousel({
           onClick={() => step(1)}
         />
       </div>
+      <p className="mt-2 text-center text-[11px] font-bold text-gray-500">
+        画像を横にスワイプ、または矢印で切り替えられます
+      </p>
 
       {/* 拡大表示 */}
       {zoomed && (
