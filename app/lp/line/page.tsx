@@ -517,7 +517,7 @@ export default function LineLandingPage() {
                 </div>
                 <p className="mt-4 text-xs font-black tracking-[0.18em] text-[#ffd84d]">PRIVATE CONSULTING</p>
                 <h3 className="mt-2 text-2xl font-black md:text-3xl">完全特別コンサル</h3>
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-300 md:text-base">事業として大きく伸ばしたい方へ。ゆうひが商品・SNS・販売導線をまとめて設計し、実行まで直接並走します。</p>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-300 md:text-base">事業として大きく伸ばしたい方へ。講師が商品・SNS・販売導線をまとめて設計し、実行まで直接並走します。</p>
                 <div className="mt-5 max-w-3xl rounded-2xl border border-[#ffd84d]/30 bg-[#ffd84d]/10 p-4">
                   <p className="text-[10px] font-black tracking-[0.12em] text-[#ffd84d]">このコンサルの活かし方</p>
                   <p className="mt-2 text-sm font-medium leading-7 text-white/90">講師が培ってきたSNSマーケティングとセールスの考え方を、ご自身の事業に合わせて実践します。商品設計から集客・提案・販売まで、ひとりでも一連の流れを組み立てられる力を身につけます。</p>
@@ -571,7 +571,7 @@ export default function LineLandingPage() {
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="relative text-white md:sticky md:top-8">
             <p className="mb-3 inline-block rounded-full bg-[#ffd84d] px-3 py-1.5 text-xs font-black tracking-[0.18em] text-gray-900">SCREENING</p>
-            <h2 className="text-3xl font-black leading-tight md:text-4xl">最初は、皆さん<br />同じです。</h2>
+            <h2 className="whitespace-nowrap text-[1.65rem] font-black leading-tight md:text-[2rem]">最初は、皆さん同じです。</h2>
             <p className="mt-5 text-sm leading-7 text-white/85 md:text-base">商品が決まっていなくても、稼げる自信がなくても、まったく問題ありません。今の状況や目標を伺い、現在のサービスでお力になれる方へ個別相談をご案内します。</p>
             <div className="mt-7 space-y-3 text-sm font-bold text-white">
               <p><span className="mr-2 text-[#ffd84d]">✓</span>申し込みフォームは約3〜5分</p>
@@ -587,7 +587,7 @@ export default function LineLandingPage() {
               {[
                 "申し込みフォームに回答",
                 "公式LINEへ戻り「回答完了」と送信",
-                "内容を確認後、通過者へ個別相談をご案内",
+                "内容を確認後、審査通過者に個別相談をご案内",
               ].map((step, index) => (
                 <li key={step} className="flex items-center gap-4 rounded-xl bg-gray-50 p-4">
                   <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#ffd84d] text-sm font-black text-gray-900">{index + 1}</span>
