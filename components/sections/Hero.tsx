@@ -4,7 +4,13 @@ import { CTAButton, CTANote } from "@/components/CTAButton";
 import { OFFER } from "@/config/offer";
 import { HERO_POINTS } from "@/config/site";
 
-const labels = ["商品がなくてもOK", "未経験歓迎", "顔出しなしも可能", "完全在宅"];
+const labels = [
+  "商品がなくてもOK",
+  "未経験歓迎",
+  "顔出しなしも可能",
+  "スマホ1台でも可能",
+  "完全在宅",
+];
 
 const ICONS: Record<string, string> = {
   infinity:
@@ -64,8 +70,12 @@ export default function Hero() {
             <span className="block text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
               売上にならない。
             </span>
-            <span className="relative mt-2 inline-block text-[1.7rem] text-primary sm:text-[2.35rem] md:text-[2.55rem]">
-              SNSを、売上を生む仕組みへ。
+            {/* 1行に収まらず「仕組／みへ。」と割れるため、区切る位置を指定する */}
+            <span className="mt-2 block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.35rem] md:text-[2.55rem]">
+              SNSを、
+            </span>
+            <span className="relative inline-block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.35rem] md:text-[2.55rem]">
+              売上を生む仕組みへ。
               <span
                 aria-hidden="true"
                 className="absolute -bottom-1 left-0 -z-10 h-3 w-full -rotate-[0.6deg] rounded-full bg-[#ffd84d]/70"
@@ -73,15 +83,15 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* 説明文 */}
+          {/* 説明文。1行1文で折り返し位置を固定し、どこで切れるかを制御している */}
           <div className="jp-tight mb-5 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
-            <p>商品設計・SNS運用・販売導線・セールスまで。</p>
+            <p>各種SNSを入口に、動画編集・AI活用・</p>
+            <p>外注による組織構築・マーケティング・</p>
+            <p>セールス・LINE構築まで。</p>
             <p>
-              Instagram・Threads・X・TikTok・YouTubeなどを活用し、
               <strong className="font-bold text-gray-900">モノが売れる流れ</strong>
-              を一貫して学べます。
+              を、一貫して学べます。
             </p>
-            <p>商品がない方は、売るものを決めるところから始められます。</p>
           </div>
 
           {/* タグ */}
