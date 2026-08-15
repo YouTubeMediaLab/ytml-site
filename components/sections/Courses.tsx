@@ -116,12 +116,12 @@ export default function Courses() {
                 <div
                   className={`relative flex h-full flex-col overflow-hidden rounded-2xl border-2 bg-white ${card.color} ${
                     card.recommended
-                      ? "shadow-[0_22px_54px_-26px_rgba(196,18,48,0.7)] ring-2 ring-primary/20"
+                      ? "shadow-[0_22px_54px_-26px_rgba(7,130,244,0.7)] ring-2 ring-primary/20"
                       : "shadow-sm"
                   }`}
                 >
                   {card.recommended && (
-                    <div className="bg-gradient-to-b from-[#e8192f] via-primary to-primary-dark py-2 text-center text-xs font-bold tracking-wider text-white">
+                    <div className="bg-gradient-to-b from-[#3a9bff] via-primary to-primary-dark py-2 text-center text-xs font-bold tracking-wider text-white">
                       ★ 最もご支持いただいているコース
                     </div>
                   )}

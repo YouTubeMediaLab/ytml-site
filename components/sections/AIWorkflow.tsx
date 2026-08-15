@@ -52,7 +52,7 @@ export default function AIWorkflow() {
             {/* 変化の宣言 */}
             <div className="my-6 flex items-center gap-3 md:my-7 md:gap-4">
               <span className="h-px flex-1 bg-gray-200" />
-              <span className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary to-primary-dark px-4 py-2 text-white shadow-[0_8px_20px_-8px_rgba(196,18,48,0.8)]">
+              <span className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary to-primary-dark px-4 py-2 text-white shadow-[0_8px_20px_-8px_rgba(7,130,244,0.8)]">
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4 shrink-0"
@@ -158,7 +158,7 @@ export default function AIWorkflow() {
         {/* 誤解を先に潰す */}
         <Reveal>
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-primary bg-white">
-            <div className="bg-gradient-to-b from-[#e8192f] via-primary to-primary-dark px-6 py-4">
+            <div className="bg-gradient-to-b from-[#3a9bff] via-primary to-primary-dark px-6 py-4">
               <p className="jp-tight text-center text-base font-black text-white md:text-lg">
                 {AI_WORKFLOW.closing.heading}
               </p>

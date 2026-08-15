@@ -37,7 +37,7 @@ export default function EarningPaths() {
             <Reveal key={step.no} delay={i * 60}>
               <li className="relative flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm md:gap-6 md:p-7">
                 {/* 番号 */}
-                <span className="relative z-10 flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-b from-[#e8192f] to-primary-dark text-white shadow-[0_4px_10px_-3px_rgba(196,18,48,0.6)] md:h-14 md:w-14">
+                <span className="relative z-10 flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-b from-[#3a9bff] to-primary-dark text-white shadow-[0_4px_10px_-3px_rgba(7,130,244,0.6)] md:h-14 md:w-14">
                   <span className="text-[0.95rem] font-black leading-none md:text-lg">
                     {step.no}
                   </span>

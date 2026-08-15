@@ -21,7 +21,7 @@ export default function ContactCTA() {
   return (
     <section
       id="consultation"
-      className="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-primary via-[#a90d29] to-[#6d0717] px-4 py-16 md:py-24"
+      className="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-primary via-[#0a63bc] to-[#064a8f] px-4 py-16 md:py-24"
     >
       <div
         aria-hidden="true"
@@ -86,7 +86,7 @@ export default function ContactCTA() {
             ))}
           </ol>
 
-          <div className="rounded-xl border border-primary/20 bg-red-50 px-4 py-3">
+          <div className="rounded-xl border border-primary/20 bg-sky-50 px-4 py-3">
             <p className="text-center text-xs font-bold leading-6 text-primary-dark">
               現在の価格でご案内できるのは先着{OFFER.capacity}名までです。
             </p>

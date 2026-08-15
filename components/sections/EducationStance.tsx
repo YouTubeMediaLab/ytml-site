@@ -72,7 +72,7 @@ function Panel({
             key={line}
             className={`jp-tight rounded-lg px-3.5 py-2.5 text-xs leading-6 md:text-[0.82rem] ${
               isBrand
-                ? "bg-red-50 text-gray-700"
+                ? "bg-sky-50 text-gray-700"
                 : "bg-white text-gray-500 line-through decoration-gray-300"
             }`}
           >

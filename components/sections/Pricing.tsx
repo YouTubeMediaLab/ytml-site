@@ -46,7 +46,7 @@ export default function Pricing() {
 
         {/* 改定の予告。各カードの吹き出しで金額は出ているので、ここでは繰り返さない */}
         <Reveal>
-          <div className="mt-8 rounded-2xl border-2 border-primary bg-red-50 px-5 py-4 md:px-7 md:py-5">
+          <div className="mt-8 rounded-2xl border-2 border-primary bg-sky-50 px-5 py-4 md:px-7 md:py-5">
             <p className="jp-tight text-sm leading-8 text-gray-700">
               <span className="mr-2 inline-flex items-center rounded-full bg-primary px-3 py-0.5 text-[11px] font-bold text-white">
                 先着{OFFER.capacity}名限定価格
@@ -123,12 +123,12 @@ function PriceCard({
         <div
           className={`overflow-hidden rounded-2xl bg-white ${
             recommended
-              ? "border-2 border-primary shadow-[0_22px_54px_-26px_rgba(196,18,48,0.7)]"
+              ? "border-2 border-primary shadow-[0_22px_54px_-26px_rgba(7,130,244,0.7)]"
               : "border border-gray-200 shadow-sm"
           }`}
         >
           {recommended && (
-            <p className="relative overflow-hidden bg-gradient-to-b from-[#e8192f] via-primary to-primary-dark px-5 py-3 text-center text-[0.82rem] font-bold text-white">
+            <p className="relative overflow-hidden bg-gradient-to-b from-[#3a9bff] via-primary to-primary-dark px-5 py-3 text-center text-[0.82rem] font-bold text-white">
               <span
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"
@@ -145,7 +145,7 @@ function PriceCard({
                 {course.name}
               </h3>
               {course.priceChanges && (
-                <span className="rounded-md bg-red-50 px-2 py-0.5 text-[11px] font-bold text-primary">
+                <span className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] font-bold text-primary">
                   先着{OFFER.capacity}名限定
                 </span>
               )}

@@ -102,7 +102,7 @@ export default function Testimonials() {
             >
               <div className="flex items-center justify-between mb-3">
                 <StarRating count={t.rating} />
-                <span className="text-xs text-primary font-semibold bg-red-50 px-2 py-0.5 rounded-full">
+                <span className="text-xs text-primary font-semibold bg-sky-50 px-2 py-0.5 rounded-full">
                   {t.course}
                 </span>
               </div>

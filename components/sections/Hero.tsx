@@ -115,7 +115,7 @@ export default function Hero() {
                 key={point.value}
                 className="flex items-stretch gap-3 rounded-xl border-2 border-gray-100 bg-white px-3 py-3 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.18)] ring-1 ring-black/5 md:gap-3.5 md:px-4"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center self-center rounded-full bg-gradient-to-b from-[#e8192f] to-primary-dark text-white shadow-[0_4px_10px_-3px_rgba(196,18,48,0.65)]">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center self-center rounded-full bg-gradient-to-b from-[#3a9bff] to-primary-dark text-white shadow-[0_4px_10px_-3px_rgba(7,130,244,0.65)]">
                   <svg
                     viewBox="0 0 24 24"
                     className="h-[22px] w-[22px]"

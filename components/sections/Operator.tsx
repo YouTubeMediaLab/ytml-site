@@ -18,7 +18,7 @@ export default function Operator() {
   return (
     <section
       id="operator"
-      className="scroll-mt-20 bg-gradient-to-br from-red-50 via-white to-[#fff9dc] px-4 py-16 md:py-24"
+      className="scroll-mt-20 bg-gradient-to-br from-sky-50 via-white to-[#fff9dc] px-4 py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <p className="section-subtitle">OPERATOR</p>
@@ -28,7 +28,7 @@ export default function Operator() {
         <div className="title-divider" />
 
         <Reveal>
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-red-900/10 ring-1 ring-red-100">
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-sky-900/10 ring-1 ring-sky-100">
             <div className="grid md:grid-cols-[340px_1fr]">
               <div className="relative min-h-[340px] overflow-hidden bg-primary md:min-h-[440px]">
                 <Image
@@ -56,7 +56,7 @@ export default function Operator() {
                 <p className="text-sm leading-8 text-gray-600 md:text-base">
                   {OPERATOR.body}
                 </p>
-                <div className="mt-6 rounded-2xl border-l-4 border-primary bg-red-50 p-5">
+                <div className="mt-6 rounded-2xl border-l-4 border-primary bg-sky-50 p-5">
                   <p className="text-sm font-bold leading-7 text-gray-800">
                     {OPERATOR.quote.map((line) => (
                       <span key={line} className="block">
