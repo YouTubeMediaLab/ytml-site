@@ -56,7 +56,7 @@ export default function Header() {
             {/* ロゴ */}
             <Link href="/" className="flex items-center gap-2.5">
               <Image
-                src="/images/yml-icon.jpg"
+                src="/images/sml-icon.png"
                 alt=""
                 width={40}
                 height={40}

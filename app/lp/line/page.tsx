@@ -209,7 +209,7 @@ function BrandMark() {
   return (
     <div className="flex items-center gap-3" aria-label="SNS Media Lab">
       <Image
-        src="/images/yml-icon.jpg"
+        src="/images/sml-icon.png"
         alt=""
         width={44}
         height={44}

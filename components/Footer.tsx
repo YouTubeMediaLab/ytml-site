@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
               <Image
-                src="/images/yml-icon.jpg"
+                src="/images/sml-icon.png"
                 alt=""
                 width={36}
                 height={36}

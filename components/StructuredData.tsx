@@ -47,7 +47,7 @@ export default function StructuredData({
       name: BRAND.name,
       alternateName: BRAND.nameJa,
       url: SITE_URL,
-      logo: `${SITE_URL}/images/yml-icon.jpg`,
+      logo: `${SITE_URL}/images/sml-icon.png`,
       image: OG_IMAGE,
       description:
         "商品設計、SNS運用、LINEを含む販売導線、セールスまでを一貫して学べるオンラインスクールです。動画編集・非属人YouTube運営にも対応しています。",

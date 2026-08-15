@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     "副業",
     "SNS Media Lab",
   ],
+  icons: {
+    icon: "/images/sml-icon.png",
+    shortcut: "/images/sml-icon.png",
+    apple: "/images/sml-icon.png",
+  },
   openGraph: {
     title: "SNS Media Lab | SNSを、売上を生む仕組みへ。",
     description:
