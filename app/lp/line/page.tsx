@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://www.youtubemedialab.com/lp/line",
     images: [
       {
-        url: "https://www.youtubemedialab.com/images/line-lp-og.png",
+        url: "https://www.youtubemedialab.com/images/og-sns-media-lab.png",
         width: 1200,
         height: 630,
         alt: "SNS Media Lab",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "SNSを、売上を生む仕組みへ。 | SNS Media Lab",
     description:
       "Instagram・Threads・YouTubeから、商品設計・集客・販売までを一貫して学べます。",
-    images: ["https://www.youtubemedialab.com/images/line-lp-og.png"],
+    images: ["https://www.youtubemedialab.com/images/og-sns-media-lab.png"],
   },
 };
 
@@ -78,8 +78,8 @@ const audiences = [
   {
     label: "商品がない方",
     title: "売るものを決めるところから",
-    text: "これまでの経験や、これから取り組みたい分野をヒアリングし、需要のある商品へ整理します。希望や適性によっては、YMLの正規代理店として活動することも可能です。",
-    points: ["経験・強みの棚卸し", "商品内容と価格の設計", "YML正規代理店制度（審査あり）"],
+    text: "これまでの経験や、これから取り組みたい分野をヒアリングし、需要のある商品へ整理します。希望や適性によっては、SNS Media Labの正規代理店として活動することも可能です。",
+    points: ["経験・強みの棚卸し", "商品内容と価格の設計", "正規代理店制度（審査あり）"],
   },
   {
     label: "すでに商品がある方",
@@ -185,7 +185,7 @@ const faqs = [
   },
   {
     q: "まだ売る商品がありません。",
-    a: "問題ありません。経験や興味、取り組める時間などを伺い、商品設計から一緒に整理します。希望や適性によっては、審査のうえでYMLの正規代理店として活動することも可能です。",
+    a: "問題ありません。経験や興味、取り組める時間などを伺い、商品設計から一緒に整理します。希望や適性によっては、審査のうえでSNS Media Labの正規代理店として活動することも可能です。",
   },
   {
     q: "すべてのSNSを使う必要がありますか？",
@@ -217,7 +217,7 @@ function BrandMark() {
         priority
       />
       <span className="text-left text-sm font-black leading-tight tracking-tight text-gray-900">
-        YouTube
+        SNS
         <br />
         <span className="text-primary">Media Lab</span>
       </span>
@@ -359,7 +359,7 @@ export default function LineLandingPage() {
               </span>
             </h3>
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 [text-wrap:pretty] md:text-base">
-              どれだけ人を集めても、商品が決まっていない、必要性が伝わらない、最後の提案ができない状態では売上にはつながりません。だからYMLでは、集客だけでなく商品設計とセールスまでを一貫して学びます。
+              どれだけ人を集めても、商品が決まっていない、必要性が伝わらない、最後の提案ができない状態では売上にはつながりません。だからSNS Media Labでは、集客だけでなく商品設計とセールスまでを一貫して学びます。
             </p>
           </div>
         </div>
@@ -408,7 +408,7 @@ export default function LineLandingPage() {
             ))}
           </div>
           <p className="mx-auto mt-5 max-w-4xl rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-xs leading-6 text-amber-900 md:text-sm">
-            ※ YML正規代理店としての活動には審査があります。活動機会や収益を保証する制度ではありません。
+            ※ SNS Media Lab正規代理店としての活動には審査があります。活動機会や収益を保証する制度ではありません。
           </p>
         </div>
       </section>

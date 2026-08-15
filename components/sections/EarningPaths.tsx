@@ -2,7 +2,7 @@ import { Reveal } from "@/components/Reveal";
 import { EARNING_PATHS } from "@/config/site";
 
 /**
- * 稼ぎ方の4段階。
+ * SNSを売上につなげる4つの設計。
  *
  * このスクールが何を教えるのかを、ここ1枚で分かるようにしている。
  * 段ごとに「収入の性質」を色分けし、下へ進むほど資産性が上がる並びにした。
@@ -12,7 +12,7 @@ export default function EarningPaths() {
   return (
     <section id="paths" className="scroll-mt-20 bg-white px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
-        <p className="section-subtitle">EARNING PATHS</p>
+        <p className="section-subtitle">SALES SYSTEM</p>
         <h2 className="section-title jp-tight">
           {EARNING_PATHS.heading.map((line) => (
             <span key={line} className="block">

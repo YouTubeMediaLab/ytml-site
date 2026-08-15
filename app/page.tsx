@@ -14,9 +14,9 @@ import FAQ from "@/components/sections/FAQ";
 import ContactCTA from "@/components/sections/ContactCTA";
 
 /**
- * 読む順番は「信じられるか → 何を教わるのか → いくらか → どう始めるか」。
+ * 読む順番は「何が学べるか → 信じられるか → どう進めるか → いくらか」。
  *
- * 証拠を先に置き、次に稼ぎ方の全体像、そのあとで手順と金額へ進む。
+ * SNSを売上につなげる全体像を先に見せ、実績、手順、金額へ進む。
  * 同じことを二度言わないよう、セクションごとに役割を1つに絞っている。
  */
 export default function Home() {
@@ -24,13 +24,15 @@ export default function Home() {
     <>
       <Hero />
 
+      {/* 何が学べるか */}
+      <EarningPaths />
+
       {/* 信じられるか */}
       <Operator />
       <StudentResults />
       <Testimonials />
 
-      {/* 何を教わるのか */}
-      <EarningPaths />
+      {/* どう進めるか */}
       <AIWorkflow />
       <Roadmap />
 

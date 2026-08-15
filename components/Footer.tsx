@@ -6,7 +6,7 @@ const footerLinks = {
   サービス: [
     { href: "/#operator", label: "運営者の実績" },
     { href: "/#results", label: "受講生の実績" },
-    { href: "/#paths", label: "稼ぎ方の4段階" },
+    { href: "/#paths", label: "売上につなげる4つの設計" },
     { href: "/#ai", label: "AI活用" },
     { href: "/#roadmap", label: "3か月ロードマップ" },
     { href: "/#courses", label: "コース紹介" },
@@ -40,14 +40,14 @@ export default function Footer() {
               <span className="font-bold text-white text-lg">SNS Media Lab</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              YouTubeを入口に、動画編集・外注化・マーケティング・セールスまで
+              商品設計・SNS運用・販売導線・セールスまで
               <br />
               体系的に学べるオンラインスクールです。
               <br />
-              未経験からでも、一つひとつ丁寧にサポートします。
+              商品がない方も、未経験から順番に進められます。
             </p>
             <p className="text-xs text-gray-500">
-              ※ 本スクールは収益化・案件獲得・就職を保証するものではありません。<br />
+              ※ 本スクールは売上・成約・収益化・案件獲得・就職を保証するものではありません。<br />
               学習成果には個人差があります。
             </p>
 

@@ -23,7 +23,7 @@ export default function Operator() {
       <div className="mx-auto max-w-6xl">
         <p className="section-subtitle">OPERATOR</p>
         <h2 className="section-title jp-tight">
-          教えているのは、今も現場で運営している人間です。
+          SNS集客から販売まで、現場で実践してきた講師です。
         </h2>
         <div className="title-divider" />
 

@@ -4,8 +4,7 @@ import { CTAButton, CTANote } from "@/components/CTAButton";
 import { OFFER } from "@/config/offer";
 import { HERO_POINTS } from "@/config/site";
 
-// 「顔も、声も」は見出しで、「未経験歓迎」は3つの強みで言っているため、ここでは繰り返さない
-const labels = ["顔出し不要", "撮影機材不要", "完全在宅"];
+const labels = ["商品がなくてもOK", "未経験歓迎", "顔出しなしも可能", "完全在宅"];
 
 const ICONS: Record<string, string> = {
   infinity:
@@ -22,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-bg.jpg"
-          alt="SNS Media Lab - 在宅で動画スキルを学ぶ"
+          alt="SNS Media Lab - SNSマーケティングを完全在宅で学ぶ"
           fill
           // SP：縦長に切り取られるため、顔が画面に入る位置へ寄せる
           // PC：女性の顔が左に来るよう左寄りに配置
@@ -54,22 +53,19 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* メインヘッドライン */}
+          {/* メインヘッドライン。媒体ではなく、売上につながる全体設計を主役にする */}
           <h1
             className="jp-tight mb-4 font-black leading-[1.16] tracking-tight"
             style={{ textShadow: "0 1px 10px rgba(255,255,255,0.85)" }}
           >
-            <span className="block whitespace-nowrap text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
-              顔も、声も、名前も
+            <span className="block text-[1.65rem] text-gray-900 sm:text-[2.35rem] md:text-[2.55rem]">
+              人を集めるだけでは、
             </span>
-            <span className="block whitespace-nowrap text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
-              出さずに。
+            <span className="block text-[1.85rem] text-gray-900 sm:text-[2.6rem] md:text-[2.9rem]">
+              売上にならない。
             </span>
-            <span className="mt-2 block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
-              SNSを、
-            </span>
-            <span className="relative inline-block whitespace-nowrap text-[1.7rem] text-primary sm:text-[2.4rem] md:text-[2.6rem]">
-              もう一つの収入源へ。
+            <span className="relative mt-2 inline-block text-[1.7rem] text-primary sm:text-[2.35rem] md:text-[2.55rem]">
+              SNSを、売上を生む仕組みへ。
               <span
                 aria-hidden="true"
                 className="absolute -bottom-1 left-0 -z-10 h-3 w-full -rotate-[0.6deg] rounded-full bg-[#ffd84d]/70"
@@ -79,13 +75,13 @@ export default function Hero() {
 
           {/* 説明文 */}
           <div className="jp-tight mb-5 space-y-0.5 text-sm font-medium leading-8 text-gray-700 md:text-base md:leading-9">
-            <p>YouTubeを入口に、動画編集・外注化・</p>
-            <p>マーケティング・セールスまで。</p>
-            <p>身につけた型は、どのSNSにも</p>
+            <p>商品設計・SNS運用・販売導線・セールスまで。</p>
             <p>
-              <strong className="font-bold text-gray-900">匿名のまま</strong>
-              横展開できます。
+              Instagram・Threads・X・TikTok・YouTubeなどを活用し、
+              <strong className="font-bold text-gray-900">モノが売れる流れ</strong>
+              を一貫して学べます。
             </p>
+            <p>商品がない方は、売るものを決めるところから始められます。</p>
           </div>
 
           {/* タグ */}

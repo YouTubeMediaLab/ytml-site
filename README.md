@@ -1,4 +1,4 @@
-# YouTube Media Lab - 公式サイト
+# SNS Media Lab - 公式サイト
 
 ## セットアップ
 

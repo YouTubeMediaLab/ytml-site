@@ -32,4 +32,4 @@ export const BRAND = {
 export const SITE_URL = "https://www.youtubemedialab.com";
 
 /** OGP画像（絶対URL） */
-export const OG_IMAGE = `${SITE_URL}/images/og-default.jpg`;
+export const OG_IMAGE = `${SITE_URL}/images/og-sns-media-lab.png`;

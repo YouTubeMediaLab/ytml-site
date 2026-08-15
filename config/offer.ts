@@ -69,7 +69,7 @@ export const COURSES: Record<CourseKey, Course> = {
     supportPeriod: "1年間",
     style: "完全伴走型",
     positioning:
-      "動画編集からチャンネル運営、外注化、さらにマーケティングとセールスまで。収入の柱を複数持つところまで、担当者と一緒に進めるコースです。",
+      "動画編集・非属人YouTubeに加え、商品設計、各種SNSの運用、LINE構築、セールスまで。SNSからモノが売れる流れを担当者と一緒につくるコースです。",
   },
 };
 

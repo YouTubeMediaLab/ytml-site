@@ -76,19 +76,19 @@ const cards: CourseCard[] = [
     nameNote: "（1年）",
     color: "border-primary",
     badgeColor: "bg-gray-800",
-    styleDesc: "担当者と一緒に企画〜投稿まで進める",
+    styleDesc: "担当者と一緒に商品・SNS・販売導線まで進める",
     features: [
       "動画編集コース 全内容",
       "非属人YouTubeコース 全内容",
-      "チャンネル運営の伴走サポート",
+      "SNS運用・チャンネル運営の伴走サポート",
       "外注化・チーム構築のノウハウ",
-      "マーケティング・セールス",
-      "自分の商品の作り方・売り方",
+      "Instagram・Threads・Xなどの運用",
+      "商品設計・LINE構築・セールス",
       "LINEサポート（無制限）",
       "ZOOM個別MT（優先対応）",
     ],
     // 今回追加した範囲。カード内で目印をつけるために持つ
-    addedFeatures: ["マーケティング・セールス", "自分の商品の作り方・売り方"],
+    addedFeatures: ["Instagram・Threads・Xなどの運用", "商品設計・LINE構築・セールス"],
     recommended: true,
   },
 ];
@@ -284,9 +284,9 @@ export default function Courses() {
               <p className="text-sm leading-7 text-gray-600">
                 ①②の内容に加え、担当者が
                 <strong className="text-gray-800">
-                  一緒にチャンネルを作り上げていく
+                  商品・SNS・販売導線を一緒に組み立てる
                 </strong>
-                伴走型サポートが付きます。企画・台本・改善まで、二人三脚で進めます。
+                伴走型サポートが付きます。発信だけで終わらず、提案・販売まで二人三脚で進めます。
               </p>
             </div>
           </div>

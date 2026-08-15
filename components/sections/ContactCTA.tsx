@@ -4,9 +4,10 @@ import { CONSULTATION, DISCLAIMERS } from "@/config/site";
 import { OFFER } from "@/config/offer";
 
 const clarifies = [
-  "自分に非属人YouTubeが向いているか",
+  "どのSNSから始めるのが合っているか",
+  "顔を出さずにどこまで進められるか",
   "現実的にどの程度の作業時間が必要か",
-  "どのコースが合っているか",
+  "商品がない状態から、何を用意するか",
   "今の状況から、何を最初に始めるか",
 ];
 
@@ -46,7 +47,7 @@ export default function ContactCTA() {
             自分の進め方を整理する場です。
           </p>
           <p className="mt-5 text-sm leading-8 text-white/85 md:text-base">
-            個別相談は、購入を決める場ではありません。今の状況と目標を伺い、無理のない進め方を一緒に整理します。適していないと判断した場合は、その旨をお伝えします。
+            個別相談は、購入を決める場ではありません。YouTubeに限らず、Instagram・Threads・X・TikTok・noteのうち、今のあなたに合う媒体はどれかというところから一緒に整理します。適していないと判断した場合は、その旨をお伝えします。
           </p>
 
           <ul className="mt-7 space-y-2.5 text-sm font-bold text-white">

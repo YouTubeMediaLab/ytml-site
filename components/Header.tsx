@@ -10,7 +10,7 @@ import { OFFER } from "@/config/offer";
 const navLinks = [
   { href: "/#operator", label: "運営者の実績" },
   { href: "/#results", label: "受講生の実績" },
-  { href: "/#paths", label: "稼ぎ方" },
+  { href: "/#paths", label: "学べること" },
   { href: "/#courses", label: "コース紹介" },
   { href: "/#pricing", label: "料金" },
   { href: "/#faq", label: "よくある質問" },
@@ -39,8 +39,8 @@ export default function Header() {
           <span className="mr-1.5 rounded-full bg-[#ffd84d] px-2 py-0.5 text-[9px] font-black text-gray-900 md:text-[10px]">
             {OFFER.startLabel}〜
           </span>
-          <span className="hidden sm:inline">非属人YouTubeコースは、</span>
-          先着{OFFER.capacity}名限定の特別価格で受付中
+          <span className="hidden sm:inline">SNSマーケティング・セールスまで学べる1年コースを、</span>
+          先着{OFFER.capacity}名限定価格で受付中
         </p>
       </div>
 

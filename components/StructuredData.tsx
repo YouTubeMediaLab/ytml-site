@@ -50,7 +50,7 @@ export default function StructuredData({
       logo: `${SITE_URL}/images/yml-icon.jpg`,
       image: OG_IMAGE,
       description:
-        "顔出し不要の非属人YouTube運営を軸に、動画編集・外注化・SNSマーケティング・セールスまでを学べるオンラインスクールです。",
+        "商品設計、SNS運用、LINEを含む販売導線、セールスまでを一貫して学べるオンラインスクールです。動画編集・非属人YouTube運営にも対応しています。",
       email: BRAND.email,
       telephone: BRAND.tel,
       address: {
@@ -62,12 +62,17 @@ export default function StructuredData({
       founder: { "@type": "Person", name: BRAND.representative },
       parentOrganization: { "@type": "Organization", name: BRAND.legalName },
       knowsAbout: [
-        "非属人YouTube",
         "SNSマーケティング",
+        "商品設計",
+        "販売導線設計",
+        "LINE構築",
+        "セールス",
         "Instagramマーケティング",
         "Threadsマーケティング",
+        "Xマーケティング",
+        "TikTokマーケティング",
+        "非属人YouTube",
         "動画編集",
-        "セールスライティング",
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",

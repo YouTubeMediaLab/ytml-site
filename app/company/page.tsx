@@ -15,7 +15,11 @@ const companyInfo = [
     value: "080-6880-9400\n※営業・勧誘のお電話はご遠慮ください。",
   },
   { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
-  { label: "事業内容", value: "オンラインスクール運営、動画制作スキル教育事業" },
+  {
+    label: "事業内容",
+    value:
+      "オンラインスクール運営、SNSマーケティング・商品設計・セールス支援、動画制作スキル教育事業",
+  },
   { label: "サービス名", value: "SNS Media Lab（SNSメディアラボ）" },
   { label: "対象エリア", value: "全国（オンライン対応）" },
 ];

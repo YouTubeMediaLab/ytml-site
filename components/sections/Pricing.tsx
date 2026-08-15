@@ -31,7 +31,7 @@ export default function Pricing() {
         </h2>
         <div className="title-divider" />
 
-        {/* 学べる内容は「稼ぎ方の4段階」とコース紹介で見せているため、ここでは繰り返さない */}
+        {/* 学べる内容は「売上につなげる4つの設計」とコース紹介で見せているため、ここでは繰り返さない */}
 
         {/* 価格カード */}
         <div className="space-y-8">
