@@ -304,15 +304,41 @@ export default function Courses() {
           <div className="mt-12 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900">
             <div className="grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:p-9">
               <div>
-                <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">
-                  月{PRIVATE_CONSULTING.capacityPerMonth}名まで
-                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">
+                    月{PRIVATE_CONSULTING.capacityPerMonth}名まで
+                  </span>
+                  <span className="inline-flex rounded-full border border-gray-600 px-3 py-1 text-[11px] font-bold text-gray-300">
+                    {PRIVATE_CONSULTING.supportPeriod}サポート
+                  </span>
+                </div>
                 <h3 className="jp-tight mt-3 text-xl font-black text-white md:text-2xl">
                   {PRIVATE_CONSULTING.name}
                 </h3>
                 <p className="jp-tight mt-2.5 text-sm leading-7 text-gray-300">
                   {PRIVATE_CONSULTING.positioning}
                 </p>
+
+                {/* 伴走する媒体を並べる。ここがこのコースの一番の中身 */}
+                <div className="mt-4 rounded-xl border border-gray-700 bg-gray-800/50 p-4">
+                  <p className="text-[11px] font-black tracking-wide text-[#ffd84d]">
+                    伴走する媒体
+                  </p>
+                  <ul className="mt-2.5 flex flex-wrap gap-1.5">
+                    {PRIVATE_CONSULTING.platforms.map((platform) => (
+                      <li
+                        key={platform}
+                        className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-bold text-white md:text-xs"
+                      >
+                        {platform}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="jp-tight mt-2.5 text-[11px] leading-5 text-gray-400">
+                    顔を出す発信も、出さない発信も、どちらもまとめて設計します。
+                  </p>
+                </div>
+
                 <ul className="mt-4 grid gap-2 md:grid-cols-3">
                   {PRIVATE_CONSULTING.points.map((point) => (
                     <li

@@ -6,7 +6,7 @@ import { OPERATOR_EVIDENCE, STUDENT_EVIDENCE } from "@/config/evidence";
 const SCREENING_FORM_URL = "https://forms.gle/cQmoVCfWMhEhbYDC7";
 
 export const metadata: Metadata = {
-  title: "SNS集客から商品設計・セールスまで | YouTube Media Lab",
+  title: "SNS集客から商品設計・セールスまで | SNS Media Lab",
   description:
       "Instagram・Threads・YouTubeなどのSNSを活用し、集客から商品設計、販売導線、セールスまでを一貫して学べるオンラインスクールです。商品がない方も未経験から相談できます。",
   robots: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     follow: false,
   },
   openGraph: {
-    title: "SNSを、売上を生む仕組みへ。 | YouTube Media Lab",
+    title: "SNSを、売上を生む仕組みへ。 | SNS Media Lab",
     description:
       "集客だけで終わらせない。商品設計・SNS運用・マーケティング・セールスまでを一つの流れで学べます。",
     type: "website",
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: "https://www.youtubemedialab.com/images/line-lp-og.png",
         width: 1200,
         height: 630,
-        alt: "YouTube Media Lab",
+        alt: "SNS Media Lab",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SNSを、売上を生む仕組みへ。 | YouTube Media Lab",
+    title: "SNSを、売上を生む仕組みへ。 | SNS Media Lab",
     description:
       "Instagram・Threads・YouTubeから、商品設計・集客・販売までを一貫して学べます。",
     images: ["https://www.youtubemedialab.com/images/line-lp-og.png"],
@@ -113,7 +113,7 @@ const records = [
   {
     value: "100名以上",
     label: "これまでの指導実績",
-    detail: "YouTube Media Labでの指導人数。",
+    detail: "SNS Media Labでの指導人数。",
   },
 ];
 
@@ -207,7 +207,7 @@ const faqs = [
 
 function BrandMark() {
   return (
-    <div className="flex items-center gap-3" aria-label="YouTube Media Lab">
+    <div className="flex items-center gap-3" aria-label="SNS Media Lab">
       <Image
         src="/images/yml-icon.jpg"
         alt=""
@@ -332,7 +332,7 @@ export default function LineLandingPage() {
 
       <div className="border-y border-red-100 bg-red-50">
         <p className="mx-auto max-w-4xl px-4 py-4 text-center text-xs font-medium leading-6 text-red-900 md:text-sm">
-          YouTube Media Labは有料のオンラインスクールです。申し込みフォーム回答後に審査を行い、通過された方へ個別相談をご案内します。
+          SNS Media Labは有料のオンラインスクールです。申し込みフォーム回答後に審査を行い、通過された方へ個別相談をご案内します。
         </p>
       </div>
 
@@ -417,7 +417,7 @@ export default function LineLandingPage() {
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-red-900/10 ring-1 ring-red-100">
           <div className="grid md:grid-cols-[340px_1fr]">
             <div className="relative min-h-[370px] overflow-hidden bg-primary md:min-h-[470px]">
-              <Image src="/images/yuuhi-profile.jpg" alt="YouTube Media Lab運営者 ゆうひ" fill sizes="(max-width: 768px) 100vw, 340px" className="object-cover object-top" />
+              <Image src="/images/yuuhi-profile.jpg" alt="SNS Media Lab運営者 ゆうひ" fill sizes="(max-width: 768px) 100vw, 340px" className="object-cover object-top" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-6 pb-6 pt-20 text-white">
                 <p className="text-xl font-black">ゆうひ</p>
                 <p className="mt-1 text-xs font-bold tracking-wider text-white/80">株式会社ult Adam 代表取締役</p>
@@ -604,7 +604,7 @@ export default function LineLandingPage() {
       </section>
 
       <div className="bg-[#540511] px-4 py-8 text-center">
-        <p className="mb-3 text-xs text-white/50">© {new Date().getFullYear()} YouTube Media Lab / 株式会社ult Adam</p>
+        <p className="mb-3 text-xs text-white/50">© {new Date().getFullYear()} SNS Media Lab / 株式会社ult Adam</p>
         <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-white/50 underline underline-offset-4 transition hover:text-white">プライバシーポリシー</a>
       </div>
 

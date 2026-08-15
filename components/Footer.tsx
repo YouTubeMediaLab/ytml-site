@@ -37,7 +37,7 @@ export default function Footer() {
                 height={36}
                 className="h-9 w-9 rounded-lg"
               />
-              <span className="font-bold text-white text-lg">YouTube Media Lab</span>
+              <span className="font-bold text-white text-lg">SNS Media Lab</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
               YouTubeを入口に、動画編集・外注化・マーケティング・セールスまで
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} YouTube Media Lab. All rights reserved.
+            © {new Date().getFullYear()} SNS Media Lab. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link href="/tokushoho" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">

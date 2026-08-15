@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | YouTube Media Lab",
-  description: "YouTube Media Labのプライバシーポリシーページです。",
+  title: "プライバシーポリシー | SNS Media Lab",
+  description: "SNS Media Labのプライバシーポリシーページです。",
 };
 
 const sections = [
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
         </p>
 
         <div className="bg-gray-50 rounded-xl p-5 mb-8 text-sm text-gray-600 leading-relaxed">
-          YouTube Media Lab（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、
+          SNS Media Lab（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、
           以下のプライバシーポリシーに従って適切に取り扱います。
         </div>
 

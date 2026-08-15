@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
+import StructuredData from "@/components/StructuredData";
+import { FAQS } from "@/config/faq";
+import { OG_IMAGE, SITE_URL } from "@/config/brand";
 
 export const metadata: Metadata = {
-  title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
+  title: "SNS Media Lab | SNSマーケティング・非属人YouTube運営スクール",
   description:
-    "YouTube Media Labは、動画編集・顔出し不要の非属人YouTube運営・外注化・マーケティング・セールスまでを体系的に学べるオンラインスクールです。身につけた型は他のSNSにも匿名のまま横展開できます。撮影機材不要・在宅で学べます。",
+    "SNS Media Labは、動画編集・顔出し不要の非属人YouTube運営・外注化・マーケティング・セールスまでを体系的に学べるオンラインスクールです。身につけた型は他のSNSにも匿名のまま横展開できます。撮影機材不要・在宅で学べます。",
   keywords: [
     "SNSマーケティング",
     "SNS運用",
@@ -17,35 +20,39 @@ export const metadata: Metadata = {
     "Adobe Premiere Pro",
     "オンラインスクール",
     "副業",
-    "YouTube Media Lab",
+    "SNS Media Lab",
   ],
   openGraph: {
-    title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
+    title: "SNS Media Lab | SNSマーケティング・非属人YouTube運営スクール",
     description:
       "顔出し不要・撮影機材不要。YouTubeを入口に、動画編集・外注化・マーケティング・セールスまで学べるオンラインスクール。",
     type: "website",
     locale: "ja_JP",
     url: "https://www.youtubemedialab.com",
-    siteName: "YouTube Media Lab",
+    siteName: "SNS Media Lab",
     images: [
       {
-        url: "https://www.youtubemedialab.com/images/line-lp-og.png",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "顔出し不要のYouTube運営を基礎から - YouTube Media Lab",
+        alt: "顔も、声も、名前も出さずに。SNSを、もう一つの収入源へ。- SNS Media Lab",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "YouTube Media Lab | SNSマーケティング・非属人YouTube運営スクール",
+    title: "SNS Media Lab | SNSマーケティング・非属人YouTube運営スクール",
     description:
       "顔出し不要・撮影機材不要。YouTubeを入口に、SNSマーケティングとセールスまで学べるオンラインスクール。",
-    images: ["https://www.youtubemedialab.com/images/line-lp-og.png"],
+    images: [OG_IMAGE],
   },
+  // 相対パスのOG画像などを絶対URLに解決させる
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
 
@@ -71,6 +78,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <StructuredData faqs={FAQS} />
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>

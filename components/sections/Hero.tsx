@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-bg.jpg"
-          alt="YouTube Media Lab - 在宅で動画スキルを学ぶ"
+          alt="SNS Media Lab - 在宅で動画スキルを学ぶ"
           fill
           // SP：縦長に切り取られるため、顔が画面に入る位置へ寄せる
           // PC：女性の顔が左に来るよう左寄りに配置

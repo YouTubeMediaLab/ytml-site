@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "利用規約 | YouTube Media Lab",
-  description: "YouTube Media Labの利用規約ページです。",
+  title: "利用規約 | SNS Media Lab",
+  description: "SNS Media Labの利用規約ページです。",
 };
 
 const sections = [
@@ -15,7 +15,7 @@ const sections = [
   {
     title: "コミュニティ利用についてのお願い",
     content:
-      "YouTube Media Labは、動画編集を本気で学び、成長したい人のための環境です。\n\nSNSや外部コミュニティにおいても、他の動画編集者さんや受講生の迷惑になる行為、不必要なトラブルや対立を生む発言はお控えください。お互いを尊重し合い、全員でスキルを高め合える環境作りにご協力をお願いいたします。",
+      "SNS Media Labは、動画編集を本気で学び、成長したい人のための環境です。\n\nSNSや外部コミュニティにおいても、他の動画編集者さんや受講生の迷惑になる行為、不必要なトラブルや対立を生む発言はお控えください。お互いを尊重し合い、全員でスキルを高め合える環境作りにご協力をお願いいたします。",
   },
   {
     title: "注意喚起",

@@ -5,8 +5,8 @@ import { COURSES, OFFER, withTax, yen } from "@/config/offer";
 const { videoEditing, youtubeHalf, youtubeYear } = COURSES;
 
 export const metadata: Metadata = {
-  title: "特定商取引法に基づく表記 | YouTube Media Lab",
-  description: "YouTube Media Labの特定商取引法に基づく表記ページです。",
+  title: "特定商取引法に基づく表記 | SNS Media Lab",
+  description: "SNS Media Labの特定商取引法に基づく表記ページです。",
 };
 
 const tokushohoItems = [
@@ -18,7 +18,7 @@ const tokushohoItems = [
     value: "080-6880-9400",
   },
   { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
-  { label: "サービス名", value: "YouTube Media Lab（YouTubeメディアラボ）" },
+  { label: "サービス名", value: "SNS Media Lab（SNSメディアラボ）" },
   {
     label: "販売価格",
     value: [

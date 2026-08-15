@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CTAButtonCompact } from "@/components/CTAButton";
+import { BRAND } from "@/config/brand";
 import { OFFER } from "@/config/offer";
 
 const navLinks = [
@@ -63,10 +64,10 @@ export default function Header() {
                 priority
               />
               <span className="text-left text-[0.95rem] font-black leading-tight tracking-tight text-gray-900">
-                YouTube
+                {BRAND.nameLine1}
                 <br />
                 <span className="text-[0.8rem] font-bold leading-none text-primary">
-                  Media Lab
+                  {BRAND.nameLine2}
                 </span>
               </span>
             </Link>

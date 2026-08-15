@@ -33,7 +33,7 @@ export default function Operator() {
               <div className="relative min-h-[340px] overflow-hidden bg-primary md:min-h-[440px]">
                 <Image
                   src={OPERATOR.photo}
-                  alt={`YouTube Media Lab運営者 ${OPERATOR.name}`}
+                  alt={`SNS Media Lab運営者 ${OPERATOR.name}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 340px"
                   className="object-cover object-top"

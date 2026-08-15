@@ -99,7 +99,7 @@ export default function ContactCTA() {
             {CONSULTATION.methods}・{CONSULTATION.duration}／
             {CONSULTATION.note}
             <br />
-            ボタンを押すとYouTube Media Labの公式LINEへ移動します。
+            ボタンを押すとSNS Media Labの公式LINEへ移動します。
           </p>
 
           <p className="mt-5 border-t border-gray-100 pt-4 text-[10px] leading-5 text-gray-400">

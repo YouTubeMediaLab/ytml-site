@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "会社概要 | YouTube Media Lab",
-  description: "YouTube Media Labの会社概要ページです。",
+  title: "会社概要 | SNS Media Lab",
+  description: "SNS Media Labの会社概要ページです。",
 };
 
 const companyInfo = [
@@ -16,7 +16,7 @@ const companyInfo = [
   },
   { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
   { label: "事業内容", value: "オンラインスクール運営、動画制作スキル教育事業" },
-  { label: "サービス名", value: "YouTube Media Lab（YouTubeメディアラボ）" },
+  { label: "サービス名", value: "SNS Media Lab（SNSメディアラボ）" },
   { label: "対象エリア", value: "全国（オンライン対応）" },
 ];
 

@@ -80,13 +80,24 @@ export const COURSES: Record<CourseKey, Course> = {
  */
 export const PRIVATE_CONSULTING = {
   name: "完全特別コンサル",
+  supportPeriod: "1年間",
   capacityPerMonth: 3,
   priceLabel: "個別相談にてご案内",
   positioning:
-    "事業としてまとめて伸ばしたい方向けに、運営者が直接、設計から実行まで入ります。",
+    "SNS全体をまとめて伸ばしたい方向けに、運営者が直接、設計から実行まで1年間入ります。",
+  /** 伴走対象の媒体。非属人YouTubeに限らず、属人での発信も含む */
+  platforms: [
+    "Instagram",
+    "Threads",
+    "X",
+    "TikTok",
+    "note",
+    "属人YouTube",
+    "非属人YouTube",
+  ],
   points: [
+    "上記すべての媒体を横断して伴走します",
     "チャンネル・商品・導線をまとめて設計します",
-    "運営者が直接、実行まで並走します",
     "内容と料金は、状況を伺ったうえで個別に組み立てます",
   ],
   note: "受け入れは月3名までです。ご希望に添えない場合もあります。",

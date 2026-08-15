@@ -82,7 +82,7 @@ export const HERO_POINTS = [
 
 export const OPERATOR = {
   name: "ゆうひ",
-  title: "株式会社ult Adam 代表取締役 / YouTube Media Lab 運営",
+  title: "株式会社ult Adam 代表取締役 / SNS Media Lab 運営",
   photo: "/images/yuuhi-profile.jpg",
   lead: "誰から学ぶか、確かめてください。",
   body: "営業代行からYouTube運営まで、集客はすべてSNSで行ってきました。動画編集・非属人YouTube運営・マーケティング・セールスを、未経験の方にもわかりやすい順序で学べる環境づくりに取り組んでいます。個別相談では、今の状況や目的を伺ったうえで、無理のない学び方を一緒に整理します。",
@@ -153,7 +153,7 @@ export const OPERATOR_RECORD_GROUPS = [
       {
         value: "100名以上",
         label: "これまでの指導実績",
-        detail: "YouTube Media Labでの受講生の指導人数。",
+        detail: "SNS Media Labでの受講生の指導人数。",
       },
     ],
   },
@@ -269,7 +269,7 @@ export const ROADMAP = {
 
 export const EDUCATION_STANCE = {
   heading: "煽って売る方法は、教えていません。",
-  lead: "YouTube Media Labが教えるセールスは、強い言葉で押し切る技術ではありません。読み手が自分で判断できるように、必要な情報と視点を順番に渡す技術です。",
+  lead: "SNS Media Labが教えるセールスは、強い言葉で押し切る技術ではありません。読み手が自分で判断できるように、必要な情報と視点を順番に渡す技術です。",
   persuasion: {
     label: "説得",
     body: "売り手の主張が前に出る",
@@ -296,7 +296,7 @@ export const EDUCATION_STANCE = {
 
 export const AI_WORKFLOW = {
   heading: ["動画1本にかかる時間を、", "12〜20時間から1〜2時間へ。"],
-  lead: "非属人YouTubeが現実的な副業になったのは、制作工程のほとんどをAIへ渡せるようになったからです。YouTube Media Labでは、実際の運営で使っている手順をそのまま公開しています。",
+  lead: "非属人YouTubeが現実的な副業になったのは、制作工程のほとんどをAIへ渡せるようになったからです。SNS Media Labでは、実際の運営で使っている手順をそのまま公開しています。",
   /** 1マス＝1時間で描くため、範囲の下限と上限を持つ */
   before: { label: "AIを使わない場合", value: "12〜20時間", min: 12, max: 20 },
   after: { label: "AIを使う場合", value: "1〜2時間", min: 1, max: 2 },
@@ -343,7 +343,7 @@ export const AI_WORKFLOW = {
     heading: "「AIを使えば早くなる」は、勘違いです。",
     body: [
       "早くなるのは、どの工程で・どのツールに・どんな指示を出すかが決まっている人だけです。ツールを入れただけの状態では、調べる時間と作り直す時間が増えて、むしろ遅くなります。",
-      "YouTube Media Labでは、運営で実際に使っている手順をそのままお渡しします。ツールはいずれも無料版から始められます（利用料はご自身のご負担となります）。",
+      "SNS Media Labでは、運営で実際に使っている手順をそのままお渡しします。ツールはいずれも無料版から始められます（利用料はご自身のご負担となります）。",
     ],
   },
 } as const;

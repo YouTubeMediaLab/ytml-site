@@ -3,9 +3,9 @@ import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "お問い合わせ・無料相談 | YouTube Media Lab",
+  title: "お問い合わせ・無料相談 | SNS Media Lab",
   description:
-    "YouTube Media Labへのお問い合わせ・無料個別相談はこちらから。コース内容・料金・学習方法についてお気軽にご相談ください。",
+    "SNS Media Labへのお問い合わせ・無料個別相談はこちらから。コース内容・料金・学習方法についてお気軽にご相談ください。",
 };
 
 export default function ContactPage() {
