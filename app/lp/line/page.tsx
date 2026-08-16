@@ -230,10 +230,13 @@ function ScreeningLink({ label = "無料で個別相談に申し込む" }: { lab
   return (
     <a
       href={SCREENING_FORM_URL}
-      className="consultation-cta inline-flex min-h-16 w-full items-center justify-center rounded-2xl bg-primary px-6 py-5 text-center text-base font-black leading-6 text-white ring-4 ring-[#ffd84d]/75 transition hover:-translate-y-0.5 hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-[#ffd84d] sm:w-auto sm:min-w-[24rem] sm:px-8 sm:text-lg"
+      className="cta-green group inline-flex min-h-16 w-full items-center justify-center rounded-2xl border-[3px] border-white px-6 py-5 text-center text-base font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:w-auto sm:min-w-[24rem] sm:px-8 sm:text-lg"
     >
-      {label}
-      <span className="ml-2" aria-hidden="true">→</span>
+      <span>
+        <span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>
+        {label.replace("無料で", "")}
+        <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+      </span>
     </a>
   );
 }
@@ -307,7 +310,7 @@ export default function LineLandingPage() {
               ))}
             </div>
 
-            <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-primary via-[#a90d29] to-[#700718] p-5 text-white shadow-[0_18px_38px_-16px_rgba(122,7,26,0.75)] sm:max-w-[33rem] md:p-6">
+            <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] p-5 text-white shadow-[0_18px_38px_-16px_rgba(6,74,143,0.7)] sm:max-w-[33rem] md:p-6">
               <div className="absolute -right-8 -top-12 h-32 w-32 rounded-full bg-[#ffd84d]/25 blur-2xl" aria-hidden="true" />
               <p className="relative text-[10px] font-black tracking-[0.2em] text-[#ffd84d]">TRACK RECORD</p>
               <p className="relative mt-2 font-black leading-tight">
@@ -566,7 +569,7 @@ export default function LineLandingPage() {
         </div>
       </section>
 
-      <section id="screening" className="relative scroll-mt-5 overflow-hidden bg-gradient-to-br from-primary via-[#a90d29] to-[#700718] px-4 py-16 md:py-24">
+      <section id="screening" className="relative scroll-mt-5 overflow-hidden bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] px-4 py-16 md:py-24">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#ffd84d]/20 blur-3xl" aria-hidden="true" />
         <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
@@ -596,22 +599,22 @@ export default function LineLandingPage() {
                 </li>
               ))}
             </ol>
-            <a href={SCREENING_FORM_URL} className="consultation-cta flex min-h-20 w-full items-center justify-center rounded-2xl bg-primary px-5 py-5 text-center text-lg font-black leading-6 text-white ring-4 ring-[#ffd84d]/75 transition hover:-translate-y-0.5 hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-[#ffd84d] sm:text-xl">
-              無料で個別相談に申し込む<span className="ml-2" aria-hidden="true">→</span>
+            <a href={SCREENING_FORM_URL} className="cta-green group flex min-h-20 w-full items-center justify-center rounded-2xl border-[3px] border-white px-5 py-5 text-center text-lg font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:text-xl">
+              <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>個別相談に申し込む<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
             </a>
             <p className="mt-5 text-center text-xs leading-5 text-gray-500">ボタンを押すとGoogleフォームへ移動します。回答のみで契約や料金は発生しません。</p>
           </div>
         </div>
       </section>
 
-      <div className="bg-[#540511] px-4 py-8 text-center">
+      <div className="bg-[#052f5f] px-4 py-8 text-center">
         <p className="mb-3 text-xs text-white/50">© {new Date().getFullYear()} SNS Media Lab / 株式会社ult Adam</p>
         <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-white/50 underline underline-offset-4 transition hover:text-white">プライバシーポリシー</a>
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
-        <a href={SCREENING_FORM_URL} className="consultation-cta flex min-h-14 w-full items-center justify-center rounded-xl bg-primary px-4 text-center text-sm font-black leading-5 text-white ring-2 ring-[#ffd84d]">
-          無料で個別相談に申し込む<span className="ml-2" aria-hidden="true">→</span>
+        <a href={SCREENING_FORM_URL} className="cta-green cta-green-sm group flex min-h-14 w-full items-center justify-center rounded-xl border-2 border-white px-4 text-center text-sm font-black leading-5 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]">
+          <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>個別相談に申し込む<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
         </a>
       </div>
     </div>
