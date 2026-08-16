@@ -4,7 +4,7 @@
 
 /** 主要CTAの遷移先（公式LINE） */
 export const LINE_URL =
-  "https://online.youtubemedialab.com/line/open/Uih49tVZnQlv?mtid=a8h3dWaJWUsh";
+  "https://online.snsmedialab.com/line/open/Uih49tVZnQlv?mtid=a8h3dWaJWUsh";
 
 /** 個別相談の実施条件 */
 export const CONSULTATION = {
