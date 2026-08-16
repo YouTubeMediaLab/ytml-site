@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "商品設計・SNS運用・販売導線・セールスまで。集客だけで終わらないSNSマーケティングを学べるオンラインスクール。",
     type: "website",
     locale: "ja_JP",
-    url: "https://www.youtubemedialab.com",
+    url: SITE_URL,
     siteName: "SNS Media Lab",
     images: [
       {

@@ -4,7 +4,6 @@
  * 2026年8月、事業の括りをSNSマーケティング全体へ広げたのに合わせて
  * 「YouTube Media Lab」から「SNS Media Lab」へ改称した。
  *
- * ドメインは youtubemedialab.com のまま（変更にはSEO資産の移行が必要なため別判断）。
  * 屋号を変えるときは、必ずこのファイルだけを直せば済む状態を保つこと。
  */
 
@@ -26,10 +25,13 @@ export const BRAND = {
 
 /**
  * 公開URL。
- * 屋号は変えたがドメインは据え置きのため、両者は一致していない。
- * ドメインを移す場合は 301 リダイレクトとサーチコンソールの住所変更が必要。
+ *
+ * 2026年8月、屋号の変更に合わせて youtubemedialab.com から移行した。
+ * 旧ドメインはVercel側で 308 リダイレクトを設定して残してあるため、
+ * 検索や既存リンクからの流入は自動でこちらへ着地する。
+ * 旧ドメインの契約は転送を効かせ続けるために解約しないこと。
  */
-export const SITE_URL = "https://www.youtubemedialab.com";
+export const SITE_URL = "https://www.snsmedialab.com";
 
 /** OGP画像（絶対URL） */
 export const OG_IMAGE = `${SITE_URL}/images/og-sns-media-lab.png`;

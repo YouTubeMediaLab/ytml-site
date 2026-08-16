@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { OG_IMAGE, SITE_URL } from "@/config/brand";
 import { EvidenceCarousel } from "@/components/EvidenceCarousel";
 import { OPERATOR_EVIDENCE, STUDENT_EVIDENCE } from "@/config/evidence";
 
@@ -19,10 +20,10 @@ export const metadata: Metadata = {
       "集客だけで終わらせない。商品設計・SNS運用・マーケティング・セールスまでを一つの流れで学べます。",
     type: "website",
     locale: "ja_JP",
-    url: "https://www.youtubemedialab.com/lp/line",
+    url: `${SITE_URL}/lp/line`,
     images: [
       {
-        url: "https://www.youtubemedialab.com/images/og-sns-media-lab.png",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "SNS Media Lab",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "SNSを、売上を生む仕組みへ。 | SNS Media Lab",
     description:
       "Instagram・Threads・YouTubeから、商品設計・集客・販売までを一貫して学べます。",
-    images: ["https://www.youtubemedialab.com/images/og-sns-media-lab.png"],
+    images: [OG_IMAGE],
   },
 };
 
