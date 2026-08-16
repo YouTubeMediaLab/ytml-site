@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/config/brand";
 
 export const metadata: Metadata = {
   title: "会社概要 | SNS Media Lab",
@@ -14,7 +15,7 @@ const companyInfo = [
     label: "電話番号",
     value: "080-6880-9400\n※営業・勧誘のお電話はご遠慮ください。",
   },
-  { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
+  { label: "メールアドレス", value: BRAND.email },
   {
     label: "事業内容",
     value:

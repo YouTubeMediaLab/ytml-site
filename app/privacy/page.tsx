@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/config/brand";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー | SNS Media Lab",
@@ -55,7 +56,7 @@ const sections = [
   {
     title: "10. お問い合わせ",
     content:
-      "個人情報の取り扱いに関するお問い合わせは、以下よりご連絡ください。\nメールアドレス：ytb.media.lab@gmail.com\nまたはお問い合わせフォームをご利用ください。",
+      `個人情報の取り扱いに関するお問い合わせは、以下よりご連絡ください。\nメールアドレス：${BRAND.email}\nまたはお問い合わせフォームをご利用ください。`,
   },
 ];
 

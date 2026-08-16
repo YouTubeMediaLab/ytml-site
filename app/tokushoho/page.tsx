@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/config/brand";
 import { COURSES, OFFER, withTax, yen } from "@/config/offer";
 
 const { videoEditing, youtubeHalf, youtubeYear } = COURSES;
@@ -17,7 +18,7 @@ const tokushohoItems = [
     label: "電話番号",
     value: "080-6880-9400",
   },
-  { label: "メールアドレス", value: "ytb.media.lab@gmail.com" },
+  { label: "メールアドレス", value: BRAND.email },
   { label: "サービス名", value: "SNS Media Lab（SNSメディアラボ）" },
   {
     label: "販売価格",

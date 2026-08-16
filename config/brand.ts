@@ -20,7 +20,7 @@ export const BRAND = {
   representative: "吉柳 雄飛",
   address: "東京都中央区銀座7-13-6 サガミビル2階",
   tel: "080-6880-9400",
-  email: "ytb.media.lab@gmail.com",
+  email: "snsmedialab.official@gmail.com",
 } as const;
 
 /**
