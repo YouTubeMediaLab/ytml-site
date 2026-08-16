@@ -11,10 +11,12 @@ type FormData = {
   agree: boolean;
 };
 
+// 金額は出さない。コース紹介・料金セクションと並び順を揃えている
 const courseOptions = [
   { value: "", label: "関心のあるコースをお選びください" },
   { value: "edit", label: "動画編集コース" },
   { value: "youtube", label: "非属人YouTubeコース" },
+  { value: "consulting", label: "完全特別コンサル" },
   { value: "undecided", label: "まだ決まっていない・相談したい" },
 ];
 
