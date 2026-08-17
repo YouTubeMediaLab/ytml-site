@@ -86,6 +86,59 @@ export const OPERATOR_EVIDENCE: EvidenceItem[] = [
   },
 ];
 
+/**
+ * 受講生が運営しているSNSアカウントの投稿一覧。
+ *
+ * 特典④「非属人SNSの作り方」に掲載しているものと同じ画面。
+ * 投稿内容が特定されないよう、再生数以外はモザイク処理をかけてある。
+ * 掲載しているのは再生数だけで、収益額ではない点に注意すること。
+ */
+export type SnsWork = {
+  src: string;
+  width: number;
+  height: number;
+  /** 表示名。本人が特定されないようイニシャルのみ */
+  person: string;
+  genre: string;
+  platform: string;
+  /** 一番伸びた投稿の再生数 */
+  best: string;
+  alt: string;
+};
+
+export const STUDENT_SNS_WORKS: SnsWork[] = [
+  {
+    src: "/evidence/sns-aidrama.jpg",
+    width: 572,
+    height: 696,
+    person: "Nさん",
+    genre: "AIショートドラマ",
+    platform: "顔出しなし・撮影なし",
+    best: "40.6万回",
+    alt: "受講生Nさんが運営するAIショートドラマの投稿一覧。再生数は2.4万〜40.6万回",
+  },
+  {
+    src: "/evidence/sns-story.jpg",
+    width: 483,
+    height: 834,
+    person: "Oさん",
+    genre: "不倫・人間関係のストーリー",
+    platform: "顔出しなし",
+    best: "7.9万回",
+    alt: "受講生Oさんが運営する人間関係ストーリーの投稿一覧。再生数は1.5万〜7.9万回",
+  },
+  {
+    src: "/evidence/sns-love.jpg",
+    width: 605,
+    height: 688,
+    person: "Tさん",
+    genre: "恋愛系のネタ動画",
+    platform: "顔全体は出さない",
+    best: "11.3万回",
+    alt: "受講生Tさんが運営する恋愛系ネタ動画の投稿一覧。再生数は1,632〜11.3万回",
+  },
+];
+
 /** 受講生からの報告。掲載許可を取得済み。運営者の成果ではない */
 export const STUDENT_EVIDENCE: EvidenceItem[] = [
   {
