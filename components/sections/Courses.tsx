@@ -354,8 +354,11 @@ export default function Courses() {
 
               <div className="shrink-0 rounded-xl border border-gray-700 bg-gray-800/60 px-6 py-5 text-center">
                 <p className="text-[11px] font-bold text-gray-400">料金</p>
-                <p className="jp-tight mt-1.5 text-base font-black text-white">
+                <p className="jp-tight mt-1.5 whitespace-nowrap text-xl font-black text-white md:text-2xl">
                   {PRIVATE_CONSULTING.priceLabel}
+                </p>
+                <p className="jp-tight mt-2 text-[11px] leading-4 text-gray-400">
+                  {PRIVATE_CONSULTING.priceNote}
                 </p>
               </div>
             </div>

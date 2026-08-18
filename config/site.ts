@@ -212,7 +212,7 @@ export const EARNING_PATHS = {
     {
       no: "04",
       label: "SALES",
-      title: "提案・セールス",
+      title: "個別相談・セールス",
       summary:
         "相手の状況を聞き、必要な情報を順番に伝え、納得して判断してもらう販売力を身につけます。",
       facts: [

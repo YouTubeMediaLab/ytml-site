@@ -82,6 +82,11 @@ export default function StudentResults() {
                       最も伸びた投稿{" "}
                       <span className="font-black text-primary">{work.best}</span>
                     </p>
+                    <p className="jp-tight mt-2.5 border-t border-gray-100 pt-2.5 text-[11px] leading-5 text-gray-600">
+                      <span className="font-bold text-gray-400">運用の目的</span>
+                      <br />
+                      {work.purpose}
+                    </p>
                   </figcaption>
                 </figure>
               </Reveal>

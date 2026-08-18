@@ -103,6 +103,8 @@ export type SnsWork = {
   platform: string;
   /** 一番伸びた投稿の再生数 */
   best: string;
+  /** そのアカウントを何のために運用しているか */
+  purpose: string;
   alt: string;
 };
 
@@ -114,8 +116,9 @@ export const STUDENT_SNS_WORKS: SnsWork[] = [
     person: "Nさん",
     genre: "AIショートドラマ",
     platform: "顔出しなし・撮影なし",
-    best: "40.6万回",
-    alt: "受講生Nさんが運営するAIショートドラマの投稿一覧。再生数は2.4万〜40.6万回",
+    best: "139万回",
+    purpose: "制作方法に興味を持った人へ、noteで教材を販売",
+    alt: "受講生Nさんが運営するAIショートドラマの投稿一覧。最も伸びた投稿は139万回再生",
   },
   {
     src: "/evidence/sns-story.jpg",
@@ -124,8 +127,9 @@ export const STUDENT_SNS_WORKS: SnsWork[] = [
     person: "Oさん",
     genre: "不倫・人間関係のストーリー",
     platform: "顔出しなし",
-    best: "7.9万回",
-    alt: "受講生Oさんが運営する人間関係ストーリーの投稿一覧。再生数は1.5万〜7.9万回",
+    best: "173万回",
+    purpose: "LINEで状況を伺い、提携先の相談窓口を紹介",
+    alt: "受講生Oさんが運営する人間関係ストーリーの投稿一覧。最も伸びた投稿は173万回再生",
   },
   {
     src: "/evidence/sns-love.jpg",
@@ -134,8 +138,9 @@ export const STUDENT_SNS_WORKS: SnsWork[] = [
     person: "Tさん",
     genre: "恋愛系のネタ動画",
     platform: "顔全体は出さない",
-    best: "11.3万回",
-    alt: "受講生Tさんが運営する恋愛系ネタ動画の投稿一覧。再生数は1,632〜11.3万回",
+    best: "11.4万回",
+    purpose: "マッチングアプリの広告リンクから成果報酬を得る",
+    alt: "受講生Tさんが運営する恋愛系ネタ動画の投稿一覧。最も伸びた投稿は11.4万回再生",
   },
 ];
 
