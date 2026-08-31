@@ -83,7 +83,7 @@ export const HERO_POINTS = [
 export const OPERATOR = {
   name: "ゆうひ",
   title: "株式会社ult Adam 代表取締役 / SNS Media Lab 運営",
-  photo: "/images/yuuhi-profile.jpg",
+  photo: "/images/yuuhi-profile-ai.jpg",
   lead: "集客だけでなく、モノが売れる仕組みを構築。",
   body: "営業代行事業で16.3億円、YouTube関連事業で1,200万円。集客はすべてSNSから行い、発信だけでなく、商品設計・販売導線・提案・成約まで一貫して実践してきました。その経験を、未経験の方にも実行できる順番に整理してお伝えします。",
   quote: [
