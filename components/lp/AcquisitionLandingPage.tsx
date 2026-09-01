@@ -1,0 +1,782 @@
+import Image from "next/image";
+import { EvidenceCarousel } from "@/components/EvidenceCarousel";
+import {
+  OPERATOR_EVIDENCE,
+  STUDENT_EVIDENCE,
+  STUDENT_SNS_WORKS,
+} from "@/config/evidence";
+import { SNS_LP_LINE_URL } from "@/config/site";
+
+const SCREENING_FORM_URL = "https://forms.gle/cQmoVCfWMhEhbYDC7";
+
+export type AcquisitionLandingSource = "rich-menu" | "social";
+
+const VARIANTS = {
+  "rich-menu": {
+    ctaUrl: SCREENING_FORM_URL,
+    ctaLabel: "無料で個別相談に申し込む",
+    heroPrimaryNote: "回答後、公式LINEへ戻り「回答完了」と送信してください",
+    heroSecondaryNote: "審査通過者にのみ、個別相談のご案内をお送りします",
+    disclosure:
+      "SNS Media Labは有料のオンラインスクールです。申し込みフォーム回答後に審査を行い、通過された方へ個別相談をご案内します。",
+    processFaq: {
+      q: "回答すれば必ず個別相談を受けられますか？",
+      a: "個別相談は事前審査制です。アンケート内容を確認し、現在のサービスでお力になれると判断した方にのみ、個別相談のご案内をお送りします。",
+    },
+    finalEyebrow: "SCREENING",
+    finalHeading: "個別相談で、次の一歩を整理します。",
+    finalLead:
+      "商品が決まっていない方も問題ありません。今の状況と目標を伺い、以下の3点を一緒に整理します。",
+    finalTopics: [
+      "目的に合うSNSと発信方法",
+      "商品設計から販売までの導線",
+      "最初に取り組む具体的な手順",
+    ],
+    finalNote:
+      "申し込みフォームは約3〜5分です。内容を確認し、現在のサービスでお力になれる方へ個別相談をご案内します。",
+    cardEyebrow: "HOW TO APPLY",
+    cardHeading: ["回答後、LINEで", "「回答完了」と送信してください。"],
+    steps: [
+      "申し込みフォームに回答",
+      "公式LINEへ戻り「回答完了」と送信",
+      "内容を確認後、審査通過者に個別相談をご案内",
+    ],
+    buttonNote:
+      "ボタンを押すとGoogleフォームへ移動します。回答のみで契約や料金は発生しません。",
+  },
+  social: {
+    ctaUrl: SNS_LP_LINE_URL,
+    ctaLabel: "無料で公式LINEに登録する",
+    heroPrimaryNote: "LINE追加後、トーク画面の案内をご確認ください",
+    heroSecondaryNote: "友だち追加だけで契約や料金は発生しません",
+    disclosure:
+      "SNS Media Labは有料のオンラインスクールです。公式LINEでは、学べる内容やサポート、個別相談についてご案内しています。",
+    processFaq: {
+      q: "LINEに登録すると、必ず個別相談を受けられますか？",
+      a: "個別相談は事前審査制です。公式LINE内の案内からアンケートに回答いただき、現在のサービスでお力になれると判断した方へご案内します。",
+    },
+    finalEyebrow: "OFFICIAL LINE",
+    finalHeading: "まずは公式LINEで、詳しい案内をご確認ください。",
+    finalLead:
+      "スクールの内容を確認したうえで、個別相談を希望する方はLINE内の案内からお申し込みいただけます。",
+    finalTopics: [
+      "スクールで学べる内容",
+      "コース・サポートの詳細",
+      "個別相談への申し込み方法",
+    ],
+    finalNote:
+      "LINE追加は約10秒です。友だち追加だけで契約や料金は発生しません。",
+    cardEyebrow: "HOW TO START",
+    cardHeading: ["公式LINEを追加して、", "案内をご確認ください。"],
+    steps: [
+      "公式LINEを友だち追加",
+      "トーク画面で詳しい案内を確認",
+      "個別相談を希望する場合はアンケートに回答",
+    ],
+    buttonNote:
+      "ボタンを押すと公式LINEへ移動します。友だち追加だけで契約や料金は発生しません。",
+  },
+} as const;
+
+const concerns = [
+  "SNSを始めたいけれど、どの媒体から手をつければよいかわからない",
+  "投稿やフォロワーを、売上につなげる方法がわからない",
+  "自分の経験から、販売できる商品やサービスを考えたい",
+  "顔出しや実名公開をせず、完全在宅で収入の柱をつくりたい",
+];
+
+const salesFlow = [
+  {
+    number: "01",
+    label: "OFFER",
+    title: "商品設計",
+    text: "経験・得意・市場の悩みを整理し、誰に何を届けるのかを言葉にします。商品がない方もここから始められます。",
+  },
+  {
+    number: "02",
+    label: "CONTENT",
+    title: "SNS運用",
+    text: "Instagram・Threads・YouTubeなど、目的に合ったSNSを使い分け、見込み客に届く企画と発信の型を身につけます。",
+  },
+  {
+    number: "03",
+    label: "MARKETING",
+    title: "集客・教育・導線",
+    text: "投稿からLINEなどへ自然につなぎ、商品の必要性を理解してもらうまでの流れを設計します。",
+  },
+  {
+    number: "04",
+    label: "SALES",
+    title: "提案・セールス",
+    text: "相手の状況を聞き、必要な情報を順番に伝え、納得して判断してもらう販売力を学びます。",
+  },
+];
+
+const audiences = [
+  {
+    label: "商品がない方",
+    title: "売るものを決めるところから",
+    text: "これまでの経験や、これから取り組みたい分野をヒアリングし、需要のある商品へ整理します。希望や適性によっては、SNS Media Labの正規代理店として活動することも可能です。",
+    points: ["経験・強みの棚卸し", "商品内容と価格の設計", "正規代理店制度（審査あり）"],
+  },
+  {
+    label: "すでに商品がある方",
+    title: "売れるまでの流れを見直す",
+    text: "商品の魅力、発信内容、見込み客との接点、提案方法を一つの導線として整理し、売上につながらない原因を見つけます。",
+    points: ["商品・訴求の見直し", "SNSからの販売導線", "面談・提案・成約率の改善"],
+  },
+];
+
+const records = [
+  {
+    value: "約17億円",
+    label: "SNSから生まれた累計売上",
+    detail: "営業代行事業・YouTube関連事業などの累計。",
+  },
+  {
+    value: "16.3億円",
+    label: "営業代行事業の売上",
+    detail: "SNSで集客し、提案から成約まで担当。",
+  },
+  {
+    value: "1,200万円",
+    label: "YouTube関連事業の売上",
+    detail: "3か月間の売上。",
+  },
+  {
+    value: "月120万円",
+    label: "運営chの最高月収",
+    detail: "初挑戦の非属人YouTubeを1か月半で収益化。",
+  },
+  {
+    value: "100名以上",
+    label: "これまでの指導実績",
+    detail: "SNS Media Labでの指導人数。",
+  },
+];
+
+const courseCards = [
+  {
+    number: "01",
+    badge: "BASIC",
+    title: "動画編集コース",
+    period: "1年間",
+    text: "Premiere Proの基本操作から、仕事やSNS発信に活かせる実践的な動画編集まで、自分のペースで学びます。",
+    items: ["カット・テロップ・画像挿入", "BGM・効果音・書き出し", "LINE質問・Zoom個別MT"],
+  },
+  {
+    number: "02",
+    badge: "STANDARD",
+    title: "非属人YouTubeコース",
+    period: "半年",
+    text: "顔・声・名前を出さずに、YouTubeチャンネルを設計・運営する方法を学びます。",
+    items: ["チャンネル・コンセプト設計", "AIを使った企画・台本", "投稿・分析・収益化の仕組み"],
+  },
+  {
+    number: "03",
+    badge: "PREMIUM",
+    title: "非属人YouTubeコース",
+    period: "1年間・完全伴走型",
+    text: "動画制作・YouTube運営に加え、各種SNS、マーケティング、商品設計、セールスまで一貫して学びます。",
+    items: [
+      "Instagram・Threads・YouTubeなどの運用",
+      "商品設計・集客・販売導線",
+      "セールス・外注化・チーム構築",
+    ],
+    recommended: true,
+  },
+];
+
+const aiUses = [
+  {
+    icon: "/images/tool-chatgpt.png",
+    title: "企画・リサーチ",
+    text: "競合分析と企画案の整理",
+  },
+  {
+    icon: "/images/tool-claude.png",
+    title: "台本・投稿文",
+    text: "媒体に合わせた文章作成",
+  },
+  {
+    icon: "/images/tool-vrew.png",
+    title: "動画制作・編集",
+    text: "制作工程を型化して効率化",
+  },
+];
+
+const supports = [
+  {
+    mark: "LINE",
+    title: "LINEで無制限に質問",
+    text: "サポート期間中は、学習や実践で出てきた疑問を回数を気にせず送れます。",
+  },
+  {
+    mark: "1:1",
+    title: "Zoom個別ミーティング",
+    text: "画面共有をしながら、現在地と次にやることを一緒に整理します。",
+  },
+  {
+    mark: "PLAY",
+    title: "繰り返し見られる動画教材",
+    text: "仕事や家事の合間にも、必要な内容を自分のペースで確認できます。",
+  },
+  {
+    mark: "CHECK",
+    title: "実践内容へのフィードバック",
+    text: "投稿・動画・商品・導線を確認し、良い点と改善点を具体的にお伝えします。",
+  },
+];
+
+const faqs = [
+  {
+    q: "SNSもセールスも未経験ですが大丈夫ですか？",
+    a: "はい。ほとんどの方が未経験からのスタートです。パソコンの基本操作を含め、必要なことを順番に学べるようにしています。",
+  },
+  {
+    q: "まだ売る商品がありません。",
+    a: "問題ありません。経験や興味、取り組める時間などを伺い、商品設計から一緒に整理します。希望や適性によっては、審査のうえでSNS Media Labの正規代理店として活動することも可能です。",
+  },
+  {
+    q: "すべてのSNSを使う必要がありますか？",
+    a: "いいえ。Instagram・Threads・YouTube・X・TikTok・Facebookなどから、商品・目的・得意な発信方法に合う媒体を選び、優先順位を決めます。すべてを同時に始める必要はありません。",
+  },
+  {
+    q: "顔出しや実名公開は必要ですか？",
+    a: "必須ではありません。非属人YouTubeをはじめ、顔や名前を出さずに進める方法も学べます。商品や発信内容に合わせて、無理のない方法を一緒に選びます。",
+  },
+  {
+    q: "受講すれば収益を得られますか？",
+    a: "収益や成約を保証するものではありません。成果は商品、市場、実践量、発信内容などによって異なります。本スクールは必要なスキルと考え方を身につけるための教育サービスです。",
+  },
+];
+
+function BrandMark() {
+  return (
+    <div className="flex items-center gap-3" aria-label="SNS Media Lab">
+      <Image
+        src="/images/sml-icon.png"
+        alt=""
+        width={44}
+        height={44}
+        className="h-11 w-11 rounded-xl shadow-sm"
+        priority
+      />
+      <span className="text-left text-sm font-black leading-tight tracking-tight text-gray-900">
+        SNS
+        <br />
+        <span className="text-primary">Media Lab</span>
+      </span>
+    </div>
+  );
+}
+
+function ScreeningLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      className="cta-green group inline-flex min-h-16 w-full items-center justify-center rounded-2xl border-[3px] border-white px-6 py-5 text-center text-base font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:w-auto sm:min-w-[24rem] sm:px-8 sm:text-lg"
+    >
+      <span>
+        <span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>
+        {label.replace("無料で", "")}
+        <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+      </span>
+    </a>
+  );
+}
+
+function SectionHeading({ eyebrow, children }: { eyebrow: string; children: React.ReactNode }) {
+  return (
+    <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+      <p className="mb-3 text-xs font-bold tracking-[0.24em] text-primary">{eyebrow}</p>
+      <h2 className="text-2xl font-black leading-snug tracking-tight text-gray-900 [text-wrap:balance] md:text-4xl">
+        {children}
+      </h2>
+      <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-primary" />
+    </div>
+  );
+}
+
+export default function AcquisitionLandingPage({
+  source,
+}: {
+  source: AcquisitionLandingSource;
+}) {
+  const variant = VARIANTS[source];
+  const pageFaqs = [...faqs.slice(0, 4), variant.processFaq, ...faqs.slice(4)];
+
+  return (
+    <div className="line-lp overflow-hidden bg-white pb-20 text-gray-900 md:pb-0">
+      <div className="absolute left-0 right-0 top-0 z-20 border-b border-gray-100 bg-white/95 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-6xl items-center px-4 md:h-20">
+          <BrandMark />
+        </div>
+      </div>
+
+      <section className="relative flex min-h-[760px] items-center overflow-hidden pb-10 pt-24 md:min-h-[820px] md:pb-16 md:pt-28">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="自宅でSNS運用を学ぶ女性"
+            fill
+            sizes="100vw"
+            className="object-cover object-[34%_18%] md:object-[20%_center]"
+            priority
+          />
+          <div className="absolute inset-0 hidden bg-gradient-to-l from-white via-white/90 to-white/10 md:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.84] via-white/[0.92] to-white/[0.86] md:hidden" />
+        </div>
+        <div className="absolute -right-24 -top-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+
+        <div className="relative mx-auto flex w-full max-w-6xl px-5 md:px-10">
+          <div className="w-full md:ml-auto md:max-w-[570px]">
+            <p className="mb-5 inline-flex items-center rounded-full border border-primary/20 bg-white/90 px-4 py-2 text-[11px] font-black tracking-[0.04em] text-primary shadow-sm md:text-xs">
+              SNS集客から商品設計・セールスまで
+            </p>
+            <h1 className="font-black leading-[1.14] tracking-tight [text-wrap:balance]">
+              <span className="block text-[2.1rem] text-gray-900 sm:text-5xl md:text-[3.35rem]">人を集めるだけでは、</span>
+              <span className="block text-[2.1rem] text-gray-900 sm:text-5xl md:text-[3.35rem]">売上にならない。</span>
+              <span className="relative mt-3 inline-block text-[2.1rem] text-primary sm:text-5xl md:text-[3.35rem]">
+                <span className="block sm:inline">SNSを、</span>
+                <span className="block sm:inline">売上を生む仕組みへ。</span>
+                <span className="absolute -bottom-1 left-0 -z-10 h-3 w-full -rotate-[0.6deg] rounded-full bg-[#ffd84d]/80" aria-hidden="true" />
+              </span>
+            </h1>
+
+            <p className="mt-6 max-w-xl text-sm font-medium leading-7 text-gray-700 md:text-base md:leading-8">
+              <span className="block">Instagram・Threads・YouTubeなどのSNSを活用し、</span>
+              <span className="block">発信、集客、教育、販売まで。</span>
+              <strong className="mt-1 block whitespace-nowrap font-black text-gray-900">「最後に利益を生み出す」ために、</strong>
+              <span className="block">商品設計から販売までを一つの流れで学べます。</span>
+            </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+              {["商品がなくてもOK", "未経験歓迎", "完全在宅", "顔出しなしも可能", "スマホ1台でも可能"].map((item) => (
+                <span
+                  key={item}
+                  className={`whitespace-nowrap rounded-xl border border-blue-100 bg-white/95 px-2 py-2.5 text-center text-[10px] font-black text-gray-800 shadow-sm sm:px-3 sm:text-xs ${item === "スマホ1台でも可能" ? "col-span-2 sm:col-span-1" : ""}`}
+                >
+                  <span className="mr-1 text-primary">✓</span>{item}
+                </span>
+              ))}
+            </div>
+
+            <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] p-5 text-white shadow-[0_18px_38px_-16px_rgba(6,74,143,0.7)] sm:max-w-[33rem] md:p-6">
+              <div className="absolute -right-8 -top-12 h-32 w-32 rounded-full bg-[#ffd84d]/25 blur-2xl" aria-hidden="true" />
+              <p className="relative text-[10px] font-black tracking-[0.2em] text-[#ffd84d]">TRACK RECORD</p>
+              <p className="relative mt-2 font-black leading-tight">
+                <span className="block text-sm text-white/90 md:text-base">代表がSNSから生み出した</span>
+                <span className="mt-1 block text-lg md:text-xl">
+                  累計売り上げ
+                  <strong className="ml-2 text-[2.25rem] font-black leading-none text-[#ffd84d] md:text-[2.8rem]">約17億円</strong>
+                </span>
+              </p>
+              <p className="relative mt-3 text-[10px] leading-4 text-white/65">※ 運営者本人の実績であり、受講後の成果を保証するものではありません。</p>
+            </div>
+
+            <div className="mt-8">
+              <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+              <p className="mt-4 text-xs font-medium leading-5 text-gray-600">
+                {variant.heroPrimaryNote}
+              </p>
+              <p className="mt-1 text-[11px] leading-5 text-gray-500">{variant.heroSecondaryNote}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-y border-blue-100 bg-blue-50">
+        <p className="mx-auto max-w-4xl px-4 py-4 text-center text-xs font-medium leading-6 text-blue-900 md:text-sm">
+          {variant.disclosure}
+        </p>
+      </div>
+
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="FOR YOU">こんなお悩みはありませんか？</SectionHeading>
+          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[1fr_0.95fr] md:items-stretch">
+            <div className="grid gap-3">
+              {concerns.map((concern) => (
+                <div key={concern} className="flex items-start gap-3 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 to-white p-5 shadow-sm">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">✓</span>
+                  <p className="text-sm font-medium leading-6 text-gray-700 md:text-base">{concern}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col justify-center rounded-3xl border-2 border-primary/15 bg-white p-6 text-center shadow-xl shadow-blue-900/5 md:p-8">
+              <p className="mb-3 text-xs font-black tracking-[0.18em] text-primary">THE REAL ISSUE</p>
+              <h3 className="text-xl font-black leading-8 text-gray-900 md:text-2xl md:leading-tight">
+                フォロワーを集めることが、
+                <span className="relative mt-1 block text-primary">
+                  SNSのゴールではありません。
+                  <span className="absolute -bottom-1 left-0 -z-10 h-2 w-full bg-[#ffd84d]" aria-hidden="true" />
+                </span>
+              </h3>
+              <p className="mt-5 text-sm leading-7 text-gray-600 [text-wrap:pretty]">
+                商品を決め、必要な人へ届け、価値を伝え、最後に提案する。SNS Media Labでは、この一連の流れを学びます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-[#f5fbff] px-4 py-16 md:py-24">
+        <div className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="ONE FLOW">売れるまでに必要な4つの力</SectionHeading>
+          <div className="grid gap-4 md:grid-cols-4">
+            {salesFlow.map((item) => (
+              <article key={item.number} className="relative rounded-2xl border border-blue-100 bg-white p-6 shadow-lg shadow-blue-900/5">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ffd84d] text-xl font-black text-gray-900 shadow-sm">{item.number}</span>
+                  <span className="text-[9px] font-black tracking-[0.16em] text-primary/70">{item.label}</span>
+                </div>
+                <h3 className="mb-3 text-lg font-bold text-gray-900">{item.title}</h3>
+                <p className="text-sm leading-7 text-gray-600">{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="STARTING POINT">商品がある人も、ない人も始められます</SectionHeading>
+          <div className="grid gap-5 md:grid-cols-2">
+            {audiences.map((audience, index) => (
+              <article
+                key={audience.label}
+                className={`rounded-3xl p-7 shadow-lg md:p-10 ${index === 0 ? "border border-gray-200 bg-white" : "bg-primary text-white shadow-primary/15"}`}
+              >
+                <p className={`mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold ${index === 0 ? "bg-blue-50 text-primary" : "bg-white/15 text-white"}`}>{audience.label}</p>
+                <h3 className="mb-4 text-2xl font-black">{audience.title}</h3>
+                <p className={`mb-6 text-sm leading-7 md:text-base ${index === 0 ? "text-gray-600" : "text-blue-50"}`}>{audience.text}</p>
+                <ul className="space-y-3 text-sm font-bold">
+                  {audience.points.map((item) => (
+                    <li key={item} className="flex items-start gap-2"><span className={index === 0 ? "text-primary" : "text-[#ffd84d]"}>●</span>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-5 max-w-4xl rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-xs leading-6 text-amber-900 md:text-sm">
+            ※ SNS Media Lab正規代理店としての活動には審査があります。活動機会や収益を保証する制度ではありません。
+          </p>
+        </div>
+      </section>
+
+      <section id="profile" className="scroll-mt-5 bg-gradient-to-br from-blue-50 via-white to-[#f5fbff] px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-blue-900/10 ring-1 ring-blue-100">
+          <div className="grid md:grid-cols-[340px_1fr]">
+            <div className="relative min-h-[370px] overflow-hidden bg-primary md:min-h-[470px]">
+              <Image src="/images/yuuhi-profile-ai.jpg" alt="SNS Media Lab運営者 ゆうひ" fill sizes="(max-width: 768px) 100vw, 340px" className="object-cover object-top" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-6 pb-6 pt-20 text-white">
+                <p className="text-xl font-black">ゆうひ</p>
+                <p className="mt-1 text-xs font-bold tracking-wider text-white/80">株式会社ult Adam 代表取締役</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center p-7 md:p-12">
+              <p className="mb-2 text-xs font-bold tracking-[0.2em] text-primary">OPERATOR</p>
+              <h2 className="mb-5 text-2xl font-black md:text-3xl">集客だけでなく、モノが売れる仕組みを構築。</h2>
+              <p className="text-sm leading-8 text-gray-600 md:text-base">
+                営業代行からYouTube関連事業まで、集客はすべてSNSで行ってきました。現在は動画編集・非属人YouTube運営に加え、Instagram・Threads・YouTubeの運用、商品設計、マーケティング、セールスを一つの流れとして指導しています。
+              </p>
+              <div className="mt-6 rounded-2xl border-l-4 border-primary bg-blue-50 p-5">
+                <p className="text-sm font-bold leading-7 text-gray-800">
+                  <span className="block">物が最後に売れなければ、集客だけ学んでも売上にはならない。</span>
+                  <span className="mt-1 block">だから、販売まで自分で組み立てられる力を大切にしています。</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="results-gold-panel border-t border-[#e2b84d] p-6 md:p-9">
+            <div className="mb-6 text-center">
+              <p className="text-xs font-black tracking-[0.2em] text-[#a97809]">TRACK RECORD</p>
+              <h3 className="mt-2 text-xl font-black text-gray-900 md:text-2xl">数字で見る、運営者の実績</h3>
+            </div>
+            <div className="-mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0 md:pb-0">
+              {records.map((record) => (
+                <div key={record.value} className="result-gold-card flex min-h-40 w-[76vw] max-w-[270px] flex-none snap-center flex-col items-center justify-center rounded-2xl border px-4 py-5 text-center md:w-auto md:max-w-none">
+                  <p className="result-gold-value whitespace-nowrap text-2xl font-black tracking-tight md:text-[1.65rem]">{record.value}</p>
+                  <p className="mt-2 text-[11px] font-bold leading-5 text-gray-800">{record.label}</p>
+                  <p className="mt-1 text-[10px] leading-4 text-gray-500">{record.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-2 text-center text-[10px] font-bold tracking-[0.08em] text-[#8a5900] md:hidden">
+              ← 横にスワイプして実績を見る →
+            </p>
+            <p className="mt-5 text-center text-[11px] leading-5 text-gray-500">※ 上記はいずれも運営者本人の実績です。受講したすべての方に同様の成果を保証するものではありません。</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="EVIDENCE">YouTube・SNS運用の実績</SectionHeading>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
+              <h3 className="mb-2 text-lg font-black text-gray-900">運営チャンネルの一部</h3>
+              <p className="mb-5 text-xs leading-6 text-gray-500">現在運営している20チャンネルのうち、一部の管理画面です。チャンネル名は伏せています。</p>
+              <EvidenceCarousel items={OPERATOR_EVIDENCE} heightClass="h-[185px] md:h-[225px]" tone="gold" />
+            </div>
+            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
+              <h3 className="mb-2 text-lg font-black text-gray-900">受講された方からの報告</h3>
+              <p className="mb-5 text-xs leading-6 text-gray-500">掲載許可をいただいた受講生からの実際のご連絡です。個人が特定される情報は伏せています。</p>
+              <EvidenceCarousel items={STUDENT_EVIDENCE} heightClass="h-[185px] md:h-[225px]" />
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="text-center text-xl font-black text-gray-900 md:text-2xl">
+              受講生が運営しているSNSアカウント
+            </h3>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-7 text-gray-600">
+              顔を出さずに運営している実際の投稿です。投稿内容が特定されないよう、再生数以外は加工しています。
+            </p>
+
+            <div className="mt-7 grid gap-5 md:grid-cols-3">
+              {STUDENT_SNS_WORKS.map((work) => (
+                <figure key={work.src} className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                  <div className="flex items-center justify-between gap-2 border-b border-gray-100 px-4 py-3">
+                    <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-black text-primary ring-1 ring-primary/15">
+                      {work.person}
+                    </span>
+                    <span className="text-[11px] font-bold text-gray-500">{work.platform}</span>
+                  </div>
+                  <div className="flex h-[310px] items-center justify-center bg-gray-50 p-3">
+                    <Image
+                      src={work.src}
+                      alt={work.alt}
+                      width={work.width}
+                      height={work.height}
+                      className="max-h-full w-auto max-w-full rounded-lg object-contain"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <figcaption className="flex-1 border-t border-gray-100 px-4 py-4">
+                    <p className="text-sm font-black text-gray-900">{work.genre}</p>
+                    <p className="mt-1.5 text-xs text-gray-500">
+                      最も伸びた投稿 <span className="font-black text-primary">{work.best}</span>
+                    </p>
+                    <p className="mt-3 border-t border-gray-100 pt-3 text-[11px] leading-5 text-gray-600">
+                      <span className="font-bold text-gray-400">運用の目的</span>
+                      <br />
+                      {work.purpose}
+                    </p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4">
+            <p className="text-xs leading-6 text-amber-900">
+              ※ SNS投稿で掲載している数値は再生数であり、収益額ではありません。掲載しているのは個人の結果であり、すべての方に同様の成果を保証するものではありません。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading eyebrow="AI WORKFLOW">AIを、作業を進める仕組みにする</SectionHeading>
+          <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-stretch">
+            <div className="flex flex-col justify-center rounded-3xl bg-gradient-to-br from-[#064a8f] via-primary-dark to-primary p-7 text-white shadow-xl shadow-blue-900/15 md:p-9">
+              <p className="text-xs font-black tracking-[0.16em] text-[#ffd84d]">動画1本あたりの制作時間</p>
+              <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-end sm:gap-4">
+                <div className="text-center">
+                  <p className="text-xs text-white/65">AIを使わない場合</p>
+                  <p className="mt-1 whitespace-nowrap text-2xl font-black text-white/75 line-through decoration-[#ffd84d] decoration-2">12〜20時間</p>
+                </div>
+                <span className="text-2xl text-[#ffd84d] sm:hidden">↓</span>
+                <span className="hidden pb-1 text-2xl text-[#ffd84d] sm:block">→</span>
+                <div className="text-center">
+                  <p className="text-xs font-bold text-white">AIを使う場合</p>
+                  <p className="mt-1 whitespace-nowrap text-4xl font-black text-[#ffd84d]">1〜2時間</p>
+                </div>
+              </div>
+              <p className="mt-6 text-xs leading-6 text-white/70">
+                ※ 運営者本人が動画制作で計測した数値です。ジャンル、動画の長さ、習熟度によって異なります。
+              </p>
+            </div>
+
+            <div className="grid gap-3">
+              {aiUses.map((item) => (
+                <article key={item.title} className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50">
+                    <Image src={item.icon} alt="" width={32} height={32} className="h-8 w-8 object-contain" />
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-black text-gray-900 md:text-base">{item.title}</h3>
+                    <p className="mt-1 text-xs leading-5 text-gray-600 md:text-sm">{item.text}</p>
+                  </div>
+                </article>
+              ))}
+              <p className="rounded-2xl border-l-4 border-primary bg-white px-5 py-4 text-xs leading-6 text-gray-600">
+                AIを入れるだけでは速くなりません。どの工程で、どのツールに、どんな指示を出すかまで型にして学びます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="COURSE">目的に合わせた4つのプラン</SectionHeading>
+          <div className="grid gap-5 md:grid-cols-3">
+            {courseCards.map((course) => (
+              <article key={course.number} className={`relative flex h-full flex-col overflow-hidden rounded-3xl border-2 bg-white shadow-sm ${course.recommended ? "border-primary shadow-xl shadow-primary/10" : "border-gray-200"}`}>
+                {course.recommended && <div className="bg-primary py-2 text-center text-xs font-black text-white">★ SNSマーケティング・セールスまで対応</div>}
+                <div className="flex h-full flex-col p-6 md:p-7">
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-3xl font-black text-gray-200">{course.number}</span>
+                    <span className={`rounded-full px-3 py-1 text-[10px] font-black ${course.recommended ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-600"}`}>{course.badge}</span>
+                  </div>
+                  <h3 className="text-xl font-black text-gray-900">{course.title}</h3>
+                  <p className="mt-1 text-xs font-bold text-primary">サポート期間：{course.period}</p>
+                  <p className="mt-4 text-sm leading-7 text-gray-600">{course.text}</p>
+                  <ul className="mt-5 flex-1 space-y-3 border-t border-gray-100 pt-5">
+                    {course.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm font-medium leading-6 text-gray-700"><span className="mt-0.5 text-primary">✓</span>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 overflow-hidden rounded-3xl border border-gray-800 bg-gray-950 text-white shadow-2xl">
+            <div className="p-7 md:p-10">
+              <div>
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl font-black text-white/20">04</span>
+                  <span className="inline-flex rounded-full bg-[#ffd84d] px-3 py-1 text-[11px] font-black text-gray-900">月3名限定</span>
+                </div>
+                <p className="mt-4 text-xs font-black tracking-[0.18em] text-[#ffd84d]">PRIVATE CONSULTING</p>
+                <h3 className="mt-2 text-2xl font-black md:text-3xl">完全特別コンサル</h3>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-gray-300 md:text-base">事業として大きく伸ばしたい方へ。各SNSの運用から商品設計・LINE構築・セールスまで、運営者が実行に直接伴走します。</p>
+                <div className="mt-5 max-w-3xl rounded-2xl border border-[#ffd84d]/30 bg-[#ffd84d]/10 p-4">
+                  <p className="text-[10px] font-black tracking-[0.12em] text-[#ffd84d]">対応媒体</p>
+                  <p className="mt-2 text-sm font-bold leading-7 text-white/90">Instagram・Threads・X・TikTok・note・属人YouTube・非属人YouTube</p>
+                </div>
+                <ul className="mt-5 grid gap-2 text-sm text-gray-200 md:grid-cols-4">
+                  {["商品・訴求の設計", "SNS運用", "LINE・販売導線", "運営者が直接伴走"].map((item) => <li key={item} className="flex items-center gap-2"><span className="text-[#ffd84d]">●</span>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+            <p className="border-t border-gray-800 px-6 py-4 text-center text-[11px] leading-5 text-gray-500">※ 受け入れは月3名までです。審査結果によってはご希望に添えない場合があります。</p>
+          </div>
+
+          <div className="mt-10 text-center"><ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} /></div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading eyebrow="SUPPORT">ひとりで止まらないためのサポート</SectionHeading>
+
+          <div className="mb-7 overflow-hidden rounded-3xl border-2 border-primary bg-gradient-to-r from-[#064a8f] to-primary p-6 text-white shadow-xl shadow-blue-900/15 md:flex md:items-center md:justify-between md:gap-8 md:p-8">
+            <div>
+              <p className="text-xs font-black tracking-[0.18em] text-[#ffd84d]">EXTENDED SUPPORT</p>
+              <h3 className="mt-2 text-xl font-black md:text-2xl">受講料の回収まで、サポート期間を延長</h3>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-white/85 md:text-base">
+                1年・半年の期間内に受講料を回収できなかった場合は、追加費用なしでサポートを継続します。
+              </p>
+            </div>
+            <p className="mt-4 flex-shrink-0 rounded-xl bg-white/10 px-4 py-3 text-[11px] leading-5 text-white/75 md:mt-0 md:max-w-[230px]">
+              ※ 収益や受講料の回収を保証するものではありません。成果には個人差があります。
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {supports.map((support) => (
+              <article key={support.title} className="flex gap-5 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-7">
+                <span className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[10px] font-black tracking-tight text-primary">{support.mark}</span>
+                <div><h3 className="mb-2 text-base font-bold text-gray-900 md:text-lg">{support.title}</h3><p className="text-sm leading-7 text-gray-600">{support.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-blue-50 via-white to-[#f5fbff] px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading eyebrow="FAQ">よくある質問</SectionHeading>
+          <div className="divide-y divide-gray-100 rounded-2xl border border-gray-100 bg-white px-5 shadow-sm md:px-8">
+            {pageFaqs.map((faq) => (
+              <details key={faq.q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-bold text-gray-900 marker:content-none">
+                  <span className="flex gap-3 text-sm leading-6 md:text-base"><span className="text-primary">Q.</span>{faq.q}</span>
+                  <span className="text-xl font-normal text-primary transition group-open:rotate-45" aria-hidden="true">＋</span>
+                </summary>
+                <p className="ml-8 mt-3 text-sm leading-7 text-gray-600 md:text-base">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="screening" className="relative scroll-mt-5 overflow-hidden bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] px-4 py-16 md:py-24">
+        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#ffd84d]/20 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+          <div className="relative text-white md:sticky md:top-8">
+            <p className="mb-3 inline-block rounded-full bg-[#ffd84d] px-3 py-1.5 text-xs font-black tracking-[0.18em] text-gray-900">{variant.finalEyebrow}</p>
+            <h2 className="text-[1.65rem] font-black leading-tight md:text-[2rem]">{variant.finalHeading}</h2>
+            <p className="mt-5 text-sm leading-7 text-white/85 md:text-base">{variant.finalLead}</p>
+            <div className="mt-7 space-y-3 text-sm font-bold text-white">
+              {variant.finalTopics.map((topic) => (
+                <p key={topic}><span className="mr-2 text-[#ffd84d]">✓</span>{topic}</p>
+              ))}
+            </div>
+            <p className="mt-6 text-xs leading-6 text-white/65">{variant.finalNote}</p>
+          </div>
+
+          <div className="relative rounded-3xl bg-white p-6 shadow-2xl md:p-9">
+            <p className="mb-2 text-xs font-black tracking-[0.18em] text-primary">{variant.cardEyebrow}</p>
+            <h3 className="text-2xl font-black leading-snug text-gray-900 md:text-3xl">{variant.cardHeading[0]}<br />{variant.cardHeading[1]}</h3>
+            <ol className="my-7 space-y-4">
+              {variant.steps.map((step, index) => (
+                <li key={step} className="flex items-center gap-4 rounded-xl bg-gray-50 p-4">
+                  <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#ffd84d] text-sm font-black text-gray-900">{index + 1}</span>
+                  <span className="text-sm font-bold leading-6 text-gray-800">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <a href={variant.ctaUrl} className="cta-green group flex min-h-20 w-full items-center justify-center rounded-2xl border-[3px] border-white px-5 py-5 text-center text-lg font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:text-xl">
+              <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>{variant.ctaLabel.replace("無料で", "")}<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
+            </a>
+            <p className="mt-5 text-center text-xs leading-5 text-gray-500">{variant.buttonNote}</p>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-[#052f5f] px-4 py-8 text-center">
+        <p className="mb-4 text-xs text-white/50">© {new Date().getFullYear()} SNS Media Lab / 株式会社ult Adam</p>
+        <nav aria-label="法的情報" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          {[
+            ["/company", "会社概要"],
+            ["/tokushoho", "特定商取引法に基づく表記"],
+            ["/privacy", "プライバシーポリシー"],
+            ["/terms", "利用規約"],
+          ].map(([href, label]) => (
+            <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-xs text-white/50 underline underline-offset-4 transition hover:text-white">{label}</a>
+          ))}
+        </nav>
+      </div>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
+        <a href={variant.ctaUrl} className="cta-green cta-green-sm group flex min-h-14 w-full items-center justify-center rounded-xl border-2 border-white px-4 text-center text-sm font-black leading-5 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]">
+          <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>{variant.ctaLabel.replace("無料で", "")}<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  );
+}

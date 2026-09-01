@@ -6,6 +6,10 @@
 export const LINE_URL =
   "https://online.snsmedialab.com/line/open/Uih49tVZnQlv?mtid=a8h3dWaJWUsh";
 
+/** SNS投稿・プロフィールから流入するLP専用の公式LINE */
+export const SNS_LP_LINE_URL =
+  "https://online.snsmedialab.com/line/open/Uih49tVZnQlv?mtid=i8AIBi8Zyp8u";
+
 /** 個別相談の実施条件 */
 export const CONSULTATION = {
   methods: "ZoomまたはLINE通話",
