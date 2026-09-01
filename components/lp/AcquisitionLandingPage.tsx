@@ -46,9 +46,9 @@ const VARIANTS = {
   },
   social: {
     ctaUrl: SNS_LP_LINE_URL,
-    ctaLabel: "無料で公式LINEに登録する",
-    heroPrimaryNote: "LINE追加後、トーク画面の案内をご確認ください",
-    heroSecondaryNote: "友だち追加だけで契約や料金は発生しません",
+    ctaLabel: "無料で10大特典を受け取る",
+    heroPrimaryNote: "公式LINE登録者限定の無料10大特典をご用意しています",
+    heroSecondaryNote: "LINE追加は約10秒・登録無料",
     disclosure:
       "SNS Media Labは有料のオンラインスクールです。公式LINEでは、学べる内容やサポート、個別相談についてご案内しています。",
     processFaq: {
@@ -56,22 +56,22 @@ const VARIANTS = {
       a: "個別相談は事前審査制です。公式LINE内の案内からアンケートに回答いただき、現在のサービスでお力になれると判断した方へご案内します。",
     },
     finalEyebrow: "OFFICIAL LINE",
-    finalHeading: "まずは公式LINEで、詳しい案内をご確認ください。",
+    finalHeading: "無料10大特典から、SNS収益化の全体像を学べます。",
     finalLead:
-      "スクールの内容を確認したうえで、個別相談を希望する方はLINE内の案内からお申し込みいただけます。",
+      "SNS運用だけで終わらず、集客から販売までを一つの流れとして学べる実践資料をご用意しました。",
     finalTopics: [
-      "スクールで学べる内容",
-      "コース・サポートの詳細",
-      "個別相談への申し込み方法",
+      "SNS売上導線・集客の設計",
+      "売れる文章・投稿ネタ・台本",
+      "複数のSNSへ横展開する実践方法",
     ],
     finalNote:
       "LINE追加は約10秒です。友だち追加だけで契約や料金は発生しません。",
-    cardEyebrow: "HOW TO START",
-    cardHeading: ["公式LINEを追加して、", "案内をご確認ください。"],
+    cardEyebrow: "FREE 10 BENEFITS",
+    cardHeading: ["公式LINEを追加して、", "無料10大特典を受け取る。"],
     steps: [
       "公式LINEを友だち追加",
-      "トーク画面で詳しい案内を確認",
-      "個別相談を希望する場合はアンケートに回答",
+      "トーク画面から無料10大特典を確認",
+      "実践ガイドを見ながらSNS運用に活用",
     ],
     buttonNote:
       "ボタンを押すと公式LINEへ移動します。友だち追加だけで契約や料金は発生しません。",
@@ -391,6 +391,36 @@ export default function AcquisitionLandingPage({
           {variant.disclosure}
         </p>
       </div>
+
+      {source === "social" && (
+        <section className="border-b border-gray-100 bg-white px-4 py-14 md:py-20">
+          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1fr_0.9fr] md:items-center md:gap-12">
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl shadow-blue-900/10">
+              <Image
+                src="/images/sns-free-10-benefits.png"
+                alt="SNS Media Lab公式LINE登録者限定の無料10大特典"
+                width={1254}
+                height={1254}
+                className="h-auto w-full"
+                sizes="(max-width: 768px) 100vw, 520px"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <p className="text-xs font-black tracking-[0.2em] text-primary">OFFICIAL LINE LIMITED</p>
+              <h2 className="mt-3 text-2xl font-black leading-snug text-gray-900 md:text-4xl">
+                SNS収益化を学べる<br />無料10大特典
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-gray-600 md:text-base md:leading-8">
+                SNS売上導線、文章作成、集客、投稿企画、YouTube分析まで。SNSを売上につなげるための実践資料を、公式LINE登録者限定でお渡ししています。
+              </p>
+              <div className="mt-7 md:text-left">
+                <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+                <p className="mt-3 text-xs font-medium text-gray-500">LINE追加は約10秒・登録無料</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
