@@ -205,6 +205,23 @@ const aiUses = [
   },
 ];
 
+const freeBenefits = {
+  basic: [
+    "SNS売上導線ロードマップ",
+    "売れる文章の作り方",
+    "Threads・Instagram集客実践ガイド",
+    "顔出しなしで始める非属人SNSの作り方",
+    "非属人SNSキャラクター・企画設計ワーク",
+  ],
+  advanced: [
+    "SNSコンテンツ横展開マップ",
+    "YouTubeの数字の見方と改善方法",
+    "SNS投稿ネタの探し方・広げ方",
+    "SNS構成・台本の作り方",
+    "SNSの表紙・カバー画像の作り方",
+  ],
+} as const;
+
 const supports = [
   {
     mark: "LINE",
@@ -394,29 +411,59 @@ export default function AcquisitionLandingPage({
 
       {source === "social" && (
         <section className="border-b border-gray-100 bg-white px-4 py-14 md:py-20">
-          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1fr_0.9fr] md:items-center md:gap-12">
-            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl shadow-blue-900/10">
-              <Image
-                src="/images/sns-free-10-benefits.png"
-                alt="SNS Media Lab公式LINE登録者限定の無料10大特典"
-                width={1254}
-                height={1254}
-                className="h-auto w-full"
-                sizes="(max-width: 768px) 100vw, 520px"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <p className="text-xs font-black tracking-[0.2em] text-primary">OFFICIAL LINE LIMITED</p>
-              <h2 className="mt-3 text-2xl font-black leading-snug text-gray-900 md:text-4xl">
-                SNS収益化を学べる<br />無料10大特典
-              </h2>
-              <p className="mt-5 text-sm leading-7 text-gray-600 md:text-base md:leading-8">
-                SNS売上導線、文章作成、集客、投稿企画、YouTube分析まで。SNSを売上につなげるための実践資料を、公式LINE登録者限定でお渡ししています。
-              </p>
-              <div className="mt-7 md:text-left">
-                <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
-                <p className="mt-3 text-xs font-medium text-gray-500">LINE追加は約10秒・登録無料</p>
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-8 md:grid-cols-[1fr_0.9fr] md:items-center md:gap-12">
+              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl shadow-blue-900/10">
+                <Image
+                  src="/images/sns-free-10-benefits.png"
+                  alt="SNS Media Lab公式LINE登録者限定の無料10大特典"
+                  width={1254}
+                  height={1254}
+                  className="h-auto w-full"
+                  sizes="(max-width: 768px) 100vw, 520px"
+                />
               </div>
+              <div className="text-center md:text-left">
+                <p className="text-xs font-black tracking-[0.2em] text-primary">OFFICIAL LINE LIMITED</p>
+                <h2 className="mt-3 text-2xl font-black leading-snug text-gray-900 md:text-4xl">
+                  SNS収益化を学べる<br />完全無料の10大特典
+                </h2>
+                <p className="mt-5 text-sm leading-7 text-gray-600 md:text-base md:leading-8">
+                  何から始め、どう発信し、どの数字を見て改善するのか。SNS運用の基礎から実践までを、10冊のガイドにまとめました。
+                </p>
+                <p className="mt-4 border-l-4 border-primary bg-blue-50 px-4 py-3 text-left text-sm font-bold leading-7 text-gray-800">
+                  これを読めば、自分に合ったSNS運用を始めるためのスタートラインに立てます。
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
+              {([
+                ["基礎編", "まず押さえたい5つの基本", freeBenefits.basic, "bg-primary", "text-primary"],
+                ["応用編", "発信を伸ばす5つの実践", freeBenefits.advanced, "bg-[#052f5f]", "text-[#052f5f]"],
+              ] as const).map(([label, heading, items, headerColor, numberColor]) => (
+                <div key={label} className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                  <div className={`${headerColor} flex items-center justify-between gap-3 px-5 py-4 text-white`}>
+                    <span className="text-lg font-black">{label}</span>
+                    <span className="text-xs font-bold text-white/75">{heading}</span>
+                  </div>
+                  <ol className="divide-y divide-gray-100 px-5">
+                    {items.map((item, index) => (
+                      <li key={item} className="flex items-center gap-3 py-3.5 text-sm font-bold leading-6 text-gray-800">
+                        <span className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-gray-50 text-xs font-black ${numberColor}`}>
+                          {index + 1}
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-9 text-center">
+              <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+              <p className="mt-3 text-xs font-medium text-gray-500">LINE追加は約10秒・登録無料</p>
             </div>
           </div>
         </section>
