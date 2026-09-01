@@ -56,9 +56,9 @@ const VARIANTS = {
       a: "個別相談は事前審査制です。公式LINE内の案内からアンケートに回答いただき、現在のサービスでお力になれると判断した方へご案内します。",
     },
     finalEyebrow: "OFFICIAL LINE",
-    finalHeading: "無料10大特典から、SNS収益化の全体像を学べます。",
+    finalHeading: "10大特典で学ぶ、SNS収益化の全体像。",
     finalLead:
-      "SNS運用だけで終わらず、集客から販売までを一つの流れとして学べる実践資料をご用意しました。",
+      "SNS運用の基礎から販売導線まで、実践に必要な内容を10冊にまとめました。",
     finalTopics: [
       "SNS売上導線・集客の設計",
       "売れる文章・投稿ネタ・台本",
@@ -69,9 +69,9 @@ const VARIANTS = {
     cardEyebrow: "FREE 10 BENEFITS",
     cardHeading: ["公式LINEを追加して、", "無料10大特典を受け取る。"],
     steps: [
-      "公式LINEを友だち追加",
-      "トーク画面から無料10大特典を確認",
-      "実践ガイドを見ながらSNS運用に活用",
+      "公式LINEを追加",
+      "無料10大特典を受け取る",
+      "ガイドを見ながら実践",
     ],
     buttonNote:
       "ボタンを押すと公式LINEへ移動します。友だち追加だけで契約や料金は発生しません。",
@@ -79,10 +79,10 @@ const VARIANTS = {
 } as const;
 
 const concerns = [
-  "SNSを始めたいけれど、どの媒体から手をつければよいかわからない",
-  "投稿やフォロワーを、売上につなげる方法がわからない",
-  "自分の経験から、販売できる商品やサービスを考えたい",
-  "顔出しや実名公開をせず、完全在宅で収入の柱をつくりたい",
+  "どのSNSから始めればよいかわからない",
+  "投稿を売上につなげる方法がわからない",
+  "自分の経験を商品にする方法がわからない",
+  "顔出しせず、在宅で収入の柱をつくりたい",
 ];
 
 const salesFlow = [
@@ -90,25 +90,25 @@ const salesFlow = [
     number: "01",
     label: "OFFER",
     title: "商品設計",
-    text: "経験・得意・市場の悩みを整理し、誰に何を届けるのかを言葉にします。商品がない方もここから始められます。",
+    text: "経験・得意と市場の悩みを整理し、誰に何を届けるかを決めます。",
   },
   {
     number: "02",
     label: "CONTENT",
     title: "SNS運用",
-    text: "Instagram・Threads・YouTubeなど、目的に合ったSNSを使い分け、見込み客に届く企画と発信の型を身につけます。",
+    text: "目的に合うSNSを選び、見込み客に届く企画と発信の型を身につけます。",
   },
   {
     number: "03",
     label: "MARKETING",
     title: "集客・教育・導線",
-    text: "投稿からLINEなどへ自然につなぎ、商品の必要性を理解してもらうまでの流れを設計します。",
+    text: "投稿からLINEへつなぎ、商品を理解してもらう流れを設計します。",
   },
   {
     number: "04",
     label: "SALES",
     title: "提案・セールス",
-    text: "相手の状況を聞き、必要な情報を順番に伝え、納得して判断してもらう販売力を学びます。",
+    text: "相手の状況を聞き、納得して判断できる提案方法を学びます。",
   },
 ];
 
@@ -116,13 +116,13 @@ const audiences = [
   {
     label: "商品がない方",
     title: "売るものを決めるところから",
-    text: "これまでの経験や、これから取り組みたい分野をヒアリングし、需要のある商品へ整理します。希望や適性によっては、SNS Media Labの正規代理店として活動することも可能です。",
+    text: "経験や興味を整理し、需要のある商品へ整えます。希望や適性によっては、正規代理店として活動することも可能です。",
     points: ["経験・強みの棚卸し", "商品内容と価格の設計", "正規代理店制度（審査あり）"],
   },
   {
     label: "すでに商品がある方",
     title: "売れるまでの流れを見直す",
-    text: "商品の魅力、発信内容、見込み客との接点、提案方法を一つの導線として整理し、売上につながらない原因を見つけます。",
+    text: "商品・発信・提案を一つの導線として整理し、売上につながらない原因を見つけます。",
     points: ["商品・訴求の見直し", "SNSからの販売導線", "面談・提案・成約率の改善"],
   },
 ];
@@ -161,7 +161,7 @@ const courseCards = [
     badge: "BASIC",
     title: "動画編集コース",
     period: "1年間",
-    text: "Premiere Proの基本操作から、仕事やSNS発信に活かせる実践的な動画編集まで、自分のペースで学びます。",
+    text: "Adobe Premiere Proの基本操作から、仕事やSNS発信に活かせる動画編集まで学びます。",
     items: ["カット・テロップ・画像挿入", "BGM・効果音・書き出し", "LINE質問・Zoom個別MT"],
   },
   {
@@ -292,7 +292,7 @@ function ScreeningLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
-      className="cta-green group inline-flex min-h-16 w-full items-center justify-center rounded-2xl border-[3px] border-white px-6 py-5 text-center text-base font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:w-auto sm:min-w-[24rem] sm:px-8 sm:text-lg"
+      className="cta-green group inline-flex min-h-16 w-full max-w-full items-center justify-center rounded-2xl border-[3px] border-white px-4 py-5 text-center text-base font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:w-auto sm:min-w-[24rem] sm:px-8 sm:text-lg"
     >
       <span>
         <span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>
@@ -347,7 +347,7 @@ export default function AcquisitionLandingPage({
         <div className="absolute -right-24 -top-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
 
         <div className="relative mx-auto flex w-full max-w-6xl px-5 md:px-10">
-          <div className="w-full md:ml-auto md:max-w-[570px]">
+          <div className="min-w-0 w-full md:ml-auto md:max-w-[570px]">
             <p className="mb-5 inline-flex items-center rounded-full border border-primary/20 bg-white/90 px-4 py-2 text-[11px] font-black tracking-[0.04em] text-primary shadow-sm md:text-xs">
               SNS集客から商品設計・セールスまで
             </p>
@@ -361,25 +361,23 @@ export default function AcquisitionLandingPage({
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-sm font-medium leading-7 text-gray-700 md:text-base md:leading-8">
-              <span className="block">Instagram・Threads・YouTubeなどのSNSを活用し、</span>
-              <span className="block">発信、集客、教育、販売まで。</span>
-              <strong className="mt-1 block whitespace-nowrap font-black text-gray-900">「最後に利益を生み出す」ために、</strong>
-              <span className="block">商品設計から販売までを一つの流れで学べます。</span>
+            <p className="max-w-full mt-6 break-words text-sm font-medium leading-7 text-gray-700 md:text-base md:leading-8">
+              <span className="block">Instagram・Threads・YouTubeなどを活用。</span>
+              <span className="block">発信から集客・販売までを一つの流れで学びます。</span>
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
               {["商品がなくてもOK", "未経験歓迎", "完全在宅", "顔出しなしも可能", "スマホ1台でも可能"].map((item) => (
                 <span
                   key={item}
-                  className={`whitespace-nowrap rounded-xl border border-blue-100 bg-white/95 px-2 py-2.5 text-center text-[10px] font-black text-gray-800 shadow-sm sm:px-3 sm:text-xs ${item === "スマホ1台でも可能" ? "col-span-2 sm:col-span-1" : ""}`}
+                  className={`min-w-0 rounded-xl border border-blue-100 bg-white/95 px-2 py-2.5 text-center text-[10px] font-black leading-4 text-gray-800 shadow-sm sm:whitespace-nowrap sm:px-3 sm:text-xs ${item === "スマホ1台でも可能" ? "col-span-2 sm:col-span-1" : ""}`}
                 >
                   <span className="mr-1 text-primary">✓</span>{item}
                 </span>
               ))}
             </div>
 
-            <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] p-5 text-white shadow-[0_18px_38px_-16px_rgba(6,74,143,0.7)] sm:max-w-[33rem] md:p-6">
+            <div className="relative mt-8 w-full min-w-0 overflow-hidden rounded-3xl border-2 border-[#ffd84d] bg-gradient-to-br from-[#064a8f] via-primary-dark to-[#1496ff] p-5 text-white shadow-[0_18px_38px_-16px_rgba(6,74,143,0.7)] sm:max-w-[33rem] md:p-6">
               <div className="absolute -right-8 -top-12 h-32 w-32 rounded-full bg-[#ffd84d]/25 blur-2xl" aria-hidden="true" />
               <p className="relative text-[10px] font-black tracking-[0.2em] text-[#ffd84d]">TRACK RECORD</p>
               <p className="relative mt-2 font-black leading-tight">
@@ -560,13 +558,12 @@ export default function AcquisitionLandingPage({
             <div className="flex flex-col justify-center p-7 md:p-12">
               <p className="mb-2 text-xs font-bold tracking-[0.2em] text-primary">OPERATOR</p>
               <h2 className="mb-5 text-2xl font-black md:text-3xl">集客だけでなく、モノが売れる仕組みを構築。</h2>
-              <p className="text-sm leading-8 text-gray-600 md:text-base">
-                営業代行からYouTube関連事業まで、集客はすべてSNSで行ってきました。現在は動画編集・非属人YouTube運営に加え、Instagram・Threads・YouTubeの運用、商品設計、マーケティング、セールスを一つの流れとして指導しています。
+              <p className="text-sm leading-7 text-gray-600 md:text-base md:leading-8">
+                営業代行・YouTube関連事業の集客をSNSで実践。現在は各SNSの運用から商品設計、マーケティング、セールスまでを一貫して指導しています。
               </p>
               <div className="mt-6 rounded-2xl border-l-4 border-primary bg-blue-50 p-5">
                 <p className="text-sm font-bold leading-7 text-gray-800">
-                  <span className="block">物が最後に売れなければ、集客だけ学んでも売上にはならない。</span>
-                  <span className="mt-1 block">だから、販売まで自分で組み立てられる力を大切にしています。</span>
+                  集客だけで終わらず、販売まで自分で組み立てられる力を大切にしています。
                 </p>
               </div>
             </div>
@@ -596,26 +593,32 @@ export default function AcquisitionLandingPage({
 
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="EVIDENCE">YouTube・SNS運用の実績</SectionHeading>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
-              <h3 className="mb-2 text-lg font-black text-gray-900">運営チャンネルの一部</h3>
-              <p className="mb-5 text-xs leading-6 text-gray-500">現在運営している20チャンネルのうち、一部の管理画面です。チャンネル名は伏せています。</p>
-              <EvidenceCarousel items={OPERATOR_EVIDENCE} heightClass="h-[185px] md:h-[225px]" tone="gold" />
+          <SectionHeading eyebrow="RESULTS">YouTubeとInstagramの実績</SectionHeading>
+
+          <div className="mb-6 flex items-center gap-3">
+            <span className="rounded-full bg-[#ff0033] px-3 py-1.5 text-[10px] font-black tracking-[0.14em] text-white">YOUTUBE</span>
+            <h3 className="text-xl font-black text-gray-900 md:text-2xl">YouTube運営実績</h3>
+          </div>
+          <div className="grid min-w-0 gap-8 lg:grid-cols-2">
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
+              <h4 className="mb-2 text-lg font-black text-gray-900">運営者のYouTubeチャンネル</h4>
+              <p className="mb-5 text-xs leading-6 text-gray-500">運営20チャンネルの一部です。チャンネル名は伏せています。</p>
+              <EvidenceCarousel items={OPERATOR_EVIDENCE} heightClass="h-[190px] md:h-[225px]" tone="gold" />
             </div>
-            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
-              <h3 className="mb-2 text-lg font-black text-gray-900">受講された方からの報告</h3>
-              <p className="mb-5 text-xs leading-6 text-gray-500">掲載許可をいただいた受講生からの実際のご連絡です。個人が特定される情報は伏せています。</p>
-              <EvidenceCarousel items={STUDENT_EVIDENCE} heightClass="h-[185px] md:h-[225px]" />
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-gray-100 bg-gray-50 p-5 md:p-7">
+              <h4 className="mb-2 text-lg font-black text-gray-900">受講生のYouTube成果報告</h4>
+              <p className="mb-5 text-xs leading-6 text-gray-500">掲載許可を得た収益化・入金報告です。個人情報は伏せています。</p>
+              <EvidenceCarousel items={STUDENT_EVIDENCE} heightClass="h-[300px] md:h-[225px]" />
             </div>
           </div>
 
-          <div className="mt-12">
-            <h3 className="text-center text-xl font-black text-gray-900 md:text-2xl">
-              受講生が運営しているSNSアカウント
-            </h3>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-7 text-gray-600">
-              顔を出さずに運営している実際の投稿です。投稿内容が特定されないよう、再生数以外は加工しています。
+          <div className="mt-16 border-t border-gray-200 pt-12">
+            <div className="flex items-center justify-center gap-3">
+              <span className="rounded-full bg-gradient-to-r from-[#f02f74] to-[#f77737] px-3 py-1.5 text-[10px] font-black tracking-[0.14em] text-white">INSTAGRAM</span>
+              <h3 className="text-xl font-black text-gray-900 md:text-2xl">Instagram運用事例</h3>
+            </div>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-7 text-gray-600 [text-wrap:pretty]">
+              受講生が顔出しを抑えて運営している投稿事例です。再生数以外は加工しています。
             </p>
 
             <div className="mt-7 grid gap-5 md:grid-cols-3">
@@ -639,6 +642,7 @@ export default function AcquisitionLandingPage({
                   </div>
                   <figcaption className="flex-1 border-t border-gray-100 px-4 py-4">
                     <p className="text-sm font-black text-gray-900">{work.genre}</p>
+                    <p className="mt-2 inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-bold text-gray-600">{work.approach}</p>
                     <p className="mt-1.5 text-xs text-gray-500">
                       最も伸びた投稿 <span className="font-black text-primary">{work.best}</span>
                     </p>
@@ -655,7 +659,7 @@ export default function AcquisitionLandingPage({
 
           <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4">
             <p className="text-xs leading-6 text-amber-900">
-              ※ SNS投稿で掲載している数値は再生数であり、収益額ではありません。掲載しているのは個人の結果であり、すべての方に同様の成果を保証するものではありません。
+              ※ Instagramの数値は再生数であり、収益額ではありません。掲載実績は個人の結果であり、同様の成果を保証するものではありません。
             </p>
           </div>
         </div>
@@ -806,7 +810,7 @@ export default function AcquisitionLandingPage({
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="relative text-white md:sticky md:top-8">
             <p className="mb-3 inline-block rounded-full bg-[#ffd84d] px-3 py-1.5 text-xs font-black tracking-[0.18em] text-gray-900">{variant.finalEyebrow}</p>
-            <h2 className="text-[1.65rem] font-black leading-tight md:text-[2rem]">{variant.finalHeading}</h2>
+            <h2 className="text-[1.65rem] font-black leading-tight [text-wrap:balance] md:text-[2rem]">{variant.finalHeading}</h2>
             <p className="mt-5 text-sm leading-7 text-white/85 md:text-base">{variant.finalLead}</p>
             <div className="mt-7 space-y-3 text-sm font-bold text-white">
               {variant.finalTopics.map((topic) => (

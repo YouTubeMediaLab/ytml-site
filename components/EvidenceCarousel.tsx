@@ -141,7 +141,7 @@ export function EvidenceCarousel({
   };
 
   return (
-    <div className="relative">
+    <div className="relative min-w-0 w-full overflow-hidden">
       <ul
         ref={trackRef}
         onScroll={syncActive}
@@ -167,15 +167,15 @@ export function EvidenceCarousel({
             step(-1);
           }
         }}
-        className="scrollbar-hide flex cursor-grab snap-x snap-mandatory select-none gap-3 overflow-x-auto scroll-smooth px-1 pb-2 focus:outline-none active:cursor-grabbing md:gap-4"
+        className="scrollbar-hide flex w-full max-w-full cursor-grab snap-x snap-mandatory scroll-px-1 select-none gap-3 overflow-x-scroll overscroll-x-contain scroll-smooth px-1 pb-2 focus:outline-none active:cursor-grabbing [touch-action:pan-x_pan-y] [-webkit-overflow-scrolling:touch] md:gap-4"
         aria-label="実績のスクリーンショット"
       >
         {items.map((item, i) => (
-          <li key={item.src} className="shrink-0 snap-center">
+          <li key={item.src} className="w-[88%] max-w-[330px] shrink-0 snap-center sm:w-[320px]">
             <button
               type="button"
               onClick={() => setZoomed(item)}
-              className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-white text-left transition-shadow hover:shadow-lg ${
+              className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white text-left transition-shadow hover:shadow-lg ${
                 isGold
                   ? "border-[#e2b84d]/50 shadow-[0_9px_22px_rgba(31,31,31,0.08)]"
                   : "border-gray-200 shadow-sm"
@@ -185,7 +185,7 @@ export function EvidenceCarousel({
               {/* キャプションのほうが画像より横に長いカードがあるため、
                   画像は必ず中央に置く */}
               <span
-                className={`relative flex items-center justify-center overflow-hidden ${heightClass}`}
+                className={`relative flex w-full items-center justify-center overflow-hidden bg-gray-50 ${heightClass}`}
               >
                 <Image
                   src={item.src}
@@ -193,7 +193,7 @@ export function EvidenceCarousel({
                   width={item.width}
                   height={item.height}
                   draggable={false}
-                  className="h-full w-auto max-w-none object-contain"
+                  className="max-h-full w-auto max-w-full object-contain"
                   sizes="(max-width: 768px) 80vw, 40vw"
                 />
                 {/* タッチ端末ではホバーが効かないため、常時出しておく */}
