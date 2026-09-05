@@ -19,13 +19,18 @@ const tokushohoItems = [
     value: "080-6880-9400",
   },
   { label: "メールアドレス", value: BRAND.email },
-  { label: "サービス名", value: "SNS Media Lab（SNSメディアラボ）" },
+  {
+    label: "サービス名",
+    value:
+      "SNS Media Lab（SNSメディアラボ）\nSNS売上導線・30日初期構築（事業者向けSNS集客・販売導線構築支援）",
+  },
   {
     label: "販売価格",
     value: [
       `${videoEditing.name}：${yen(withTax(videoEditing.currentPriceExTax))}（税込）`,
       `${youtubeHalf.name}：${yen(withTax(youtubeHalf.currentPriceExTax))}（税込）`,
       `${youtubeYear.name}：${yen(withTax(youtubeYear.currentPriceExTax))}（税込）`,
+      "SNS売上導線・30日初期構築：330,000円（税込）",
       "",
       `※ 非属人YouTubeコースの上記価格は、${OFFER.startLabel}から先着${OFFER.capacity}名限定の価格です。${OFFER.capacity}名の受付終了後は、半年コース${yen(withTax(youtubeHalf.futurePriceExTax))}（税込）、1年コース${yen(withTax(youtubeYear.futurePriceExTax))}（税込）へ改定します。動画編集コースの価格は据え置きです。`,
       "※ 現在の受付状況は、お申し込み前の個別相談にてお伝えします。",
@@ -34,29 +39,42 @@ const tokushohoItems = [
   {
     label: "販売価格以外の必要料金",
     value:
-      "Adobe Premiere Proの利用にはAdobe Creative Cloudのサブスクリプション費用が別途必要です。\nまた、制作で使用するAIツール（ChatGPT、Claude、Vrew、ElevenLabs など。いずれも無料版から利用可能）の利用料はお客様のご負担となります。\n詳細はご入会前の個別説明にてご案内します。",
+      "Adobe Premiere Proの利用にはAdobe Creative Cloudのサブスクリプション費用が別途必要です。\nまた、制作で使用するAIツール（ChatGPT、Claude、Vrew、ElevenLabs など。いずれも無料版から利用可能）の利用料はお客様のご負担となります。\nSNS売上導線・30日初期構築では、公式LINE、UTAGE、予約システム、独自ドメインその他の外部サービスを利用する場合、その利用料はお客様のご負担となります。利用するサービスと費用は契約前にご案内します。",
   },
   {
     label: "お支払い方法",
-    value: "銀行振込・クレジットカード・分割払い（詳細はお申し込み時にご案内します）",
+    value:
+      "銀行振込・クレジットカード\n※ スクール商品は分割払いにも対応しています。詳細はお申し込み時にご案内します。",
   },
-  { label: "支払い時期", value: "お申し込み確認後、指定の期日までにお支払いください。" },
-  { label: "サービス提供時期", value: "お支払い確認後、24時間以内にご案内します。" },
-  { label: "サービスの提供方法", value: "オンライン（動画教材・LINEサポート・ZOOMによる個別MT）" },
+  {
+    label: "支払い時期",
+    value:
+      "お申し込み確認後、契約書または請求書に記載する期日までにお支払いください。",
+  },
+  {
+    label: "サービス提供時期",
+    value:
+      "SNS Media Lab：お支払い確認後、24時間以内に受講方法をご案内します。\nSNS売上導線・30日初期構築：お支払い確認後に初回ヒアリング日を調整し、必要な情報・素材の受領後から原則30日以内を目安に初期構築を行います。お客様による確認・素材提出の状況、外部サービスの審査・仕様等により前後する場合があります。具体的な日程は契約前にご案内します。",
+  },
+  {
+    label: "サービスの提供方法",
+    value:
+      "SNS Media Lab：オンライン（動画教材・LINEサポート・ZOOMによる個別MT）\nSNS売上導線・30日初期構築：オンラインでのヒアリング、戦略設計、SNS入口設計、LP・公式LINE・UTAGE・フォーム・予約導線等の初期構築、動作確認、操作方法の引き継ぎおよび納品後30日間の質問・軽微修正対応",
+  },
   {
     label: "返品・キャンセルについて",
     value:
-      "契約書面を受領した日から8日以内であれば、書面または電磁的記録の送信により契約を解除でき、受領済みの金銭は全額返金します（クーリング・オフ）。\nこの期間の経過後は、返金・中途解約はできません。",
+      "契約書面を受領した日から8日以内であれば、書面または電磁的記録の送信により契約を解除でき、受領済みの金銭は全額返金します（クーリング・オフ）。\nただし、法人または事業のために締結する契約など、法令上クーリング・オフが適用されない場合があります。\nクーリング・オフ期間の経過後、または適用対象外となる契約については、当社の責めに帰すべき事由がある場合を除き、サービスの性質上、返金・中途解約には応じていません。個別契約に別段の定めがある場合は、その内容を優先します。",
   },
   {
     label: "サポート期間の延長について",
     value:
-      "サポート期間内に受講料相当額を回収できなかった場合、追加費用なしでサポートを継続します。\n適用条件の詳細は、お申し込み前の個別相談および契約書面にてご確認ください。",
+      "SNS Media Labの対象コースでは、サポート期間内に受講料相当額を回収できなかった場合、追加費用なしでサポートを継続します。\n適用条件の詳細は、お申し込み前の個別相談および契約書面にてご確認ください。\n本制度は、SNS売上導線・30日初期構築には適用されません。",
   },
   {
     label: "特記事項",
     value:
-      "本サービスは、SNSマーケティング、商品設計、販売導線、セールス、動画編集およびYouTubeチャンネル運営スキルの習得を目的とした教育サービスです。\n受講後の売上・成約・収益化・副業収入・案件獲得・就職等の成果を保証するものではありません。\n学習成果には個人差があります。",
+      "SNS Media Labは、SNSマーケティング、商品設計、販売導線、セールス、動画編集およびYouTubeチャンネル運営スキルの習得を目的とした教育サービスです。\nSNS売上導線・30日初期構築は、事業者の商品・顧客・既存導線を確認し、SNSから個別相談までの初期導線を設計・構築する支援サービスです。日々の投稿代行、広告運用代行および営業代行は、個別契約に明記しない限り含まれません。\nいずれのサービスも、売上・利益・成約件数・収益化・副業収入・案件獲得・就職等の成果を保証するものではありません。成果には、商品、市場環境、発信内容、実践量その他の事情による差があります。",
   },
 ];
 
@@ -81,19 +99,19 @@ export default function TokushohoPage() {
         <div className="w-12 h-1 bg-primary rounded-full mb-8" />
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <table className="w-full">
-            <tbody>
+          <table className="w-full block md:table">
+            <tbody className="block md:table-row-group">
               {tokushohoItems.map((item, idx) => (
                 <tr
                   key={item.label}
-                  className={`border-b border-gray-100 last:border-0 ${
+                  className={`block md:table-row border-b border-gray-100 last:border-0 ${
                     idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"
                   }`}
                 >
-                  <th className="text-left py-5 px-6 text-sm font-semibold text-gray-700 w-36 md:w-48 align-top">
+                  <th className="block md:table-cell text-left pt-5 pb-1 md:py-5 px-5 md:px-6 text-sm font-semibold text-gray-700 w-full md:w-48 align-top">
                     {item.label}
                   </th>
-                  <td className="py-5 px-6 text-sm text-gray-800 leading-relaxed whitespace-pre-line">
+                  <td className="block md:table-cell pt-1 pb-5 md:py-5 px-5 md:px-6 text-sm text-gray-800 leading-relaxed whitespace-pre-line">
                     {item.value}
                   </td>
                 </tr>
