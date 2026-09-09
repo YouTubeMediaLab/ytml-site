@@ -30,7 +30,7 @@ const tokushohoItems = [
       `${videoEditing.name}：${yen(withTax(videoEditing.currentPriceExTax))}（税込）`,
       `${youtubeHalf.name}：${yen(withTax(youtubeHalf.currentPriceExTax))}（税込）`,
       `${youtubeYear.name}：${yen(withTax(youtubeYear.currentPriceExTax))}（税込）`,
-      "SNS売上導線・30日初期構築：330,000円（税込）",
+      "SNS売上導線・30日初期構築：￥330,000（税込）",
       "",
       `※ 非属人YouTubeコースの上記価格は、${OFFER.startLabel}から先着${OFFER.capacity}名限定の価格です。${OFFER.capacity}名の受付終了後は、半年コース${yen(withTax(youtubeHalf.futurePriceExTax))}（税込）、1年コース${yen(withTax(youtubeYear.futurePriceExTax))}（税込）へ改定します。動画編集コースの価格は据え置きです。`,
       "※ 現在の受付状況は、お申し込み前の個別相談にてお伝えします。",
