@@ -8,7 +8,7 @@ export const LINE_URL =
 
 /** SNS投稿・プロフィールから流入するLP専用の公式LINE */
 export const SNS_LP_LINE_URL =
-  "https://online.snsmedialab.com/line/open/Uih49tVZnQlv?mtid=i8AIBi8Zyp8u";
+  "https://online.snsmedialab.com/line/open/8ogmFZPPeD8r?mtid=wHg6HxTQwunU";
 
 /** 初心者向けThreadsプロフィールLP専用の公式LINE */
 export const BEGINNER_SNS_LP_LINE_URL =
