@@ -317,10 +317,13 @@ function SectionHeading({ eyebrow, children }: { eyebrow: string; children: Reac
 
 export default function AcquisitionLandingPage({
   source,
+  ctaUrlOverride,
 }: {
   source: AcquisitionLandingSource;
+  ctaUrlOverride?: string;
 }) {
   const variant = VARIANTS[source];
+  const ctaUrl = ctaUrlOverride ?? variant.ctaUrl;
   const pageFaqs = [...faqs.slice(0, 4), variant.processFaq, ...faqs.slice(4)];
 
   return (
@@ -391,7 +394,7 @@ export default function AcquisitionLandingPage({
             </div>
 
             <div className="mt-8">
-              <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+              <ScreeningLink href={ctaUrl} label={variant.ctaLabel} />
               <p className="mt-4 text-xs font-medium leading-5 text-gray-600">
                 {variant.heroPrimaryNote}
               </p>
@@ -460,7 +463,7 @@ export default function AcquisitionLandingPage({
             </div>
 
             <div className="mt-9 text-center">
-              <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+              <ScreeningLink href={ctaUrl} label={variant.ctaLabel} />
               <p className="mt-3 text-xs font-medium text-gray-500">LINE追加は約10秒・登録無料</p>
             </div>
           </div>
@@ -514,7 +517,7 @@ export default function AcquisitionLandingPage({
             ))}
           </div>
           <div className="mt-10 text-center">
-            <ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} />
+            <ScreeningLink href={ctaUrl} label={variant.ctaLabel} />
           </div>
         </div>
       </section>
@@ -755,7 +758,7 @@ export default function AcquisitionLandingPage({
             <p className="border-t border-gray-800 px-6 py-4 text-center text-[11px] leading-5 text-gray-500">※ 受け入れは月3名までです。審査結果によってはご希望に添えない場合があります。</p>
           </div>
 
-          <div className="mt-10 text-center"><ScreeningLink href={variant.ctaUrl} label={variant.ctaLabel} /></div>
+          <div className="mt-10 text-center"><ScreeningLink href={ctaUrl} label={variant.ctaLabel} /></div>
         </div>
       </section>
 
@@ -831,7 +834,7 @@ export default function AcquisitionLandingPage({
                 </li>
               ))}
             </ol>
-            <a href={variant.ctaUrl} className="cta-green group flex min-h-20 w-full items-center justify-center rounded-2xl border-[3px] border-white px-5 py-5 text-center text-lg font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:text-xl">
+            <a href={ctaUrl} className="cta-green group flex min-h-20 w-full items-center justify-center rounded-2xl border-[3px] border-white px-5 py-5 text-center text-lg font-black leading-6 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] sm:text-xl">
               <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>{variant.ctaLabel.replace("無料で", "")}<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
             </a>
             <p className="mt-5 text-center text-xs leading-5 text-gray-500">{variant.buttonNote}</p>
@@ -854,7 +857,7 @@ export default function AcquisitionLandingPage({
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
-        <a href={variant.ctaUrl} className="cta-green cta-green-sm group flex min-h-14 w-full items-center justify-center rounded-xl border-2 border-white px-4 text-center text-sm font-black leading-5 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]">
+        <a href={ctaUrl} className="cta-green cta-green-sm group flex min-h-14 w-full items-center justify-center rounded-xl border-2 border-white px-4 text-center text-sm font-black leading-5 text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]">
           <span><span className="text-[#ffe600] [text-shadow:0_1px_0_rgba(0,0,0,0.4)]">無料で</span>{variant.ctaLabel.replace("無料で", "")}<span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
         </a>
       </div>

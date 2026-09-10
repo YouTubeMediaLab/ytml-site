@@ -10,6 +10,10 @@ export const LINE_URL =
 export const SNS_LP_LINE_URL =
   "https://online.snsmedialab.com/line/open/Uih49tVZnQlv?mtid=i8AIBi8Zyp8u";
 
+/** 初心者向けThreadsプロフィールLP専用の公式LINE */
+export const BEGINNER_SNS_LP_LINE_URL =
+  "https://online.snsmedialab.com/line/open/8ogmFZPPeD8r?mtid=buiJsXZAYWGn";
+
 /** 個別相談の実施条件 */
 export const CONSULTATION = {
   methods: "ZoomまたはLINE通話",
